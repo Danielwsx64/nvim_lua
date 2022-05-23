@@ -7,7 +7,9 @@ local Self = {}
 -- see: https://github.com/sainnhe/sonokai
 
 function Self.setup()
-	g.sonokai_style = "espresso"
+	-- g.sonokai_style = "andromeda"
+	-- g.sonokai_style = "default"
+	g.sonokai_style = "atlantis"
 	g.sonokai_better_performance = 1
 
 	cmd("colorscheme sonokai")

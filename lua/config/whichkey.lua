@@ -1,8 +1,9 @@
 local Self = {}
 
 local mappings = {
-	["q"] = { "<CMD>q<CR>", "Quit" },
 	["?"] = { "<CMD>WhichKey<CR>", "Help" },
+	q = { "<CMD>q<CR>", "Quit" },
+	x = { "<CMD>NvimTreeToggle<CR>", "Files tree" },
 
 	-- Config commands
 	c = {
@@ -43,8 +44,8 @@ local mappings = {
 		n = { "<CMD>vnew<CR>", "New vertical" },
 		m = { "<CMD>new<CR>", "New horizontal" },
 
-		v = { "<CMD>vsplit<CR>", "Vertical split" },
-		s = { "<CMD>split<CR>", "Horizontal split" },
+		v = { "<CMD>vsplit<CR>", "Split vertical" },
+		s = { "<CMD>split<CR>", "Split horizontal" },
 
 		I = { "<CMD>wincmd x<CR>", "Invert" },
 		r = { "<CMD>wincmd J<CR>", "Rotate vertical" },
