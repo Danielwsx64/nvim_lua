@@ -18,8 +18,12 @@ function Self.get_plugins(first_sync)
 		-- Show keymapping hits
 		use({ "folke/which-key.nvim", event = "VimEnter", config = setup("whichkey") })
 
-		-- Tmux
+		-- tmux
 		use({ "aserowy/tmux.nvim", config = setup("tmux") })
+		use({ "danielwsx64/vim-tmux-runner", config = setup("tmuxrunner") })
+
+		-- test
+		use({ "vim-test/vim-test", config = setup("vimtest") })
 
 		-- Status line
 		use({

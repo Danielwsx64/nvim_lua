@@ -98,6 +98,17 @@ local mappings = {
 		n = { "<CMD>tabnew<CR>", "New" },
 	},
 
+	-- Run (tests) commands
+	r = {
+		name = "Run (eg: tests)",
+
+		s = { "<CMD>TestFile<CR>", "Test file" },
+		n = { "<CMD>TestNearest<CR>", "Test Nearest" },
+		l = { "<CMD>TestLast<CR>", "Test last" },
+		a = { "<CMD>TestSuite<CR>", "Test all" },
+		v = { "<CMD>TestVisit<CR>", "Go to last test file" },
+	},
+
 	z = {
 		name = "Packer",
 		c = { "<CMD>PackerCompile<CR>", "Compile" },
