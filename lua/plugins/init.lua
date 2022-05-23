@@ -15,6 +15,9 @@ function Self.get_plugins(first_sync)
 		-- Git
 		use({ "TimUntersberger/neogit", config = setup("neogit"), requires = "nvim-lua/plenary.nvim" })
 
+		-- Show keymapping hits
+		use({ "folke/which-key.nvim", config = setup("whichkey") })
+
 		-- Some usefull plugins to use
 		-- https://github.com/Shatur/neovim-session-manager
 

@@ -7,11 +7,13 @@ opt.hlsearch = true --Set highlight on search
 opt.number = true --Make line numbers default
 opt.relativenumber = true --Make relative number default
 
-opt.breakindent = true --Enable break indent
+opt.wrap = false -- Wrap lines
+opt.breakindent = false --Enable break indent
 opt.undofile = false --Save undo history
 opt.ignorecase = true --Case insensitive searching unless /C or capital in search
 opt.smartcase = true -- Smart case
 opt.clipboard = "unnamedplus" -- Access system clipboard
+opt.timeoutlen = 500 -- Time in milliseconds to wait for a mapped sequence to complete.
 
 -- opt.signcolumn = "yes" -- Always show sign column
 -- opt.mouse = "a" --Enable mouse mode
@@ -24,3 +26,9 @@ cmd([[
     autocmd TextYankPost * silent! lua vim.highlight.on_yank()
   augroup end
 ]])
+
+-- prevent typo in commons commands
+cmd("command W w")
+cmd("command Wa wa")
+cmd("command Q q")
+cmd("command Qa qa")

@@ -56,7 +56,7 @@ function Self.setup()
 		button("SPC f h", "  Recently opened files"),
 		button("SPC f r", "  Frecency/MRU"),
 		button("SPC f g", "  Find word"),
-		button("SPC f m", "  Jump to bookmarks"),
+		button("SPC p s", "␖  Packer sync", "<cmd>PackerSync<CR>"),
 		button("SPC s l", "  Open last session"),
 		-- 	button("n", "  New file", ":ene <BAR> startinsert <CR>"),
 		-- 	button("c", "  Configuration", ":e $MYVIMRC <CR>"),
