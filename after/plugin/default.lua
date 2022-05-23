@@ -15,6 +15,12 @@ opt.smartcase = true -- Smart case
 opt.clipboard = "unnamedplus" -- Access system clipboard
 opt.timeoutlen = 500 -- Time in milliseconds to wait for a mapped sequence to complete.
 
+-- ident config
+opt.shiftwidth = 2
+opt.tabstop = 2
+opt.softtabstop = 2
+opt.expandtab = true
+
 -- opt.signcolumn = "yes" -- Always show sign column
 -- opt.mouse = "a" --Enable mouse mode
 -- opt.updatetime = 250 --Decrease update time

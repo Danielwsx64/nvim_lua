@@ -6,6 +6,39 @@ function Self.get_plugins(first_sync)
 	return function(use)
 		use("wbthomason/packer.nvim")
 
+		-- Collection of configurations for the built-in LSP client
+		use("williamboman/nvim-lsp-installer")
+
+		use({
+			"neovim/nvim-lspconfig",
+			config = setup("lsp"),
+			requires = { "williamboman/nvim-lsp-installer", "ray-x/lsp_signature.nvim" },
+		})
+
+		use({
+			"hrsh7th/nvim-cmp",
+			config = setup("cmp"),
+			requires = {
+				"hrsh7th/cmp-buffer",
+				"hrsh7th/cmp-path",
+				"hrsh7th/cmp-nvim-lua",
+				"hrsh7th/cmp-cmdline",
+				"hrsh7th/cmp-nvim-lsp",
+				"saadparwaiz1/cmp_luasnip",
+				{ "L3MON4D3/LuaSnip", wants = "friendly-snippets", config = setup("luasnip") },
+				"rafamadriz/friendly-snippets",
+			},
+		})
+
+		use({
+			"windwp/nvim-autopairs",
+			config = function()
+				require("nvim-autopairs").setup({})
+			end,
+		})
+
+		-- use("ms-jpq/coq_nvim")
+
 		-- Startup screen
 		use({ "goolord/alpha-nvim", config = setup("alpha") })
 
