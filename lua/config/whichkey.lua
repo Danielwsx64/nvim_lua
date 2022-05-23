@@ -3,7 +3,28 @@ local Self = {}
 local mappings = {
 	["?"] = { "<CMD>WhichKey<CR>", "Help" },
 	q = { "<CMD>q<CR>", "Quit" },
-	x = { "<CMD>NvimTreeToggle<CR>", "Files tree" },
+
+	-- Explorer commands
+	x = {
+		name = "File explorer",
+		o = { "<CMD>NvimTreeToggle<CR>", "Open file tree" },
+		f = { "<CMD>NvimTreeFindFileToggle<CR>", "Open current buffer" },
+	},
+
+	-- Find commands
+	f = {
+		s = { "<cmd>Telescope search_history<cr>", "Search history" },
+		h = { "<cmd>Telescope command_history<cr>", "Commands history" },
+		f = { "<cmd>Telescope find_files<cr>", "Files" },
+		b = { "<cmd>Telescope buffers<cr>", "Buffers" },
+		o = { "<cmd>Telescope oldfiles<cr>", "Old Files" },
+		g = { "<cmd>Telescope live_grep<cr>", "Live Grep" },
+		c = { "<cmd>Telescope commands<cr>", "Commands" },
+		x = { "<cmd>Telescope file_browser<cr>", "Browser" },
+		r = { "<cmd>Telescope registers<cr>", "Registers" },
+		z = { "<cmd>Telescope builtin<cr>", "Sholl all pickers" },
+		["/"] = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Current Buffer" },
+	},
 
 	-- Config commands
 	c = {
@@ -89,6 +110,8 @@ local mappings = {
 	g = {
 		name = "Git",
 		s = { "<CMD>Neogit<CR>", "Status" },
+		b = { "<cmd>Telescope git_branches<cr>", "Branches" },
+		l = { "<cmd>Telescope git_commits<cr>", "Log" },
 	},
 }
 

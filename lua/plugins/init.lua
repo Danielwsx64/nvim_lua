@@ -40,26 +40,26 @@ function Self.get_plugins(first_sync)
 		})
 
 		-- Telescope
-		-- use({
-		-- 	"nvim-telescope/telescope.nvim",
-		-- 	opt = true,
-		-- 	config = setup("telescope"),
-		-- 	cmd = { "Telescope" },
-		-- 	module = "telescope",
-		-- 	keys = { "<leader>f" },
-		-- 	wants = {
-		-- 		"plenary.nvim",
-		-- 		"popup.nvim",
-		-- 		"telescope-fzf-native.nvim",
-		-- 		"telescope-file-browser.nvim",
-		-- 	},
-		-- 	requires = {
-		-- 		"nvim-lua/popup.nvim",
-		-- 		"nvim-lua/plenary.nvim",
-		-- 		{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
-		-- 		"nvim-telescope/telescope-file-browser.nvim",
-		-- 	},
-		-- })
+		use({
+			"nvim-telescope/telescope.nvim",
+			opt = true,
+			config = setup("telescope"),
+			cmd = { "Telescope" },
+			module = "telescope",
+			keys = { "<leader>f" },
+			wants = {
+				"plenary.nvim",
+				"popup.nvim",
+				"telescope-fzf-native.nvim",
+				"telescope-file-browser.nvim",
+			},
+			requires = {
+				"nvim-lua/popup.nvim",
+				"nvim-lua/plenary.nvim",
+				{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
+				"nvim-telescope/telescope-file-browser.nvim",
+			},
+		})
 
 		-- Some usefull plugins to use
 		-- https://github.com/Shatur/neovim-session-manager

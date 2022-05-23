@@ -7,7 +7,7 @@ function Self.setup()
 		return
 	end
 
-	local actions = telescope.actions
+	local actions = require("telescope.actions")
 
 	telescope.setup({
 		defaults = {
@@ -21,6 +21,7 @@ function Self.setup()
 			},
 		},
 	})
+
 	telescope.load_extension("fzf")
 	telescope.load_extension("file_browser")
 end
