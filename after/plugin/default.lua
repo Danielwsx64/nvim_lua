@@ -1,9 +1,10 @@
 local opt = vim.opt
 local cmd = vim.cmd
+local nvim_create_augroup = vim.api.nvim_create_augroup
+local nvim_create_autocmd = vim.api.nvim_create_autocmd
 
 opt.termguicolors = true -- Enable colors in terminal
 opt.hlsearch = true --Set highlight on search
-
 opt.number = true --Make line numbers default
 opt.relativenumber = true --Make relative number default
 
@@ -12,9 +13,11 @@ opt.breakindent = false --Enable break indent
 opt.undofile = false --Save undo history
 opt.ignorecase = true --Case insensitive searching unless /C or capital in search
 opt.smartcase = true -- Smart case
-opt.clipboard = "unnamedplus" -- Access system clipboard
+
+opt.clipboard:append({ "unnamedplus" }) -- Access system clipboard
 opt.timeoutlen = 500 -- Time in milliseconds to wait for a mapped sequence to complete.
 opt.autoread = true -- always reload files
+opt.colorcolumn = "80" -- see mark in colum 80
 
 -- ident config
 opt.shiftwidth = 2
@@ -27,12 +30,10 @@ opt.expandtab = true
 -- opt.updatetime = 250 --Decrease update time
 
 -- Highlight on yank
-cmd([[
-  augroup YankHighlight
-    autocmd!
-    autocmd TextYankPost * silent! lua vim.highlight.on_yank()
-  augroup end
-]])
+nvim_create_autocmd("TextYankPost", {
+	group = nvim_create_augroup("YankHighlight", { clear = true }),
+	command = "silent! lua vim.highlight.on_yank()",
+})
 
 -- prevent typo in commons commands
 cmd("command W w")

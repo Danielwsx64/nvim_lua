@@ -17,6 +17,8 @@ function Self.setup()
 					["<C-k>"] = actions.move_selection_previous,
 					["<C-n>"] = actions.cycle_history_next,
 					["<C-p>"] = actions.cycle_history_prev,
+					["<C-h>"] = actions.select_tab,
+					["<C-l>"] = actions.select_vertical,
 				},
 			},
 		},

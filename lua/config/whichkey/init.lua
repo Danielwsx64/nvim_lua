@@ -2,13 +2,22 @@ local Self = {}
 
 local mappings = {
 	["?"] = { "<CMD>WhichKey<CR>", "Help" },
-	q = { "<CMD>q<CR>", "Quit" },
+
+	-- Quit commands
+	q = { 
+		name = "Quit",
+		q = {"<CMD>q<CR>", "Quit current" },
+		a = {"<CMD>qa<CR>", "Quit all"},
+		f = {"<CMD>q!<CR>", "Quit force"},
+		F = {"<CMD>qa!<CR>", "Quit all force"},
+},
 
 	-- Explorer commands
-	x = {
+	e = {
 		name = "File explorer",
-		o = { "<CMD>NvimTreeToggle<CR>", "Open file tree" },
 		f = { "<CMD>NvimTreeFindFileToggle<CR>", "Open current buffer" },
+		o = { "<CMD>NvimTreeToggle<CR>", "Open" },
+		c = { "<CMD>NvimTreeClose<CR>", "Close" },
 	},
 
 	-- Find commands
@@ -37,7 +46,7 @@ local mappings = {
 	b = {
 		name = "Buffer",
 		w = { "<CMD>w<CR>", "Save current" },
-		a = { "<CMD>aw<CR>", "Save all" },
+		a = { "<CMD>wa<CR>", "Save all" },
 
 		q = { "<CMD>q<CR>", "Quit current" },
 		Q = { "<CMD>qa<CR>", "Quit all" },
@@ -69,14 +78,15 @@ local mappings = {
 		v = { "<CMD>vsplit<CR>", "Split vertical" },
 		s = { "<CMD>split<CR>", "Split horizontal" },
 
-		I = { "<CMD>wincmd x<CR>", "Invert" },
+		i = { "<CMD>wincmd x<CR>", "Invert" },
 		r = { "<CMD>wincmd J<CR>", "Rotate vertical" },
 		R = { "<CMD>wincmd H<CR>", "Rotate horizontal" },
 
 		o = { "<CMD>wincmd o<CR>", "Close others" },
 		t = { "<CMD>wincmd T<CR>", "Move to new tab" },
 
-		w = { "<CMD>update!<CR>", "Save current buffer" },
+		w = { "<CMD>update<CR>", "Save current buffer" },
+		a = { "<CMD>wa<CR>", "Save all buffers" },
 		q = { "<CMD>q<CR>", "Quit current" },
 	},
 
@@ -109,6 +119,8 @@ local mappings = {
 		l = { "<CMD>TestLast<CR>", "Test last" },
 		a = { "<CMD>TestSuite<CR>", "Test all" },
 		v = { "<CMD>TestVisit<CR>", "Go to last test file" },
+		c = { ":", "Open command bar"},
+		h = { ":help ", "Open help"},
 	},
 
 	z = {
@@ -120,6 +132,7 @@ local mappings = {
 		u = { "<CMD>PackerUpdate<CR>", "Update" },
 	},
 
+	-- Git commands
 	g = {
 		name = "Git",
 		s = { "<CMD>Neogit<CR>", "Status" },

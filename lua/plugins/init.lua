@@ -38,6 +38,9 @@ function Self.get_plugins(first_sync)
 			end,
 		})
 
+		-- vim-endwise
+		use("tpope/vim-endwise")
+
 		-- better comments
 		use({
 			"numToStr/Comment.nvim",
@@ -45,6 +48,9 @@ function Self.get_plugins(first_sync)
 				require("Comment").setup()
 			end,
 		})
+
+		-- better tab names
+		use("gcmt/taboo.vim")
 
 		-- multiple cursor
 		use({ "mg979/vim-visual-multi", config = setup("visualmulti") })

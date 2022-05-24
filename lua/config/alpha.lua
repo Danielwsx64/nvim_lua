@@ -52,14 +52,12 @@ function Self.setup()
 
 	dashboard.section.buttons.val = {
 		button("e", "  New file", "<cmd>ene <CR>"),
-		button("SPC f f", "  Find file"),
-		button("SPC f h", "  Recently opened files"),
-		button("SPC f r", "  Frecency/MRU"),
-		button("SPC f g", "  Find word"),
-		button("SPC p s", "␖  Packer sync", "<cmd>PackerSync<CR>"),
-		button("SPC s l", "  Open last session"),
+		button("SPC f f", "  Find file", "<cmd>Telescope find_files<cr>"),
+		button("SPC f o", "  Recently opened files",  "<cmd>Telescope oldfiles<cr>"),
+		button("c", "  Configuration", ":e $MYVIMRC <CR>"),
+		button("SPC p s", "  Packer sync", "<cmd>PackerSync<CR>"),
+		-- button("SPC s l", "␖ Open last session"),
 		-- 	button("n", "  New file", ":ene <BAR> startinsert <CR>"),
-		-- 	button("c", "  Configuration", ":e $MYVIMRC <CR>"),
 		-- 	button("q", "  Quit Neovim", ":qa<CR>"),
 	}
 
