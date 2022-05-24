@@ -30,6 +30,7 @@ function Self.get_plugins(first_sync)
 			},
 		})
 
+		-- autopairs
 		use({
 			"windwp/nvim-autopairs",
 			config = function()
@@ -37,7 +38,28 @@ function Self.get_plugins(first_sync)
 			end,
 		})
 
-		-- use("ms-jpq/coq_nvim")
+		-- better comments
+		use({
+			"numToStr/Comment.nvim",
+			config = function()
+				require("Comment").setup()
+			end,
+		})
+
+		-- multiple cursor
+		use({ "mg979/vim-visual-multi", config = setup("visualmulti") })
+
+		-- autoformat
+		use({ "mhartington/formatter.nvim", config = setup("formatter") })
+
+		-- grep and replace
+		use({ "Danielwsx64/greplace", config = setup("greplace") })
+
+		-- highlight
+		use("sheerun/vim-polyglot")
+
+		-- Better surround
+		use({ "tpope/vim-surround", event = "InsertEnter" })
 
 		-- Startup screen
 		use({ "goolord/alpha-nvim", config = setup("alpha") })

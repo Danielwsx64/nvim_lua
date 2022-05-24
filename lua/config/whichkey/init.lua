@@ -43,6 +43,7 @@ local mappings = {
 		Q = { "<CMD>qa<CR>", "Quit all" },
 
 		e = { "<CMD>e!<CR>", "Reload" },
+		f = { "<CMD>Format<CR>", "Format" },
 
 		l = { "<c-^>", "Go last" },
 
@@ -76,6 +77,7 @@ local mappings = {
 		t = { "<CMD>wincmd T<CR>", "Move to new tab" },
 
 		w = { "<CMD>update!<CR>", "Save current buffer" },
+		q = { "<CMD>q<CR>", "Quit current" },
 	},
 
 	-- Tabs commands

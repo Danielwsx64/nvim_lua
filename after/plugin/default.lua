@@ -14,6 +14,7 @@ opt.ignorecase = true --Case insensitive searching unless /C or capital in searc
 opt.smartcase = true -- Smart case
 opt.clipboard = "unnamedplus" -- Access system clipboard
 opt.timeoutlen = 500 -- Time in milliseconds to wait for a mapped sequence to complete.
+opt.autoread = true -- always reload files
 
 -- ident config
 opt.shiftwidth = 2
