@@ -53,12 +53,10 @@ function Self.setup()
 	dashboard.section.buttons.val = {
 		button("e", "  New file", "<cmd>ene <CR>"),
 		button("SPC f f", "  Find file", "<cmd>Telescope find_files<cr>"),
-		button("SPC f o", "  Recently opened files",  "<cmd>Telescope oldfiles<cr>"),
-		button("c", "  Configuration", ":e $MYVIMRC <CR>"),
-		button("SPC p s", "  Packer sync", "<cmd>PackerSync<CR>"),
-		-- button("SPC s l", "␖ Open last session"),
-		-- 	button("n", "  New file", ":ene <BAR> startinsert <CR>"),
-		-- 	button("q", "  Quit Neovim", ":qa<CR>"),
+		button("SPC s l", "﫻 Sessions", "<CMD>Telescope session-lens search_session<CR>"),
+		button("SPC c e", "  Configuration", ":e $MYVIMRC <CR>"),
+		button("SCP f p", " Projects", "<cmd>lua require'telescope'.extensions.project.project{}<cr>"),
+		button("SPC z s", "  Packer sync", "<cmd>PackerSync<CR>"),
 	}
 
 	dashboard.section.buttons.opts.hl = "Function"

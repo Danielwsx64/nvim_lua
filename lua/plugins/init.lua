@@ -6,18 +6,30 @@ function Self.get_plugins(first_sync)
 	return function(use)
 		use("wbthomason/packer.nvim")
 
+		use("nvim-lua/plenary.nvim")
 		-- Collection of configurations for the built-in LSP client
 		use("williamboman/nvim-lsp-installer")
 
 		use({
 			"neovim/nvim-lspconfig",
 			config = setup("lsp"),
+			wants = "nvim-lsp-installer",
 			requires = { "williamboman/nvim-lsp-installer", "ray-x/lsp_signature.nvim" },
 		})
 
 		use({
 			"hrsh7th/nvim-cmp",
 			config = setup("cmp"),
+			wants = {
+				"cmp-buffer",
+				"cmp-path",
+				"cmp-nvim-lua",
+				"cmp-cmdline",
+				"cmp-nvim-lsp",
+				"cmp_luasnip",
+				"LuaSnip",
+				"friendly-snippets",
+			},
 			requires = {
 				"hrsh7th/cmp-buffer",
 				"hrsh7th/cmp-path",
@@ -74,7 +86,12 @@ function Self.get_plugins(first_sync)
 		use({ "sainnhe/sonokai", config = setup("sonokai") })
 
 		-- Git
-		use({ "TimUntersberger/neogit", cmd = "Neogit", config = setup("neogit"), requires = "nvim-lua/plenary.nvim" })
+		use({
+			"TimUntersberger/neogit",
+			cmd = "Neogit",
+			config = setup("neogit"),
+			wants = "plenary.nvim",
+		})
 
 		-- Show keymapping hits
 		use({ "folke/which-key.nvim", event = "VimEnter", config = setup("whichkey") })
@@ -91,7 +108,7 @@ function Self.get_plugins(first_sync)
 			"nvim-lualine/lualine.nvim",
 			config = setup("lualine"),
 			event = "VimEnter",
-			wants = "nvim-web-devicons",
+			wants = { "nvim-web-devicons", "auto-session" },
 			requires = "kyazdani42/nvim-web-devicons",
 			after = "sonokai",
 		})
@@ -116,18 +133,28 @@ function Self.get_plugins(first_sync)
 				"plenary.nvim",
 				"popup.nvim",
 				"telescope-fzf-native.nvim",
+				"telescope-project.nvim",
 				"telescope-file-browser.nvim",
+				"project.nvim",
 			},
 			requires = {
 				"nvim-lua/popup.nvim",
-				"nvim-lua/plenary.nvim",
 				{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
+				"nvim-telescope/telescope-project.nvim",
 				"nvim-telescope/telescope-file-browser.nvim",
+				{
+					"ahmedkhalf/project.nvim",
+					config = function()
+						require("project_nvim").setup({})
+					end,
+				},
+				{
+					"rmagatti/session-lens",
+					requires = { "rmagatti/auto-session" },
+					config = setup("session_lens"),
+				},
 			},
 		})
-
-		-- Some usefull plugins to use
-		-- https://github.com/Shatur/neovim-session-manager
 
 		if first_sync then
 			print("Restart Neovim required after installation!")

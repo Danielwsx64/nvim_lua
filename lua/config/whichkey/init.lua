@@ -4,13 +4,14 @@ local mappings = {
 	["?"] = { "<CMD>WhichKey<CR>", "Help" },
 
 	-- Quit commands
-	q = { 
+	q = {
 		name = "Quit",
-		q = {"<CMD>q<CR>", "Quit current" },
-		a = {"<CMD>qa<CR>", "Quit all"},
-		f = {"<CMD>q!<CR>", "Quit force"},
-		F = {"<CMD>qa!<CR>", "Quit all force"},
-},
+		q = { "<CMD>q<CR>", "Current" },
+		a = { "<CMD>qa<CR>", "All" },
+		f = { "<CMD>q!<CR>", "Force" },
+		F = { "<CMD>qa!<CR>", "All force" },
+		s = { '<CMD>lua require("util.session").close_session()<CR>', "Session" },
+	},
 
 	-- Explorer commands
 	e = {
@@ -22,6 +23,7 @@ local mappings = {
 
 	-- Find commands
 	f = {
+		["."] = { "", "Dotfiles" },
 		s = { "<cmd>Telescope search_history<cr>", "Search history" },
 		h = { "<cmd>Telescope command_history<cr>", "Commands history" },
 		f = { "<cmd>Telescope find_files<cr>", "Files" },
@@ -32,6 +34,7 @@ local mappings = {
 		x = { "<cmd>Telescope file_browser<cr>", "Browser" },
 		r = { "<cmd>Telescope registers<cr>", "Registers" },
 		z = { "<cmd>Telescope builtin<cr>", "Sholl all pickers" },
+		p = { "<cmd>lua require'telescope'.extensions.project.project{}<cr>", "Project" },
 		["/"] = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Current Buffer" },
 	},
 
@@ -90,6 +93,14 @@ local mappings = {
 		q = { "<CMD>q<CR>", "Quit current" },
 	},
 
+	-- Session commands
+	s = {
+		name = "Sessions",
+		l = { "<CMD>Telescope session-lens search_session<CR>", "List" },
+		d = { "<CMD>DeleteSession<CR>", "Delete" },
+		s = { "<CMD>SaveSession<CR>", "Save" },
+	},
+
 	-- Tabs commands
 	t = {
 		name = "Tabs",
@@ -119,8 +130,8 @@ local mappings = {
 		l = { "<CMD>TestLast<CR>", "Test last" },
 		a = { "<CMD>TestSuite<CR>", "Test all" },
 		v = { "<CMD>TestVisit<CR>", "Go to last test file" },
-		c = { ":", "Open command bar"},
-		h = { ":help ", "Open help"},
+		c = { ":", "Open command bar" },
+		h = { ":help ", "Open help" },
 	},
 
 	z = {
