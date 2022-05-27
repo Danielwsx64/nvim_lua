@@ -142,12 +142,7 @@ function Self.get_plugins(first_sync)
 				{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
 				"nvim-telescope/telescope-project.nvim",
 				"nvim-telescope/telescope-file-browser.nvim",
-				{
-					"ahmedkhalf/project.nvim",
-					config = function()
-						require("project_nvim").setup({})
-					end,
-				},
+				{ "ahmedkhalf/project.nvim", config = setup("project") },
 				{
 					"rmagatti/session-lens",
 					requires = { "rmagatti/auto-session" },

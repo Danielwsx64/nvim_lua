@@ -20,11 +20,11 @@ function Self.setup()
 			update_cwd = false,
 			ignore_list = {},
 		},
-		view = { width = 50, number = true, relativenumber = true, mappings = { list = list } },
+		view = { width = 35, number = true, relativenumber = true, mappings = { list = list } },
 		filters = { custom = { ".git" } },
 	})
 
-	g.nvim_tree_respect_buf_cwd = 1
+	-- g.nvim_tree_respect_buf_cwd = 0
 end
 
 return Self
