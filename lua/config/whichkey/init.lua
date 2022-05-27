@@ -31,7 +31,7 @@ local mappings = {
 		o = { "<cmd>Telescope oldfiles<cr>", "Old Files" },
 		g = { "<cmd>Telescope live_grep<cr>", "Live Grep" },
 		c = { "<cmd>Telescope commands<cr>", "Commands" },
-		x = { "<cmd>Telescope file_browser<cr>", "Browser" },
+		e = { "<cmd>Telescope file_browser<cr>", "Browser" },
 		r = { "<cmd>Telescope registers<cr>", "Registers" },
 		z = { "<cmd>Telescope builtin<cr>", "Sholl all pickers" },
 		p = { "<cmd>lua require'telescope'.extensions.project.project{}<cr>", "Project" },
@@ -130,6 +130,7 @@ local mappings = {
 		l = { "<CMD>TestLast<CR>", "Test last" },
 		a = { "<CMD>TestSuite<CR>", "Test all" },
 		v = { "<CMD>TestVisit<CR>", "Go to last test file" },
+
 		c = { ":", "Open command bar" },
 		h = { ":help ", "Open help" },
 	},
