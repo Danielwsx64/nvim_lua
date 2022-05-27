@@ -12,7 +12,7 @@ function Self.setup()
 	local util = require("formatter.util")
 
 	formatter.setup({
-		-- All formatter configurations are opt-in
+		logging = true,
 		filetype = {
 			lua = {
 				require("formatter.filetypes.lua").stylua,
@@ -22,11 +22,7 @@ function Self.setup()
 					-- "--dot-formatter",
 					return {
 						exe = "mix",
-						args = {
-							"format",
-							util.escape_path(util.get_current_buffer_file_path()),
-							" -",
-						},
+						args = { "format", " -" },
 						stdin = true,
 					}
 				end,
@@ -35,7 +31,7 @@ function Self.setup()
 	})
 
 	local group = api.nvim_create_augroup("AutoFormat", { clear = true })
-	api.nvim_create_autocmd("BufWritePre", { group = group, command = "Format" })
+	api.nvim_create_autocmd("BufWritePost", { group = group, command = "FormatWrite" })
 end
 
 return Self
