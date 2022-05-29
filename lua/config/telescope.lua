@@ -11,6 +11,7 @@ function Self.setup()
 
 	telescope.setup({
 		defaults = {
+			wrap_results = true,
 			mappings = {
 				i = {
 					["<C-j>"] = actions.move_selection_next,
@@ -24,11 +25,10 @@ function Self.setup()
 		},
 	})
 
-	telescope.load_extension("fzf")
 	telescope.load_extension("project")
+	telescope.load_extension("projects")
+	telescope.load_extension("fzf")
 	telescope.load_extension("file_browser")
-	telescope.load_extension("projects")
-	telescope.load_extension("projects")
 end
 
 return Self

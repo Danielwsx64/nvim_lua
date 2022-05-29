@@ -10,6 +10,8 @@ local mappings = {
 		a = { "<CMD>qa<CR>", "All" },
 		f = { "<CMD>q!<CR>", "Force" },
 		F = { "<CMD>qa!<CR>", "All force" },
+		x = { "<CMD>x<CR>", "Quit saving" },
+		X = { "<CMD>xa<CR>", "Quit saving" },
 		s = { '<CMD>lua require("util.session").close_session()<CR>', "Session" },
 	},
 
@@ -17,8 +19,8 @@ local mappings = {
 	e = {
 		name = "File explorer",
 		f = { "<CMD>NvimTreeFindFileToggle<CR>", "Open current buffer" },
-		o = { "<CMD>NvimTreeToggle<CR>", "Open" },
-		c = { "<CMD>NvimTreeClose<CR>", "Close" },
+		e = { "<CMD>NvimTreeToggle<CR>", "Open" },
+		q = { "<CMD>NvimTreeClose<CR>", "Close" },
 	},
 
 	-- Find commands
@@ -54,7 +56,7 @@ local mappings = {
 		q = { "<CMD>q<CR>", "Quit current" },
 		Q = { "<CMD>qa<CR>", "Quit all" },
 
-		e = { "<CMD>e!<CR>", "Reload" },
+		r = { "<CMD>e!<CR>", "Reload" },
 		f = { "<CMD>Format<CR>", "Format" },
 
 		l = { "<c-^>", "Go last" },

@@ -2,12 +2,10 @@ local api = vim.api
 local cmd = vim.cmd
 local env = vim.env
 
-local g = vim.g
-
 local Self = { attached = false }
 
 function Self.setup()
-	g.tmux_navigator_no_mappings = 1
+	require("tmux-runner").setup()
 
 	if env.TMUX then
 		local group = api.nvim_create_augroup("TmuxRunner", { clear = true })

@@ -98,7 +98,7 @@ function Self.get_plugins(first_sync)
 
 		-- tmux
 		use({ "aserowy/tmux.nvim", config = setup("tmux") })
-		use({ "danielwsx64/vim-tmux-runner", config = setup("tmuxrunner") })
+		use({ "danielwsx64/tmux-runner.vim", config = setup("tmux-runner") })
 
 		-- test
 		use({ "vim-test/vim-test", config = setup("vimtest") })
