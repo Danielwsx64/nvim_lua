@@ -26,18 +26,19 @@ local mappings = {
 	-- Find commands
 	f = {
 		["."] = { "", "Dotfiles" },
-		s = { "<cmd>Telescope search_history<cr>", "Search history" },
-		h = { "<cmd>Telescope command_history<cr>", "Commands history" },
-		f = { "<cmd>Telescope find_files<cr>", "Files" },
-		b = { "<cmd>Telescope buffers<cr>", "Buffers" },
-		o = { "<cmd>Telescope oldfiles<cr>", "Old Files" },
-		g = { "<cmd>Telescope live_grep<cr>", "Live Grep" },
-		c = { "<cmd>Telescope commands<cr>", "Commands" },
-		e = { "<cmd>Telescope file_browser<cr>", "Browser" },
-		r = { "<cmd>Telescope registers<cr>", "Registers" },
-		z = { "<cmd>Telescope builtin<cr>", "Sholl all pickers" },
-		p = { "<cmd>lua require'telescope'.extensions.project.project{}<cr>", "Project" },
-		["/"] = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Current Buffer" },
+		s = { "<CMD>Telescope search_history<CR>", "Search history" },
+		h = { "<CMD>Telescope command_history<CR>", "Commands history" },
+		f = { "<CMD>Telescope find_files<CR>", "Files" },
+		b = { "<CMD>Telescope buffers<CR>", "Buffers" },
+		o = { "<CMD>Telescope oldfiles<CR>", "Old Files" },
+		g = { "<CMD>Telescope live_grep<CR>", "Live Grep" },
+		c = { "<CMD>Telescope commands<CR>", "Commands" },
+		e = { "<CMD>Telescope file_browser<CR>", "Browser" },
+		r = { "<CMD>Telescope registers<CR>", "Registers" },
+		z = { "<CMD>Telescope builtin<CR>", "Sholl all pickers" },
+		p = { "<CMD>lua require'telescope'.extensions.project.project{}<CR>", "Project" },
+		m = { "<CMD>Telescope marks<CR>", "Marks" },
+		["/"] = { "<CMD>Telescope current_buffer_fuzzy_find<CR>", "Current Buffer" },
 	},
 
 	-- Config commands
@@ -45,6 +46,7 @@ local mappings = {
 		name = "Config",
 		e = { "<CMD>e $MYVIMRC<CR>", "Edit" },
 		r = { "<CMD>so $MYVIMRC<CR>", "Reload" },
+		s = { "<CMD>lua require('luasnip.loaders').edit_snippet_files()<CR>", "Edit Snippets" },
 	},
 
 	-- Buffer commands
@@ -150,8 +152,8 @@ local mappings = {
 	g = {
 		name = "Git",
 		s = { "<CMD>Neogit<CR>", "Status" },
-		b = { "<cmd>Telescope git_branches<cr>", "Branches" },
-		l = { "<cmd>Telescope git_commits<cr>", "Log" },
+		b = { "<CMD>Telescope git_branches<CR>", "Branches" },
+		l = { "<CMD>Telescope git_commits<CR>", "Log" },
 	},
 }
 

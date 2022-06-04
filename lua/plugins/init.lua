@@ -4,9 +4,17 @@ local Self = {}
 
 function Self.get_plugins(first_sync)
 	return function(use)
+		-- parece interessante um plugin de find replace
+		-- "nvim-pack/nvim-spectre"
+
 		use("wbthomason/packer.nvim")
 
+		-- Database DBML sintax highlight and file type
+		use("jidn/vim-dbml")
+
+		-- Othe plugins deps
 		use("nvim-lua/plenary.nvim")
+
 		-- Collection of configurations for the built-in LSP client
 		use("williamboman/nvim-lsp-installer")
 
