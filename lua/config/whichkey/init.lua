@@ -25,7 +25,7 @@ local mappings = {
 
 	-- Find commands
 	f = {
-		["."] = { "", "Dotfiles" },
+		name = "Find",
 		s = { "<CMD>Telescope search_history<CR>", "Search history" },
 		h = { "<CMD>Telescope command_history<CR>", "Commands history" },
 		f = { "<CMD>Telescope find_files<CR>", "Files" },
@@ -38,6 +38,7 @@ local mappings = {
 		z = { "<CMD>Telescope builtin<CR>", "Sholl all pickers" },
 		p = { "<CMD>lua require'telescope'.extensions.project.project{}<CR>", "Project" },
 		m = { "<CMD>Telescope marks<CR>", "Marks" },
+		t = { "<CMD>lua require('miscellaneous').go_to_elixir_test_file()<CR>", "Test file" },
 		["/"] = { "<CMD>Telescope current_buffer_fuzzy_find<CR>", "Current Buffer" },
 	},
 
