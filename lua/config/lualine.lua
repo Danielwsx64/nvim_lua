@@ -7,7 +7,10 @@ function Self.setup()
 		return
 	end
 
-	lualine.setup({ options = { theme = "gruvbox", globalstatus = true } })
+	lualine.setup({
+		options = { theme = "gruvbox", globalstatus = true },
+		sections = { lualine_c = { { "filename", path = 1 } } },
+	})
 end
 
 return Self

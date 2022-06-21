@@ -22,6 +22,24 @@ function Self.setup()
 		},
 		view = { width = 35, number = true, relativenumber = true, mappings = { list = list } },
 		filters = { custom = { ".git" } },
+		renderer = {
+			icons = {
+				glyphs = {
+					default = "",
+					symlink = "",
+					folder = {
+						arrow_closed = "",
+						arrow_open = "",
+						default = "",
+						open = "",
+						empty = "◉",
+						empty_open = "◉",
+						symlink = "",
+						symlink_open = "",
+					},
+				},
+			},
+		},
 	})
 
 	-- g.nvim_tree_respect_buf_cwd = 0
