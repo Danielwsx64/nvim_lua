@@ -27,6 +27,5 @@ function Self.setup()
 		settings = { live_blame = { enabled = false }, live_gutter = { enabled = false } },
 	})
 end
-require("vgit").setup()
 
 return Self

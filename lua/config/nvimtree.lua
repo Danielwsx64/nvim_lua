@@ -21,7 +21,7 @@ function Self.setup()
 			ignore_list = {},
 		},
 		view = { width = 35, number = true, relativenumber = true, mappings = { list = list } },
-		filters = { custom = { ".git" } },
+		filters = { custom = { "\\.git" } },
 		renderer = {
 			icons = {
 				glyphs = {

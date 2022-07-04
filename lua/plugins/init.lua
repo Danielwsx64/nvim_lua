@@ -125,14 +125,17 @@ function Self.get_plugins(first_sync)
 			config = setup("nvimtree"),
 		})
 
+		-- Yank/Clipboard manager (needs telescope or fzf)
+		use({ "AckslD/nvim-neoclip.lua", config = setup("neoclip") })
+
 		-- Telescope
 		use({
 			"nvim-telescope/telescope.nvim",
-			opt = true,
+			-- opt = true,
+			-- cmd = { "Telescope" },
+			-- module = "telescope",
+			-- keys = { "<leader>f" },
 			config = setup("telescope"),
-			cmd = { "Telescope" },
-			module = "telescope",
-			keys = { "<leader>f" },
 			wants = {
 				"plenary.nvim",
 				"popup.nvim",
@@ -140,6 +143,7 @@ function Self.get_plugins(first_sync)
 				"telescope-project.nvim",
 				"telescope-file-browser.nvim",
 				"project.nvim",
+				"nvim-neoclip.lua",
 			},
 			requires = {
 				"nvim-lua/popup.nvim",
