@@ -152,9 +152,20 @@ local mappings = {
 	-- Git commands
 	g = {
 		name = "Git",
+		n = { "<CMD>VGit hunk_down<CR>", "Next hunk" },
+		m = { "<CMD>VGit hunk_up<CR>", "Previous hunk" },
+
+		d = { "<CMD>VGit buffer_diff_preview<CR>", "Buffer diff" },
+		h = { "<CMD>VGit buffer_history_preview<CR>", "Buffer history" },
+		g = { "<CMD>VGit toggle_live_gutter<CR>", "Live gutter" },
+
+		b = { "<CMD>VGit buffer_blame_preview<CR>", "Cursor blame" },
+		B = { "<CMD>VGit buffer_gutter_blame_preview<CR>", "Buffer blame" },
+
 		s = { "<CMD>Neogit<CR>", "Status" },
-		b = { "<CMD>Telescope git_branches<CR>", "Branches" },
 		l = { "<CMD>Telescope git_commits<CR>", "Log" },
+		L = { "<CMD>VGit project_logs_preview<CR>", "VGit log" },
+		-- b = { "<CMD>Telescope git_branches<CR>", "Branches" },
 	},
 }
 

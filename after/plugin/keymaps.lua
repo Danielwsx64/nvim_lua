@@ -47,14 +47,14 @@ map("v", ">", ">gv", "Remove indent and reselect")
 map("n", "//", ":nohlsearch<Bar>:echo<CR>", "Cancel search")
 
 -- Move selected line / block of text in visual mode
-map("x", "K", ":move '<-2<CR>gv-gv", "Move selected up")
-map("x", "J", ":move '>+1<CR>gv-gv", "Move seleced down")
+map("x", "<Up>", ":move '<-2<CR>gv-gv", "Move selected up")
+map("x", "<Down>", ":move '>+1<CR>gv-gv", "Move seleced down")
 
 -- Resizing panes
-map("n", "<Left>", ":vertical resize +1<CR>", "Resize window left")
-map("n", "<Right>", ":vertical resize -1<CR>", "Resize window right")
-map("n", "<Up>", ":resize -1<CR>", "Resize window up")
-map("n", "<Down>", ":resize +1<CR>", "Resize window down")
+-- map("n", "<Right>", ":vertical resize +1<CR>", "Resize window left")
+-- map("n", "<Left>", ":vertical resize -1<CR>", "Resize window right")
+-- map("n", "<Up>", ":resize -1<CR>", "Resize window up")
+-- map("n", "<Down>", ":resize +1<CR>", "Resize window down")
 
 -- >>> Maybe it can be useful
 --

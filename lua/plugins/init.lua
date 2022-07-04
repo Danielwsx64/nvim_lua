@@ -94,12 +94,8 @@ function Self.get_plugins(first_sync)
 		use({ "sainnhe/sonokai", config = setup("sonokai") })
 
 		-- Git
-		use({
-			"TimUntersberger/neogit",
-			cmd = "Neogit",
-			config = setup("neogit"),
-			wants = "plenary.nvim",
-		})
+		use({ "TimUntersberger/neogit", cmd = "Neogit", config = setup("neogit"), wants = "plenary.nvim" })
+		use({ "tanvirtin/vgit.nvim", requires = { "nvim-lua/plenary.nvim" }, config = setup("vgit") })
 
 		-- Show keymapping hits
 		use({ "folke/which-key.nvim", event = "VimEnter", config = setup("whichkey") })
