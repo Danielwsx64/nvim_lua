@@ -1,13 +1,42 @@
 local api = vim.api
+local find = vim.fs.find
+local expand = vim.fn.expand
+local levels = vim.log.levels
 
 local Self = {}
 
 local function elixir_formater()
-	return {
-		exe = "mix",
-		args = { "format", " -" },
-		stdin = true,
-	}
+	local formatter_table = { exe = "mix", args = { "format", "-" }, stdin = true }
+
+	local buffer_name = expand("%:p")
+	local config
+
+	if not buffer_name then
+		return formatter_table
+	end
+
+	local formatter_files = find(".formatter.exs", { type = "file", stop = "apps", limit = math.huge })
+
+	if not formatter_files[1] then
+		return formatter_table
+	end
+
+	for index, value in ipairs(formatter_files) do
+		if index == 1 then
+			config = value
+		else
+			if
+				string.match(buffer_name, string.gsub(value, ".formatter.exs", ""))
+				and string.len(value) > string.len(config)
+			then
+				config = value
+			end
+		end
+	end
+
+	formatter_table.args = { "format", "--dot-formatter", config, "-" }
+
+	return formatter_table
 end
 
 function Self.setup()
@@ -17,10 +46,9 @@ function Self.setup()
 		return
 	end
 
-	local util = require("formatter.util")
-
 	formatter.setup({
-		logging = true,
+		logging = false,
+		log_level = levels.DEBUG,
 		filetype = {
 			elixir = { elixir_formater },
 
@@ -37,6 +65,7 @@ function Self.setup()
 	})
 
 	local group = api.nvim_create_augroup("AutoFormat", { clear = true })
+
 	api.nvim_create_autocmd("BufWritePost", { group = group, command = "FormatWrite" })
 end
 
