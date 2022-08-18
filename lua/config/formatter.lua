@@ -6,19 +6,19 @@ local levels = vim.log.levels
 local Self = {}
 
 local function elixir_formater()
-	local formatter_table = { exe = "mix", args = { "format", "-" }, stdin = true }
+	local config
+	local formatter = { exe = "mix", args = { "format", "-" }, stdin = true }
 
 	local buffer_name = expand("%:p")
-	local config
 
 	if not buffer_name then
-		return formatter_table
+		return formatter
 	end
 
 	local formatter_files = find(".formatter.exs", { type = "file", stop = "apps", limit = math.huge })
 
 	if not formatter_files[1] then
-		return formatter_table
+		return formatter
 	end
 
 	for index, value in ipairs(formatter_files) do
@@ -34,9 +34,9 @@ local function elixir_formater()
 		end
 	end
 
-	formatter_table.args = { "format", "--dot-formatter", config, "-" }
+	formatter.args = { "format", "--dot-formatter", config, "-" }
 
-	return formatter_table
+	return formatter
 end
 
 function Self.setup()

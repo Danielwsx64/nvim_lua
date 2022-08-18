@@ -69,6 +69,9 @@ function Self.get_plugins(first_sync)
 			end,
 		})
 
+		-- better fold
+		use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async", config = setup("ufo") })
+
 		-- better tab names
 		use("gcmt/taboo.vim")
 
@@ -94,8 +97,14 @@ function Self.get_plugins(first_sync)
 		use({ "sainnhe/sonokai", config = setup("sonokai") })
 
 		-- Git
-		use({ "TimUntersberger/neogit", cmd = "Neogit", config = setup("neogit"), wants = "plenary.nvim" })
-		use({ "tanvirtin/vgit.nvim", requires = { "nvim-lua/plenary.nvim" }, config = setup("vgit") })
+		use({ "sindrets/diffview.nvim", wants = { "plenary.vim" } })
+		use({
+			"TimUntersberger/neogit",
+			cmd = "Neogit",
+			config = setup("neogit"),
+			wants = { "plenary.nvim", "diffview.nvim" },
+		})
+		use({ "tanvirtin/vgit.nvim", wants = { "plenary.nvim" }, config = setup("vgit") })
 
 		-- Show keymapping hits
 		use({ "folke/which-key.nvim", event = "VimEnter", config = setup("whichkey") })

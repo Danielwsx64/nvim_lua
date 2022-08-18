@@ -121,7 +121,8 @@ local mappings = {
 		o = { "<CMD>tabo<CR>", "Close othes" },
 		q = { "<CMD>tabc<CR>", "Close" },
 
-		s = { "<CMD>tabs<CR>", "Show all" },
+		s = { "<CMD>tab split<CR>", "Split current buffer in a new tab" },
+		S = { "<CMD>tabs<CR>", "Show all" },
 
 		n = { "<CMD>tabnew<CR>", "New" },
 	},

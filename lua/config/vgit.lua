@@ -6,6 +6,8 @@ function Self.setup()
 	if not status_ok then
 		return
 	end
+	-- To use live_gutter
+	vim.wo.signcolumn = "yes"
 
 	vgit.setup({
 		-- keymaps = {
@@ -24,7 +26,7 @@ function Self.setup()
 		-- 	["n <leader>gq"] = "project_hunks_qf",
 		-- 	["n <leader>gx"] = "toggle_diff_preference",
 		-- },
-		settings = { live_blame = { enabled = false }, live_gutter = { enabled = false } },
+		settings = { live_blame = { enabled = false }, live_gutter = { enabled = true } },
 	})
 end
 

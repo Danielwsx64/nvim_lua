@@ -10,7 +10,7 @@ function Self.setup()
 		return
 	end
 
-	neogit.setup({})
+	neogit.setup({ integrations = { diffview = true } })
 end
 
 return Self
