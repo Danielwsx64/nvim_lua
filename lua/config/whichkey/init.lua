@@ -1,10 +1,21 @@
 local Self = {}
 
-local lead_binds = {
+local visual_lead_binds = {
+	["?"] = { "<CMD>WhichKey<CR>", "Help" },
+
+	-- Search and Substitute
+	s = {
+		name = "Search and Substitute",
+		s = { "<CMD>lua require('miscellaneous').better_replace()<CR>", "Find and replace word near the cursor" },
+	},
+}
+
+local normal_lead_binds = {
 	["?"] = { "<CMD>WhichKey<CR>", "Help" },
 
 	-- help
 	h = {
+		h = { ":help ", "Open help" },
 		m = { "<CMD>help vm-mappings.txt<CR>", "Multi Cursor Keys" },
 	},
 
@@ -115,6 +126,7 @@ local lead_binds = {
 	s = {
 		name = "Search and Substitute",
 		n = { "<CMD>lua require('miscellaneous').better_search()<CR>", "Search word near the cursor" },
+		s = { "<CMD>lua require('miscellaneous').better_replace()<CR>", "Find and replace word near the cursor" },
 	},
 
 	-- Tabs commands
@@ -199,8 +211,17 @@ function Self.setup()
 
 	whichkey.setup(conf)
 
-	whichkey.register(lead_binds, {
+	whichkey.register(normal_lead_binds, {
 		mode = "n", -- Normal mode
+		prefix = "<leader>",
+		buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+		silent = true, -- use `silent` when creating keymaps
+		noremap = true, -- use `noremap` when creating keymaps
+		nowait = false, -- use `nowait` when creating keymaps
+	})
+
+	whichkey.register(visual_lead_binds, {
+		mode = "v", -- Normal mode
 		prefix = "<leader>",
 		buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
 		silent = true, -- use `silent` when creating keymaps

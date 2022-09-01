@@ -1,13 +1,14 @@
+local vim = vim or {}
+
 local search = vim.fn.search
 local setreg = vim.fn.setreg
 local expand = vim.fn.expand
-local substitute = vim.fn.substitute
-
+local nvim_replace_termcodes = vim.api.nvim_replace_termcodes
+local nvim_feedkeys = vim.api.nvim_feedkeys
+local visualmode = vim.fn.visualmode
 local cmd = vim.cmd
 
 local nvim_buf_get_lines = vim.api.nvim_buf_get_lines
-local nvim_buf_get_text = vim.api.nvim_buf_get_text
-local nvim_buf_get_mark = vim.api.nvim_buf_get_mark
 local nvim_get_mode = vim.api.nvim_get_mode
 
 local Self = {}
@@ -25,7 +26,7 @@ function custom.get_marked_region(mark1, mark2, options)
 	local adjust = options.adjust or function(pos1, pos2)
 		return pos1, pos2
 	end
-	local regtype = options.regtype or vim.fn.visualmode()
+	local regtype = options.regtype or visualmode()
 	local selection = options.selection or (vim.o.selection ~= "exclusive")
 
 	local pos1 = vim.fn.getpos(mark1)
@@ -54,8 +55,9 @@ function custom.get_visual_selection()
 	-- end
 
 	local options = {}
+
 	options.adjust = function(pos1, pos2)
-		if vim.fn.visualmode() == "V" then
+		if visualmode() == "V" then
 			pos1[3] = 1
 			pos2[3] = 2 ^ 31 - 1
 		end
@@ -177,6 +179,31 @@ function Self.better_search()
 	cmd("set hls")
 end
 
-function Self.better_replace() end
+function Self.better_replace()
+	local global_search = "%s"
+	local command = ""
+
+	if is_visual_mode() then
+		local _, start, finish = custom.get_marked_region("v", ".", {})
+
+		if start[1] == finish[1] then
+			command = string.format(
+				nvim_replace_termcodes(":<C-u>%s/%s//cg<Left><Left><Left>", true, false, true),
+				global_search,
+				custom.get_visual_selection()
+			)
+		else
+			command = nvim_replace_termcodes(":s///cg<Left><Left><Left>", true, false, true)
+		end
+	else
+		command = string.format(
+			nvim_replace_termcodes(":%s/%s//cg<Left><Left><Left>", true, false, true),
+			global_search,
+			string.format("\\<%s\\>", expand("<cword>"))
+		)
+	end
+
+	nvim_feedkeys(command, "mi", false)
+end
 
 return Self
