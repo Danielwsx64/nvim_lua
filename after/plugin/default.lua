@@ -1,7 +1,10 @@
+local vim = vim or {}
+
 local opt = vim.opt
 local cmd = vim.cmd
 local nvim_create_augroup = vim.api.nvim_create_augroup
 local nvim_create_autocmd = vim.api.nvim_create_autocmd
+local nvim_set_hl = vim.api.nvim_set_hl
 
 opt.termguicolors = true -- Enable colors in terminal
 opt.hlsearch = true --Set highlight on search
@@ -25,15 +28,19 @@ opt.tabstop = 2
 opt.softtabstop = 2
 opt.expandtab = true
 
--- opt.signcolumn = "yes" -- Always show sign column
--- opt.mouse = "a" --Enable mouse mode
+opt.mouse = "ar" --Enable mouse mode
 -- opt.updatetime = 250 --Decrease update time
+-- opt.signcolumn = "yes" -- Always show sign column
+
+opt.inccommand = "split"
 
 -- Highlight on yank
 nvim_create_autocmd("TextYankPost", {
 	group = nvim_create_augroup("YankHighlight", { clear = true }),
 	command = "silent! lua vim.highlight.on_yank()",
 })
+
+nvim_set_hl(0, "CurSearch", { link = "IncSearch" })
 
 -- prevent typo in commons commands
 cmd("command W w")

@@ -1,7 +1,12 @@
 local Self = {}
 
-local mappings = {
+local lead_binds = {
 	["?"] = { "<CMD>WhichKey<CR>", "Help" },
+
+	-- help
+	h = {
+		m = { "<CMD>help vm-mappings.txt<CR>", "Multi Cursor Keys" },
+	},
 
 	-- Quit commands
 	q = {
@@ -99,11 +104,17 @@ local mappings = {
 	},
 
 	-- Session commands
-	s = {
+	S = {
 		name = "Sessions",
 		l = { "<CMD>Telescope session-lens search_session<CR>", "List" },
 		d = { "<CMD>DeleteSession<CR>", "Delete" },
 		s = { "<CMD>SaveSession<CR>", "Save" },
+	},
+
+	-- Search and Substitute
+	s = {
+		name = "Search and Substitute",
+		n = { "<CMD>lua require('miscellaneous').better_search()<CR>", "Search word near the cursor" },
 	},
 
 	-- Tabs commands
@@ -136,9 +147,6 @@ local mappings = {
 		l = { "<CMD>TestLast<CR>", "Test last" },
 		a = { "<CMD>TestSuite<CR>", "Test all" },
 		v = { "<CMD>TestVisit<CR>", "Go to last test file" },
-
-		c = { ":", "Open command bar" },
-		h = { ":help ", "Open help" },
 	},
 
 	z = {
@@ -168,6 +176,15 @@ local mappings = {
 		L = { "<CMD>VGit project_logs_preview<CR>", "VGit log" },
 		-- b = { "<CMD>Telescope git_branches<CR>", "Branches" },
 	},
+	["<ESC>"] = { "<CMD>nohlsearch<CR>", "Cancel search" },
+}
+
+local custom_normal_binds = {
+	S = { ":let @/= '\\<' . expand('<cword>') . '\\>'<CR>:%s//", "Substitute word under cursor" },
+}
+
+local custom_visual_binds = {
+	-- s = { "*<c-v>:<c-u>%s//", "Substitute selected text in file" },
 }
 
 function Self.setup()
@@ -180,17 +197,32 @@ function Self.setup()
 		},
 	}
 
-	local opts = {
+	whichkey.setup(conf)
+
+	whichkey.register(lead_binds, {
 		mode = "n", -- Normal mode
 		prefix = "<leader>",
 		buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
 		silent = true, -- use `silent` when creating keymaps
 		noremap = true, -- use `noremap` when creating keymaps
 		nowait = false, -- use `nowait` when creating keymaps
-	}
+	})
 
-	whichkey.setup(conf)
-	whichkey.register(mappings, opts)
+	whichkey.register(custom_normal_binds, {
+		mode = "n", -- Normal mode
+		buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+		silent = true, -- use `silent` when creating keymaps
+		noremap = true, -- use `noremap` when creating keymaps
+		nowait = false, -- use `nowait` when creating keymaps
+	})
+
+	whichkey.register(custom_visual_binds, {
+		mode = "v", -- Visual mode
+		buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+		silent = true, -- use `silent` when creating keymaps
+		noremap = true, -- use `noremap` when creating keymaps
+		nowait = false, -- use `nowait` when creating keymaps
+	})
 end
 
 return Self
