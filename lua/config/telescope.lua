@@ -30,6 +30,9 @@ function Self.setup()
 	telescope.load_extension("fzf")
 	telescope.load_extension("file_browser")
 	telescope.load_extension("neoclip")
+	telescope.load_extension("gh")
+	telescope.load_extension("ag")
+	telescope.load_extension("luasnip")
 end
 
 return Self

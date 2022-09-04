@@ -7,7 +7,7 @@ function Self.setup(package)
     local pkg_status, pkg = pcall(require, pkg_path)
 
     if not pkg_status then
-      print("Could load package setup " .. pkg_path .. ".lua")
+      print("Could not load package setup " .. pkg_path .. ".lua, check if the file exists")
     else
       pkg.setup()
     end

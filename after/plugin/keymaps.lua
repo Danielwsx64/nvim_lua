@@ -55,8 +55,12 @@ noremap("x", "<Up>", ":move '<-2<CR>gv-gv", "Move selected up")
 noremap("x", "<Down>", ":move '>+1<CR>gv-gv", "Move seleced down")
 
 -- better search
-map("n", "*", "<CMD>lua require('miscellaneous').better_search()<CR>", "Search foward word under cursor")
-map("v", "*", "<CMD>lua require('miscellaneous').better_search()<CR>", "Search foward selection")
+map("n", "*", "<CMD>DWSBetterSearch<CR>", "Search foward word under cursor")
+map("v", "*", "<CMD>DWSBetterSearch<CR>", "Search foward selection")
+
+-- Avoid starting macro recording by chance
+noremap("n", "Q", "q", "Record macro")
+noremap("n", "q", "<Nop>", "Nothing")
 
 -- Resizing panes
 -- noremap("n", "<Right>", ":vertical resize +1<CR>", "Resize window left")

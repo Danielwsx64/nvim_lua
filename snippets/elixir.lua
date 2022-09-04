@@ -1,5 +1,4 @@
 local ls = require("luasnip")
-local helper = require("snippets_helpers")
 
 -- some shorthands...
 local s = ls.snippet
@@ -23,7 +22,13 @@ local d = ls.dynamic_node
 -- local helper = require("snippets_helpers")
 
 local function module_name()
-	local module = helper.elixir_module_name()
+	local module = "Module"
+
+	local status_ok, elixir = pcall(require, "danielws.elixir")
+
+	if status_ok then
+		module = elixir.module_name_by_path()
+	end
 
 	return sn(nil, { i(1, module) })
 end

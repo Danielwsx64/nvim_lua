@@ -18,6 +18,9 @@ function Self.get_plugins(first_sync)
 		-- Collection of configurations for the built-in LSP client
 		use("williamboman/nvim-lsp-installer")
 
+		-- popup
+		use("nvim-lua/popup.nvim")
+
 		use({
 			"neovim/nvim-lspconfig",
 			config = setup("lsp"),
@@ -48,6 +51,12 @@ function Self.get_plugins(first_sync)
 				{ "L3MON4D3/LuaSnip", wants = "friendly-snippets", config = setup("luasnip") },
 				"rafamadriz/friendly-snippets",
 			},
+		})
+
+		-- Telescope integration with LuaSnip snippets
+		use({
+			"benfowler/telescope-luasnip.nvim",
+			wants = { "LuaSnip", "telescope.vim" },
 		})
 
 		-- autopairs
@@ -106,6 +115,16 @@ function Self.get_plugins(first_sync)
 		})
 		use({ "tanvirtin/vgit.nvim", wants = { "plenary.nvim" }, config = setup("vgit") })
 
+		-- Integration with github cli
+		use({
+			"pwntester/octo.nvim",
+			wants = { "plenary.nvim", "telescope.nvim", "nvim-web-devicons" },
+			config = setup("octo"),
+		})
+
+		-- Integration with github cli
+		use({ "nvim-telescope/telescope-github.nvim", wants = { "telescope.vim" } })
+
 		-- Show keymapping hits
 		use({ "folke/which-key.nvim", event = "VimEnter", config = setup("whichkey") })
 
@@ -137,6 +156,29 @@ function Self.get_plugins(first_sync)
 		-- Yank/Clipboard manager (needs telescope or fzf)
 		use({ "AckslD/nvim-neoclip.lua", config = setup("neoclip") })
 
+		-- My own plugin
+		use({ "~/workspace/danielws.vim/", config = setup("danielws") })
+
+		-- Show symbols (emojis)
+		use({ "nvim-telescope/telescope-symbols.nvim", wants = "telescope.vim" })
+
+		-- Show cheatsheet for vim
+		use({
+			"sudormrfbin/cheatsheet.nvim",
+			wants = {
+				{ "nvim-telescope/telescope.nvim" },
+				{ "nvim-lua/popup.nvim" },
+				{ "nvim-lua/plenary.nvim" },
+			},
+		})
+
+		-- Ag for Telescope
+		use({ "kelly-lin/telescope-ag", wants = { { "nvim-telescope/telescope.nvim" } } })
+
+		-- Search keymapping
+		-- This one can became a good option in the feature but at now it is unable to read the mappings from whichkey
+		-- use({ "FeiyouG/command_center.nvim", wants = { "nvim-telescope/telescope.nvim" } })
+
 		-- Telescope
 		use({
 			"nvim-telescope/telescope.nvim",
@@ -155,7 +197,6 @@ function Self.get_plugins(first_sync)
 				"nvim-neoclip.lua",
 			},
 			requires = {
-				"nvim-lua/popup.nvim",
 				{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
 				"nvim-telescope/telescope-project.nvim",
 				"nvim-telescope/telescope-file-browser.nvim",
