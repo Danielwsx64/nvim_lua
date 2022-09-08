@@ -1,6 +1,7 @@
 local Self = {}
 local o = vim.o
 
+-- Plugin to better folding
 function Self.setup()
 	local status_ok, ufo = pcall(require, "ufo")
 	if not status_ok then

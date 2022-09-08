@@ -11,6 +11,7 @@ function Self.setup()
 
 	telescope.setup({
 		defaults = {
+			path_display = { "truncate" },
 			wrap_results = true,
 			mappings = {
 				i = {
@@ -33,6 +34,7 @@ function Self.setup()
 	telescope.load_extension("gh")
 	telescope.load_extension("ag")
 	telescope.load_extension("luasnip")
+	telescope.load_extension("danielws")
 end
 
 return Self

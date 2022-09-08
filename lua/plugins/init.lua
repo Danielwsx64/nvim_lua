@@ -21,6 +21,9 @@ function Self.get_plugins(first_sync)
 		-- popup
 		use("nvim-lua/popup.nvim")
 
+		-- Better notification
+		use({ "rcarriga/nvim-notify", config = setup("notify") })
+
 		use({
 			"neovim/nvim-lspconfig",
 			config = setup("lsp"),
@@ -54,10 +57,7 @@ function Self.get_plugins(first_sync)
 		})
 
 		-- Telescope integration with LuaSnip snippets
-		use({
-			"benfowler/telescope-luasnip.nvim",
-			wants = { "LuaSnip", "telescope.vim" },
-		})
+		use({ "benfowler/telescope-luasnip.nvim", wants = { "LuaSnip", "telescope.vim" } })
 
 		-- autopairs
 		use({
@@ -103,7 +103,8 @@ function Self.get_plugins(first_sync)
 		use({ "goolord/alpha-nvim", config = setup("alpha") })
 
 		-- Colorscheme
-		use({ "sainnhe/sonokai", config = setup("sonokai") })
+		-- I got an error with the main branch, so it's specified the v 0.3.2
+		use({ "sainnhe/sonokai", tag = "v0.3.2", config = setup("sonokai") })
 
 		-- Git
 		use({ "sindrets/diffview.nvim", wants = { "plenary.vim" } })

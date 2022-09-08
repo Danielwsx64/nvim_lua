@@ -6,9 +6,18 @@ local servers = {
 	html = {},
 	jsonls = {},
 	rust_analyzer = {},
-	sumneko_lua = {},
 	tsserver = {},
 	vimls = {},
+	sumneko_lua = {
+		settings = {
+			Lua = {
+				diagnostics = {
+					-- Get the language server to recognize the `vim` global
+					globals = { "vim" },
+				},
+			},
+		},
+	},
 }
 
 -- local capabilities = vim.lsp.protocol.make_client_capabilities()

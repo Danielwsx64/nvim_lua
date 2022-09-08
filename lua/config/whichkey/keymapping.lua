@@ -193,7 +193,7 @@ local normal_lead_binds = {
 		s = { "<CMD>Neogit<CR>", "Status" },
 		l = { "<CMD>Telescope git_commits<CR>", "Log" },
 		L = { "<CMD>VGit project_logs_preview<CR>", "VGit log" },
-		-- b = { "<CMD>Telescope git_branches<CR>", "Branches" },
+		c = { "<CMD>Telescope danielws co_authors<CR>", "Apply co-authors" },
 	},
 	["<ESC>"] = { "<CMD>nohlsearch<CR>", "Cancel search" },
 }

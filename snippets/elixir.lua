@@ -1,13 +1,13 @@
 local ls = require("luasnip")
 
 -- some shorthands...
-local s = ls.snippet
+local snippet = ls.snippet
 local sn = ls.snippet_node
-local t = ls.text_node
-local i = ls.insert_node
+local text = ls.text_node
+local insert = ls.insert_node
 -- local f = ls.function_node
 -- local c = ls.choice_node
-local d = ls.dynamic_node
+local dynamic = ls.dynamic_node
 -- local r = ls.restore_node
 -- local l = require("luasnip.extras").lambda
 -- local rep = require("luasnip.extras").rep
@@ -34,25 +34,25 @@ local function module_name()
 end
 
 return {
-	s({ trig = "defmo", dscr = "Define a new module" }, {
-		t("defmodule "),
-		d(1, module_name, {}),
-		t({ " do", "" }),
-		i(0),
-		t({ "", "end" }),
+	snippet({ trig = "defmo", dscr = "Define a new module" }, {
+		text("defmodule "),
+		dynamic(1, module_name, {}),
+		text({ " do", "" }),
+		insert(0),
+		text({ "", "end" }),
 	}),
-	s({ trig = "exunit", dscr = "Define a new test module" }, {
-		t("defmodule "),
-		d(1, module_name, {}),
-		t({ " do", "" }),
-		t("\tuse "),
-		i(2, "ExUnit"),
-		t("."),
-		i(3, "Case"),
-		t(", async: "),
-		i(4, "true"),
-		t({ "", "\t" }),
-		i(0),
-		t({ "", "end" }),
+	snippet({ trig = "exunit", dscr = "Define a new test module" }, {
+		text("defmodule "),
+		dynamic(1, module_name, {}),
+		text({ " do", "" }),
+		text("\tuse "),
+		insert(2, "ExUnit"),
+		text("."),
+		insert(3, "Case"),
+		text(", async: "),
+		insert(4, "true"),
+		text({ "", "\t" }),
+		insert(0),
+		text({ "", "end" }),
 	}),
 }
