@@ -68,6 +68,7 @@ local normal_lead_binds = {
 		e = { "<CMD>e $MYVIMRC<CR>", "Edit" },
 		r = { "<CMD>so $MYVIMRC<CR>", "Reload" },
 		s = { "<CMD>lua require('luasnip.loaders').edit_snippet_files()<CR>", "Edit Snippets" },
+		c = { "<CMD>lua require('config.colorscheme').picker()<CR>", "Switch colorscheme" },
 	},
 
 	-- Buffer commands

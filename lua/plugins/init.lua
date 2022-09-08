@@ -103,8 +103,10 @@ function Self.get_plugins(first_sync)
 		use({ "goolord/alpha-nvim", config = setup("alpha") })
 
 		-- Colorscheme
-		-- I got an error with the main branch, so it's specified the v 0.3.2
-		use({ "sainnhe/sonokai", tag = "v0.3.2", config = setup("sonokai") })
+		use({ "sainnhe/sonokai" })
+		-- Just one config file for all schemes
+		use({ "marko-cerovac/material.nvim", config = setup("colorscheme") })
+		-- use({ "tanvirtin/monokai.nvim", config = setup("monokai") })
 
 		-- Git
 		use({ "sindrets/diffview.nvim", wants = { "plenary.vim" } })
