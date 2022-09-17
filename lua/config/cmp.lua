@@ -81,7 +81,7 @@ function Self.setup()
 			-- { name = "treesitter" },
 			{ name = "buffer" },
 			{ name = "luasnip" },
-			-- { name = "nvim_lua" },
+			{ name = "nvim_lua" },
 			{ name = "path" },
 			-- { name = "spell" },
 			-- { name = "emoji" },

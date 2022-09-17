@@ -35,6 +35,7 @@ function Self.setup()
 	telescope.load_extension("ag")
 	telescope.load_extension("luasnip")
 	telescope.load_extension("danielws")
+	telescope.load_extension("notify")
 end
 
 return Self

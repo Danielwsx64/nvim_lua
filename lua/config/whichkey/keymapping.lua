@@ -8,6 +8,11 @@ local visual_lead_binds = {
 		name = "Search and Substitute",
 		s = { "<CMD>DWSBetterReplace<CR>", "Find and replace word near the cursor" },
 	},
+	f = {
+		name = "Format",
+
+		p = { "<CMD>DWSElixirPipelize<CR>", "Elixir turns into pipe" },
+	},
 }
 
 local normal_lead_binds = {
@@ -16,7 +21,7 @@ local normal_lead_binds = {
 	-- help
 	h = {
 		c = { "<CMD>Cheatsheet<CR>", "Show vim cheatsheets" },
-		h = { ":help ", "Open help" },
+		h = { "<CMD>Telescope help_tags<CR>", "Open help" },
 		m = { "<CMD>help vm-mappings.txt<CR>", "Multi Cursor Keys" },
 		o = { "<CMD>vsp ~/.config/nvim/lua/config/octo.lua<CR>", "Octo Config" },
 		s = { "<CMD>Telescope luasnip<CR>", "Show buffer Snippets" },
@@ -25,13 +30,14 @@ local normal_lead_binds = {
 	-- Quit commands
 	q = {
 		name = "Quit",
-		q = { "<CMD>q<CR>", "Current" },
-		a = { "<CMD>qa<CR>", "All" },
+		q = { "<CMD>q<CR>", "Quit current window" },
+
+		a = { "<CMD>lua require('util.exit').quit_all()<CR>", "Quit all" },
 		f = { "<CMD>q!<CR>", "Force" },
 		F = { "<CMD>qa!<CR>", "All force" },
 		x = { "<CMD>x<CR>", "Quit saving" },
 		X = { "<CMD>xa<CR>", "Quit saving" },
-		s = { '<CMD>lua require("util.session").close_session()<CR>', "Session" },
+		s = { "<CMD>lua require('util.exit').close_session()<CR>", "Session" },
 	},
 
 	-- Explorer commands
@@ -42,24 +48,39 @@ local normal_lead_binds = {
 		q = { "<CMD>NvimTreeClose<CR>", "Close" },
 	},
 
-	-- Find commands
-	f = {
-		name = "Find",
+	-- Telescope commands
+	["<space>"] = {
+		name = "Telescope finders",
 		a = { ":Ag ", "Search with ag" },
-		s = { "<CMD>Telescope search_history<CR>", "Search history" },
+		S = { "<CMD>Telescope search_history<CR>", "Search history" },
+		s = { "<CMD>Telescope current_buffer_fuzzy_find<CR>", "Current Buffer" },
 		h = { "<CMD>Telescope command_history<CR>", "Commands history" },
 		f = { "<CMD>Telescope find_files<CR>", "Files" },
 		b = { "<CMD>Telescope buffers<CR>", "Buffers" },
 		o = { "<CMD>Telescope oldfiles<CR>", "Old Files" },
 		g = { "<CMD>Telescope live_grep<CR>", "Live Grep" },
 		c = { "<CMD>Telescope commands<CR>", "Commands" },
-		e = { "<CMD>Telescope file_browser<CR>", "Browser" },
+		e = { "<CMD>Telescope symbols<CR>", "Emoji/EmotIcons" },
+		E = { "<CMD>Telescope file_browser<CR>", "Browser" },
 		y = { "<CMD>Telescope neoclip<CR>", "Yanks" },
 		z = { "<CMD>Telescope builtin<CR>", "Sholl all pickers" },
 		p = { "<CMD>lua require'telescope'.extensions.project.project{}<CR>", "Project" },
-		m = { "<CMD>Telescope marks<CR>", "Marks" },
-		t = { "<CMD>DWSGoToTest<CR>", "Test file" },
-		["/"] = { "<CMD>Telescope current_buffer_fuzzy_find<CR>", "Current Buffer" },
+		m = { "<CMD>Telescope keymaps<CR>", "Show keymaps" },
+		M = { "<CMD>Telescope marks<CR>", "Marks" },
+		n = { "<CMD>Telescope notify<CR>", "Notifications" },
+	},
+
+	-- Find or Formatters
+	f = {
+		name = "Find or Formatters",
+		t = { "<CMD>DWSGoToTest<CR>", "Test file or back" },
+	},
+
+	-- LSP commands
+	l = {
+		name = "LSP commands",
+		g = { "<CMD>Telescope lsp_references<CR>", "References" },
+		s = { "<CMD>Telescope lsp_document_symbols<CR>", "List symbols" },
 	},
 
 	-- Config commands
@@ -191,7 +212,8 @@ local normal_lead_binds = {
 		b = { "<CMD>VGit buffer_blame_preview<CR>", "Cursor blame" },
 		B = { "<CMD>VGit buffer_gutter_blame_preview<CR>", "Buffer blame" },
 
-		s = { "<CMD>Neogit<CR>", "Status" },
+		o = { "<CMD>Neogit<CR>", "Open NeoGit" },
+		s = { "<CMD>Telescope git_status<CR>", "Status" },
 		l = { "<CMD>Telescope git_commits<CR>", "Log" },
 		L = { "<CMD>VGit project_logs_preview<CR>", "VGit log" },
 		c = { "<CMD>Telescope danielws co_authors<CR>", "Apply co-authors" },
@@ -207,8 +229,83 @@ local custom_visual_binds = {
 	-- s = { "*<c-v>:<c-u>%s//", "Substitute selected text in file" },
 }
 
+local function noremap(mod, lhs, rhs, desc)
+	vim.keymap.set(mod, lhs, rhs, { desc = desc, silent = true })
+end
+
+local function xnoremap(mod, lhs, rhs, desc)
+	vim.keymap.set(mod, lhs, rhs, { desc = desc, silent = true, expr = true })
+end
+
+local function map(mod, lhs, rhs, desc)
+	vim.keymap.set(mod, lhs, rhs, { desc = desc, silent = true, remap = true })
+end
+
 function Self.register()
 	local whichkey = require("which-key")
+	local luasnip = require("luasnip")
+
+	-- Remap leader and local leader to <Space>
+	-- vim.api.nvim_set_keymap("", "<Space>", "<Nop>", { noremap = true, silent = true })
+	noremap("", "<Space>", "<Nop>", "Define <space> as leader")
+	vim.g.mapleader = " "
+	vim.g.maplocalleader = " "
+
+	-- Better escape using jk in insert and terminal mode
+	noremap("i", "jk", "<ESC>", "Scape, same as <ESC>")
+	-- noremap("t", "jk", "<C-\\><C-n>", "")
+
+	-- Center search results
+	noremap("n", "n", "nzz", "Go to next found")
+	noremap("n", "N", "Nzz", "Go to previous found")
+
+	-- Visual line wraps
+	xnoremap("n", "k", "v:count == 0 ? 'gk' : 'k'", "Move up")
+	xnoremap("n", "j", "v:count == 0 ? 'gj' : 'j'", "Move down")
+
+	-- Better indent
+	noremap("v", "<", "<gv", "Indent and reselect")
+	noremap("v", ">", ">gv", "Remove indent and reselect")
+
+	-- Move selected line / block of text in visual mode
+	noremap("x", "<Up>", ":move '<-2<CR>gv-gv", "Move selected up")
+	noremap("x", "<Down>", ":move '>+1<CR>gv-gv", "Move seleced down")
+
+	-- better search
+	map("n", "*", "<CMD>DWSBetterSearch<CR>", "Search foward word under cursor")
+	map("v", "*", "<CMD>DWSBetterSearch<CR>", "Search foward selection")
+
+	-- Avoid starting macro recording by chance
+	noremap("n", "Q", "q", "Record macro")
+	noremap("n", "q", "<Nop>", "Nothing")
+
+	-- Resizing panes
+	-- noremap("n", "<Right>", ":vertical resize +1<CR>", "Resize window left")
+	-- noremap("n", "<Left>", ":vertical resize -1<CR>", "Resize window right")
+	-- noremap("n", "<Up>", ":resize -1<CR>", "Resize window up")
+	-- noremap("n", "<Down>", ":resize +1<CR>", "Resize window down")
+
+	-- >>> Maybe it can be useful
+	--
+	-- Paste over currently selected text without yanking it
+	-- noremap("v", "p", '"_dP', default_opts)
+	--
+	-- Switch buffer
+	-- noremap("n", "<S-h>", ":bprevious<CR>", default_opts)
+	-- noremap("n", "<S-l>", ":bnext<CR>", default_opts)
+
+	-- change Snippets choice
+	noremap({ "s", "i" }, "<c-n>", function()
+		if luasnip.choice_active() then
+			luasnip.change_choice(1)
+		end
+	end, "LuaSnip next choice")
+
+	noremap({ "s", "i" }, "<c-p>", function()
+		if luasnip.choice_active() then
+			luasnip.change_choice(-1)
+		end
+	end, "LuaSnip previous choice")
 
 	whichkey.register(normal_lead_binds, {
 		mode = "n", -- Normal mode

@@ -43,7 +43,7 @@ nvim_create_autocmd("TextYankPost", {
 nvim_set_hl(0, "CurSearch", { link = "IncSearch" })
 
 -- prevent typo in commons commands
-cmd("command W w")
-cmd("command Wa wa")
-cmd("command Q q")
-cmd("command Qa qa")
+-- cmd("command W w")
+-- cmd("command Wa wa")
+-- cmd("command Q q")
+-- cmd("command Qa qa")

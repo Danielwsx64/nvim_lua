@@ -10,7 +10,7 @@ function Self.setup()
 		return
 	end
 
-	neogit.setup({ integrations = { diffview = true } })
+	neogit.setup({ disable_builtin_notifications = true, integrations = { diffview = true } })
 end
 
 return Self
