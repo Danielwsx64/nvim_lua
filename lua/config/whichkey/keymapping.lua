@@ -145,6 +145,7 @@ local normal_lead_binds = {
 	S = {
 		name = "Sessions",
 		l = { "<CMD>Telescope session-lens search_session<CR>", "List" },
+		r = { "<CMD>RestoreSession<CR>", "Restore" },
 		d = { "<CMD>DeleteSession<CR>", "Delete" },
 		s = { "<CMD>SaveSession<CR>", "Save" },
 	},

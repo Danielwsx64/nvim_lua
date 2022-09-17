@@ -1,38 +1,37 @@
 local vim = vim or {}
 
-local opt = vim.opt
-local cmd = vim.cmd
 local nvim_create_augroup = vim.api.nvim_create_augroup
 local nvim_create_autocmd = vim.api.nvim_create_autocmd
 local nvim_set_hl = vim.api.nvim_set_hl
 
-opt.termguicolors = true -- Enable colors in terminal
-opt.hlsearch = true --Set highlight on search
-opt.number = true --Make line numbers default
-opt.relativenumber = true --Make relative number default
+vim.opt.termguicolors = true -- Enable colors in terminal
+vim.opt.hlsearch = true --Set highlight on search
+vim.opt.number = true --Make line numbers default
+vim.opt.relativenumber = true --Make relative number default
 
-opt.wrap = false -- Wrap lines
-opt.breakindent = false --Enable break indent
-opt.undofile = false --Save undo history
-opt.ignorecase = true --Case insensitive searching unless /C or capital in search
-opt.smartcase = true -- Smart case
+vim.opt.wrap = false -- Wrap lines
+vim.opt.breakindent = false --Enable break indent
+vim.opt.undofile = false --Save undo history
+vim.opt.ignorecase = true --Case insensitive searching unless /C or capital in search
+vim.opt.smartcase = true -- Smart case
 
-opt.clipboard:append({ "unnamedplus" }) -- Access system clipboard
-opt.timeoutlen = 500 -- Time in milliseconds to wait for a mapped sequence to complete.
-opt.autoread = true -- always reload files
-opt.colorcolumn = "80" -- see mark in colum 80
+vim.opt.clipboard:append({ "unnamedplus" }) -- Access system clipboard
+vim.opt.timeoutlen = 500 -- Time in milliseconds to wait for a mapped sequence to complete.
+vim.opt.autoread = true -- always reload files
+vim.opt.colorcolumn = "80" -- see mark in colum 80
 
 -- ident config
-opt.shiftwidth = 2
-opt.tabstop = 2
-opt.softtabstop = 2
-opt.expandtab = true
+vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
+vim.opt.expandtab = true
+vim.opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
 
-opt.mouse = "ar" --Enable mouse mode
--- opt.updatetime = 250 --Decrease update time
--- opt.signcolumn = "yes" -- Always show sign column
+vim.opt.mouse = "ar" --Enable mouse mode
+-- vim.opt.updatetime = 250 --Decrease update time
+-- vim.opt.signcolumn = "yes" -- Always show sign column
 
-opt.inccommand = "split"
+vim.opt.inccommand = "split"
 
 -- Highlight on yank
 nvim_create_autocmd("TextYankPost", {
@@ -41,9 +40,3 @@ nvim_create_autocmd("TextYankPost", {
 })
 
 nvim_set_hl(0, "CurSearch", { link = "IncSearch" })
-
--- prevent typo in commons commands
--- cmd("command W w")
--- cmd("command Wa wa")
--- cmd("command Q q")
--- cmd("command Qa qa")

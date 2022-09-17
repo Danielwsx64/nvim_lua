@@ -133,7 +133,6 @@ function Self.get_plugins(first_sync)
 
 		-- tmux
 		use({ "aserowy/tmux.nvim", config = setup("tmux") })
-		use({ "danielwsx64/tmux-runner.vim", config = setup("tmux-runner") })
 
 		-- test
 		use({ "vim-test/vim-test", config = setup("vimtest") })
@@ -182,6 +181,8 @@ function Self.get_plugins(first_sync)
 		-- This one can became a good option in the feature but at now it is unable to read the mappings from whichkey
 		-- use({ "FeiyouG/command_center.nvim", wants = { "nvim-telescope/telescope.nvim" } })
 
+		use({ "rmagatti/auto-session", config = setup("session") })
+
 		-- Telescope
 		use({
 			"nvim-telescope/telescope.nvim",
@@ -204,11 +205,7 @@ function Self.get_plugins(first_sync)
 				"nvim-telescope/telescope-project.nvim",
 				"nvim-telescope/telescope-file-browser.nvim",
 				{ "ahmedkhalf/project.nvim", config = setup("project") },
-				{
-					"rmagatti/session-lens",
-					requires = { "rmagatti/auto-session" },
-					config = setup("session_lens"),
-				},
+				{ "rmagatti/session-lens", wants = { "auto-session" } },
 			},
 		})
 

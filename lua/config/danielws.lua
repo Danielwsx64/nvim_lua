@@ -7,7 +7,7 @@ function Self.setup()
 		return
 	end
 
-	danielws.setup({ name = "Daniel" })
+	danielws.setup({ tmux_runner = { auto_attach = false } })
 end
 
 return Self
