@@ -32,12 +32,13 @@ local normal_lead_binds = {
 		name = "Quit",
 		q = { "<CMD>q<CR>", "Quit current window" },
 
-		a = { "<CMD>lua require('util.exit').quit_all()<CR>", "Quit all" },
+		-- a = { "<CMD>lua require('util.exit').quit_all()<CR>", "Quit all" },
+		a = { "<CMD>DWSQuitAll<CR>", "Quit all" },
 		f = { "<CMD>q!<CR>", "Force" },
 		F = { "<CMD>qa!<CR>", "All force" },
 		x = { "<CMD>x<CR>", "Quit saving" },
 		X = { "<CMD>xa<CR>", "Quit saving" },
-		s = { "<CMD>lua require('util.exit').close_session()<CR>", "Session" },
+		s = { "<CMD>lua require('danielws.exit').close_session()<CR>", "Session" },
 	},
 
 	-- Explorer commands
