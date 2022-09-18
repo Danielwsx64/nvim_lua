@@ -6,12 +6,12 @@ local visual_lead_binds = {
 	-- Search and Substitute
 	s = {
 		name = "Search and Substitute",
-		s = { "<CMD>DWSBetterReplace<CR>", "Find and replace word near the cursor" },
+		s = { "<CMD>Danielws better_replace<CR>", "Find and replace word near the cursor" },
 	},
 	f = {
 		name = "Format",
 
-		p = { "<CMD>DWSElixirPipelize<CR>", "Elixir turns into pipe" },
+		p = { "<CMD>Danielws elixir pipelize<CR>", "Elixir turns into pipe" },
 	},
 }
 
@@ -33,7 +33,7 @@ local normal_lead_binds = {
 		q = { "<CMD>q<CR>", "Quit current window" },
 
 		-- a = { "<CMD>lua require('util.exit').quit_all()<CR>", "Quit all" },
-		a = { "<CMD>DWSQuitAll<CR>", "Quit all" },
+		a = { "<CMD>Danielws quit_all<CR>", "Quit all" },
 		f = { "<CMD>q!<CR>", "Force" },
 		F = { "<CMD>qa!<CR>", "All force" },
 		x = { "<CMD>x<CR>", "Quit saving" },
@@ -74,7 +74,7 @@ local normal_lead_binds = {
 	-- Find or Formatters
 	f = {
 		name = "Find or Formatters",
-		t = { "<CMD>DWSGoToTest<CR>", "Test file or back" },
+		t = { "<CMD>Danielws elixir go_to_test<CR>", "Test file or back" },
 	},
 
 	-- LSP commands
@@ -153,8 +153,8 @@ local normal_lead_binds = {
 	-- Search and Substitute
 	s = {
 		name = "Search and Substitute",
-		n = { "<CMD>DWSBetterSearch<CR>", "Search word under cursor" },
-		s = { "<CMD>DWSBetterReplace<CR>", "Find and replace word near the cursor" },
+		n = { "<CMD>Danielws better_search<CR>", "Search word under cursor" },
+		s = { "<CMD>Danielws better_replace<CR>", "Find and replace word near the cursor" },
 		f = { "<CMD>Telescope grep_string<CR>", "Search word under cursor in workspace" },
 		h = { "<CMD>Telescope search_history<CR>", "Show the search history" },
 	},
@@ -274,8 +274,8 @@ function Self.register()
 	noremap("x", "<Down>", ":move '>+1<CR>gv-gv", "Move seleced down")
 
 	-- better search
-	map("n", "*", "<CMD>DWSBetterSearch<CR>", "Search foward word under cursor")
-	map("v", "*", "<CMD>DWSBetterSearch<CR>", "Search foward selection")
+	map("n", "*", "<CMD>Danielws better_search<CR>", "Search foward word under cursor")
+	map("v", "*", "<CMD>Danielws better_search<CR>", "Search foward selection")
 
 	-- Avoid starting macro recording by chance
 	noremap("n", "Q", "q", "Record macro")

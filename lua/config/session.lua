@@ -16,9 +16,7 @@ function Self.setup()
 		auto_session_suppress_dirs = { "~/", "~/workspace" },
 	})
 
-	-- session_lens.setup({
-	-- 	path_display = { "shorten" },
-	-- })
+	session_lens.setup({})
 end
 
 return Self
