@@ -189,6 +189,9 @@ local normal_lead_binds = {
 		l = { "<CMD>TestLast<CR>", "Test last" },
 		a = { "<CMD>TestSuite<CR>", "Test all" },
 		-- v = { "<CMD>TestVisit<CR>", "Go to last test file" },
+		h = { "<CMD>Telescope danielws shell_history<CR>", "Resize tmux vim pane" },
+		r = { "<CMD>Danielws tmux resize_vim_pane 75<CR>", "Resize tmux vim pane" },
+		e = { "<CMD>Danielws tmux resize_vim_pane 50<CR>", "Equal tmux vim pane" },
 		v = { "<CMD>:VtrAttachToPane<CR>", "Reattach tmux pane" },
 	},
 
