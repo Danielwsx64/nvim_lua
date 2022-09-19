@@ -21,6 +21,12 @@ function Self.get_plugins(first_sync)
 		-- popup
 		use("nvim-lua/popup.nvim")
 
+		-- Treesitter
+		use({ "nvim-treesitter/nvim-treesitter", config = setup("treesitter"), run = "TSUpdate" })
+		use("nvim-treesitter/playground")
+		use("p00f/nvim-ts-rainbow")
+		use("nvim-treesitter/nvim-treesitter-refactor")
+
 		-- Better notification
 		use({ "rcarriga/nvim-notify", config = setup("notify") })
 
@@ -94,7 +100,7 @@ function Self.get_plugins(first_sync)
 		use({ "Danielwsx64/greplace", config = setup("greplace") })
 
 		-- highlight
-		use("sheerun/vim-polyglot")
+		-- use("sheerun/vim-polyglot")
 
 		-- Better surround
 		use({ "tpope/vim-surround", event = "InsertEnter" })
@@ -103,10 +109,13 @@ function Self.get_plugins(first_sync)
 		use({ "goolord/alpha-nvim", config = setup("alpha") })
 
 		-- Colorscheme
-		use({ "sainnhe/sonokai" })
-		-- Just one config file for all schemes
+		use("sainnhe/sonokai")
+		use("tanvirtin/monokai.nvim")
+		use("rafamadriz/neon")
+		use("mhartington/oceanic-next")
+		use("ray-x/starry.nvim")
+		use("ful1e5/onedark.nvim")
 		use({ "marko-cerovac/material.nvim", config = setup("colorscheme") })
-		-- use({ "tanvirtin/monokai.nvim", config = setup("monokai") })
 
 		-- Git
 		use({ "sindrets/diffview.nvim", wants = { "plenary.vim" } })

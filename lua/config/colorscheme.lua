@@ -5,9 +5,41 @@ local Self = {}
 function Self.setup()
 	vim.g.sonokai_better_performance = 1
 	vim.g.sonokai_style = "default"
+	-- vim.g.starry_italic_comments = true
+	-- vim.g.neon_style = "default"
+	-- vim.g.neon_italic_keyword = true
+	-- vim.g.neon_italic_function = true
+	-- vim.g.neon_transparent = true
+	-- vim.g.onedark_function_style = "italic"
+	-- vim.g.onedark_sidebars = { "qf", "vista_kind", "terminal", "packer" }
 
-	vim.cmd("colorscheme sonokai")
 	-- vim.g.material_style = "darker"
+	-- require("monokai").setup({})
+	vim.cmd("colorscheme sonokai")
+	vim.cmd("highlight TSSymbol guifg=#DCDCAA")
+	-- local ok, onedark = pcall(require, "onedark")
+	--
+	-- if not ok then
+	-- 	return
+	-- end
+	--
+	-- onedark.setup({
+	-- 	function_style = "italic",
+	-- 	sidebars = { "qf", "vista_kind", "terminal", "packer" },
+	--
+	-- 	-- Change the "hint" color to the "orange0" color, and make the "error" color bright red
+	-- 	-- colors = { hint = "orange0", error = "#ff0000" },
+	--
+	-- 	-- Overwrite the highlight groups
+	-- 	-- overrides = function(c)
+	-- 	-- 	return {
+	-- 	-- 		htmlTag = { fg = c.red0, bg = "#282c34", sp = c.hint, style = "underline" },
+	-- 	-- 		DiagnosticHint = { link = "LspDiagnosticsDefaultHint" },
+	-- 	-- 		-- this will remove the highlight groups
+	-- 	-- 		TSField = {},
+	-- 	-- 	}
+	-- 	-- end,
+	-- })
 end
 
 local function apply_material_theme(theme)

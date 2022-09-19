@@ -8,7 +8,7 @@ function Self.setup()
 	end
 
 	lualine.setup({
-		options = { theme = "gruvbox", globalstatus = true },
+		options = { theme = "sonokai", globalstatus = true },
 		sections = { lualine_c = { { "filename", path = 1 } } },
 	})
 end

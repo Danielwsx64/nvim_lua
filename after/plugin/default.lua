@@ -4,6 +4,8 @@ local nvim_create_augroup = vim.api.nvim_create_augroup
 local nvim_create_autocmd = vim.api.nvim_create_autocmd
 local nvim_set_hl = vim.api.nvim_set_hl
 
+vim.cmd("set termguicolors")
+
 vim.opt.termguicolors = true -- Enable colors in terminal
 vim.opt.hlsearch = true --Set highlight on search
 vim.opt.number = true --Make line numbers default
