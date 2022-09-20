@@ -36,6 +36,7 @@ function Self.setup()
 	telescope.load_extension("luasnip")
 	telescope.load_extension("danielws")
 	telescope.load_extension("notify")
+	telescope.load_extension("termfinder")
 end
 
 return Self

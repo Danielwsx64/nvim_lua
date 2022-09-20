@@ -1,8 +1,8 @@
-local g = vim.g
 local Self = {}
 
 function Self.setup()
-	g["test#strategy"] = "vtr"
+	-- vim.g["test#strategy"] = "vtr"
+	vim.g["test#strategy"] = "toggleterm"
 end
 
 return Self

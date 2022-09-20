@@ -44,7 +44,7 @@ local normal_lead_binds = {
 	-- Explorer commands
 	e = {
 		name = "File explorer",
-		f = { "<CMD>NvimTreeFindFileToggle<CR>", "Open current buffer" },
+		f = { "<CMD>NvimTreeFindFile<CR>", "Open current buffer" },
 		e = { "<CMD>NvimTreeToggle<CR>", "Open" },
 		q = { "<CMD>NvimTreeClose<CR>", "Close" },
 	},
@@ -150,13 +150,17 @@ local normal_lead_binds = {
 		s = { "<CMD>SaveSession<CR>", "Save" },
 	},
 
-	-- Search and Substitute
+	-- Search, Substitute and Shell
 	s = {
 		name = "Search and Substitute",
 		n = { "<CMD>Danielws better_search<CR>", "Search word under cursor" },
 		s = { "<CMD>Danielws better_replace<CR>", "Find and replace word near the cursor" },
 		f = { "<CMD>Telescope grep_string<CR>", "Search word under cursor in workspace" },
 		h = { "<CMD>Telescope search_history<CR>", "Show the search history" },
+
+		a = { "<CMD>ToggleTermToggleAll<CR>", "Open all terminal" },
+		o = { "<CMD>ToggleTerm<CR>", "Open terminal" },
+		l = { "<CMD>Telescope termfinder find<CR>", "List terminals" },
 	},
 
 	-- Tabs commands

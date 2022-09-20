@@ -41,6 +41,14 @@ function Self.setup()
 
 	packer.init(packer_config)
 	packer.startup(require("plugins").get_plugins(first_sync))
+
+	-- -- Autocommand that reloads neovim whenever you save the plugins.lua file
+	-- vim.cmd([[
+	--          augroup packer_user_config
+	--            autocmd!
+	--            autocmd BufWritePost plugins/init.lua source <afile> | PackerSync
+	--          augroup end
+	--         ]])
 end
 
 return Self

@@ -137,6 +137,10 @@ function Self.get_plugins(first_sync)
 		-- Integration with github cli
 		use({ "nvim-telescope/telescope-github.nvim", wants = { "telescope.vim" } })
 
+		-- Terminal
+		use({ "akinsho/toggleterm.nvim", tag = "*", config = setup("toggleterm") })
+		use({ "tknightz/telescope-termfinder.nvim" })
+
 		-- Show keymapping hits
 		use({ "folke/which-key.nvim", event = "VimEnter", config = setup("whichkey") })
 
