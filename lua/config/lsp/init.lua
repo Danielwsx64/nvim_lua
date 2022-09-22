@@ -43,7 +43,7 @@ local function on_attach(client, bufnr)
 	api.nvim_buf_set_option(0, "formatexpr", "v:lua.vim.lsp.formatexpr()")
 
 	-- Configure key mappings
-	require("config.whichkey.lsp").setup(client, bufnr)
+	require("config.whichkey.lsp").add_maps(client, bufnr)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -61,7 +61,7 @@ function Self.setup()
 		},
 	})
 
-	require("config.lsp.installer").setup(servers, default_opts)
+	require("config.lsp.installer").install(servers, default_opts)
 end
 
 return Self

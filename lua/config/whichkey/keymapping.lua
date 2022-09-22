@@ -115,13 +115,16 @@ local normal_lead_binds = {
 	w = {
 		name = "Windows",
 
-		f = { "<CMD>res<CR><CMD>vert res<CR>", "Full mode" },
-		e = { "<CMD>wincmd =<CR>", "Exit full" },
+		f = { "<CMD>res<CR><CMD>vert res<CR>", "Windows Full mode" },
+		e = { "<CMD>wincmd =<CR>", "All windows same size" },
+		E = { "<CMD>wincmd = | Danielws tmux resize_vim_pane 50<CR>", "Equal tmux vim pane" },
+		z = { "<CMD>Danielws tmux resize_vim_pane z<CR>", "Full screen vim Tmux pane" },
+		c = { "<CMD>Danielws tmux resize_vim_pane 75<CR>", "Resize tmux vim pane" },
 
-		h = { "<CMD>wincmd h<CR>", "Go left" },
-		l = { "<CMD>wincmd l<CR>", "Go right" },
-		k = { "<CMD>wincmd k<CR>", "Go top" },
-		j = { "<CMD>wincmd j<CR>", "Go down" },
+		h = { "<CMD>lua require('tmux.navigation.navigate').to('h')<CR>", "Go left" },
+		l = { "<CMD>lua require('tmux.navigation.navigate').to('l')<CR>", "Go right" },
+		k = { "<CMD>lua require('tmux.navigation.navigate').to('k')<CR>", "Go top" },
+		j = { "<CMD>lua require('tmux.navigation.navigate').to('j')<CR>", "Go down" },
 
 		n = { "<CMD>vnew<CR>", "New vertical" },
 		m = { "<CMD>new<CR>", "New horizontal" },
@@ -150,22 +153,18 @@ local normal_lead_binds = {
 		s = { "<CMD>SaveSession<CR>", "Save" },
 	},
 
-	-- Search, Substitute and Shell
+	-- Search, Substitute
 	s = {
 		name = "Search and Substitute",
 		n = { "<CMD>Danielws better_search<CR>", "Search word under cursor" },
 		s = { "<CMD>Danielws better_replace<CR>", "Find and replace word near the cursor" },
 		f = { "<CMD>Telescope grep_string<CR>", "Search word under cursor in workspace" },
 		h = { "<CMD>Telescope search_history<CR>", "Show the search history" },
-
-		a = { "<CMD>ToggleTermToggleAll<CR>", "Open all terminal" },
-		o = { "<CMD>ToggleTerm<CR>", "Open terminal" },
-		l = { "<CMD>Telescope termfinder find<CR>", "List terminals" },
 	},
 
-	-- Tabs commands
+	-- Tabs and Tmux moves commands
 	t = {
-		name = "Tabs",
+		name = "Tabs and Tmux moves",
 		b = { "<CMD>tabm -<CR>", "Move back" },
 		f = { "<CMD>tabm +<CR>", "Move forward" },
 
@@ -182,20 +181,35 @@ local normal_lead_binds = {
 		S = { "<CMD>tabs<CR>", "Show all" },
 
 		n = { "<CMD>tabnew<CR>", "New" },
+
+		t = {
+			name = "Tmux moves",
+			n = { "<CMD>Danielws tmux new_window<CR>", "Create a new tmux window" },
+			l = { "<CMD>Danielws tmux next_window<CR>", "Move to next window" },
+			h = { "<CMD>Danielws tmux previous_window<CR>", "Move to previous window" },
+			b = { "<CMD>Danielws tmux last_window<CR>", "Move to last window" },
+			v = { "<CMD>Danielws tmux window_split h<CR>", "Split window v" },
+			s = { "<CMD>Danielws tmux window_split v<CR>", "Split window" },
+		},
 	},
 
-	-- Run (tests) commands
+	-- Run tests and shell commands
 	r = {
-		name = "Run (eg: tests)",
+		name = "Run tests and shell",
 
 		s = { "<CMD>TestFile<CR>", "Test file" },
 		n = { "<CMD>TestNearest<CR>", "Test Nearest" },
 		l = { "<CMD>TestLast<CR>", "Test last" },
 		a = { "<CMD>TestSuite<CR>", "Test all" },
-		-- v = { "<CMD>TestVisit<CR>", "Go to last test file" },
-		h = { "<CMD>Telescope danielws shell_history<CR>", "Resize tmux vim pane" },
-		r = { "<CMD>Danielws tmux resize_vim_pane 75<CR>", "Resize tmux vim pane" },
-		e = { "<CMD>Danielws tmux resize_vim_pane 50<CR>", "Equal tmux vim pane" },
+		V = { "<CMD>TestVisit<CR>", "Go to last test file" },
+
+		c = { "<CMD>lua require('config.vimtest').change()<CR>", "Change test strategy" },
+
+		A = { "<CMD>ToggleTermToggleAll<CR>", "Open all terminal" },
+		o = { "<CMD>ToggleTerm<CR>", "Open terminal" },
+		L = { "<CMD>Telescope termfinder find<CR>", "List terminals" },
+
+		h = { "<CMD>Telescope danielws shell_history<CR>", "Run hitory on tmux" },
 		v = { "<CMD>:VtrAttachToPane<CR>", "Reattach tmux pane" },
 	},
 
@@ -206,6 +220,7 @@ local normal_lead_binds = {
 		s = { "<CMD>PackerSync<CR>", "Sync" },
 		S = { "<CMD>PackerStatus<CR>", "Status" },
 		u = { "<CMD>PackerUpdate<CR>", "Update" },
+		r = { "<CMD>lua require('plugins.bootstrap').reload()<CR>", "Reload" },
 	},
 
 	-- Git commands

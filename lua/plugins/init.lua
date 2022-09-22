@@ -87,9 +87,6 @@ function Self.get_plugins(first_sync)
 		-- better fold
 		use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async", config = setup("ufo") })
 
-		-- better tab names
-		use("gcmt/taboo.vim")
-
 		-- multiple cursor
 		use({ "mg979/vim-visual-multi", config = setup("visualmulti") })
 
@@ -115,6 +112,7 @@ function Self.get_plugins(first_sync)
 		use("mhartington/oceanic-next")
 		use("ray-x/starry.nvim")
 		use("ful1e5/onedark.nvim")
+		use("LunarVim/darkplus.nvim")
 		use({ "marko-cerovac/material.nvim", config = setup("colorscheme") })
 
 		-- Git
@@ -159,6 +157,8 @@ function Self.get_plugins(first_sync)
 			requires = "kyazdani42/nvim-web-devicons",
 			after = "sonokai",
 		})
+
+		use("nvim-lua/lsp-status.nvim")
 
 		-- File Tree
 		use({

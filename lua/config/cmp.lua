@@ -1,5 +1,33 @@
 local Self = {}
 
+local kind_icons = {
+	Text = "",
+	Method = "",
+	Function = "",
+	Constructor = "",
+	Field = "",
+	Variable = "",
+	Class = "",
+	Interface = "",
+	Module = "",
+	Property = "",
+	Unit = "",
+	Value = "",
+	Enum = "",
+	Keyword = "",
+	Snippet = "",
+	Color = "",
+	File = "",
+	Reference = "",
+	Folder = "",
+	EnumMember = "",
+	Constant = "",
+	Struct = "",
+	Event = "",
+	Operator = "",
+	TypeParameter = "",
+}
+
 function Self.setup()
 	local has_words_before = function()
 		local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -19,14 +47,16 @@ function Self.setup()
 		},
 		formatting = {
 			format = function(entry, vim_item)
+				vim_item.kind = kind_icons[vim_item.kind]
 				vim_item.menu = ({
 					nvim_lsp = "[LSP]",
 					buffer = "[Buffer]",
 					luasnip = "[Snip]",
 					nvim_lua = "[Lua]",
-					-- treesitter = "[Treesitter]",
 					path = "[Path]",
+					-- treesitter = "[Treesitter]",
 				})[entry.source.name]
+
 				return vim_item
 			end,
 		},
@@ -78,11 +108,11 @@ function Self.setup()
 		},
 		sources = {
 			{ name = "nvim_lsp" },
-			-- { name = "treesitter" },
 			{ name = "buffer" },
 			{ name = "luasnip" },
 			{ name = "nvim_lua" },
 			{ name = "path" },
+			-- { name = "treesitter" },
 			-- { name = "spell" },
 			-- { name = "emoji" },
 			-- { name = "calc" },

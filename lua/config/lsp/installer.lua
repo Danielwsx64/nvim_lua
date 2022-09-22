@@ -3,7 +3,7 @@ local lsp_installer_servers = require("nvim-lsp-installer.servers")
 
 local Self = {}
 
-function Self.setup(servers, default_opts)
+function Self.install(servers, default_opts)
 	require("nvim-lsp-installer").setup({})
 	for server_name, server_opts in pairs(servers) do
 		local server_available, server = lsp_installer_servers.get_server(server_name)

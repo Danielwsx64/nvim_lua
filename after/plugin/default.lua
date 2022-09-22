@@ -1,9 +1,5 @@
 local vim = vim or {}
 
-local nvim_create_augroup = vim.api.nvim_create_augroup
-local nvim_create_autocmd = vim.api.nvim_create_autocmd
-local nvim_set_hl = vim.api.nvim_set_hl
-
 vim.cmd("set termguicolors")
 
 vim.opt.termguicolors = true -- Enable colors in terminal
@@ -36,9 +32,9 @@ vim.opt.mouse = "ar" --Enable mouse mode
 vim.opt.inccommand = "split"
 
 -- Highlight on yank
-nvim_create_autocmd("TextYankPost", {
-	group = nvim_create_augroup("YankHighlight", { clear = true }),
+vim.api.nvim_create_autocmd("TextYankPost", {
+	group = vim.api.nvim_create_augroup("YankHighlight", { clear = true }),
 	command = "silent! lua vim.highlight.on_yank()",
 })
 
-nvim_set_hl(0, "CurSearch", { link = "IncSearch" })
+vim.api.nvim_set_hl(0, "CurSearch", { link = "IncSearch" })

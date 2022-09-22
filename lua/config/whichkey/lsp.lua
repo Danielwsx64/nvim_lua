@@ -45,7 +45,7 @@ local function keymappings(client, bufnr)
 	whichkey.register(keymap_g, { mode = "n", noremap = true, silent = true, buffer = bufnr, prefix = "g" })
 end
 
-function Self.setup(client, bufnr)
+function Self.add_maps(client, bufnr)
 	keymappings(client, bufnr)
 end
 
