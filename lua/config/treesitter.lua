@@ -33,6 +33,7 @@ function Self.setup()
 		---- If you need to change the installation directory of the parsers (see -> Advanced Setup)
 		-- parser_install_dir = "/some/path/to/store/parsers", -- Remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
 		indent = { enable = true, disable = { "python", "css" } },
+		matchup = { enable = true },
 		highlight = {
 			-- `false` will disable the whole extension
 			enable = true,

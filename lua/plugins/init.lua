@@ -26,6 +26,7 @@ function Self.get_plugins(first_sync)
 		use("nvim-treesitter/playground")
 		use("p00f/nvim-ts-rainbow")
 		use("nvim-treesitter/nvim-treesitter-refactor")
+		use("andymass/vim-matchup")
 
 		-- Better notification
 		use({ "rcarriga/nvim-notify", config = setup("notify") })
