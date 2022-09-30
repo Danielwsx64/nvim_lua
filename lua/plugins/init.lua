@@ -2,15 +2,21 @@ local setup = require("config.setup").setup
 
 local Self = {}
 
+-- Unused plugins
+-- parece interessante um plugin de find replace
+-- "nvim-pack/nvim-spectre"
+-- Database DBML sintax highlight and file type
+-- use("jidn/vim-dbml")
+-- vim-endwise
+-- use("tpope/vim-endwise")
+-- highlight
+-- use("sheerun/vim-polyglot")
+-- This one can became a good option in the feature but at now it is unable to read the mappings from whichkey
+-- use({ "FeiyouG/command_center.nvim", wants = { "nvim-telescope/telescope.nvim" } })
+
 function Self.get_plugins(first_sync)
 	return function(use)
-		-- parece interessante um plugin de find replace
-		-- "nvim-pack/nvim-spectre"
-
 		use("wbthomason/packer.nvim")
-
-		-- Database DBML sintax highlight and file type
-		use("jidn/vim-dbml")
 
 		-- Othe plugins deps
 		use("nvim-lua/plenary.nvim")
@@ -67,15 +73,7 @@ function Self.get_plugins(first_sync)
 		use({ "benfowler/telescope-luasnip.nvim", wants = { "LuaSnip", "telescope.vim" } })
 
 		-- autopairs
-		use({
-			"windwp/nvim-autopairs",
-			config = function()
-				require("nvim-autopairs").setup({})
-			end,
-		})
-
-		-- vim-endwise
-		use("tpope/vim-endwise")
+		use({ "windwp/nvim-autopairs", config = setup("autopairs") })
 
 		-- better comments
 		use({
@@ -97,11 +95,13 @@ function Self.get_plugins(first_sync)
 		-- grep and replace
 		use({ "Danielwsx64/greplace", config = setup("greplace") })
 
-		-- highlight
-		-- use("sheerun/vim-polyglot")
-
 		-- Better surround
-		use({ "tpope/vim-surround", event = "InsertEnter" })
+		use({
+			"kylechui/nvim-surround",
+			config = function()
+				require("nvim-surround").setup({})
+			end,
+		})
 
 		-- Startup screen
 		use({ "goolord/alpha-nvim", config = setup("alpha") })
@@ -192,18 +192,12 @@ function Self.get_plugins(first_sync)
 		use({ "kelly-lin/telescope-ag", wants = { { "nvim-telescope/telescope.nvim" } } })
 
 		-- Search keymapping
-		-- This one can became a good option in the feature but at now it is unable to read the mappings from whichkey
-		-- use({ "FeiyouG/command_center.nvim", wants = { "nvim-telescope/telescope.nvim" } })
 
 		use({ "rmagatti/auto-session", config = setup("session") })
 
 		-- Telescope
 		use({
 			"nvim-telescope/telescope.nvim",
-			-- opt = true,
-			-- cmd = { "Telescope" },
-			-- module = "telescope",
-			-- keys = { "<leader>f" },
 			config = setup("telescope"),
 			wants = {
 				"plenary.nvim",
