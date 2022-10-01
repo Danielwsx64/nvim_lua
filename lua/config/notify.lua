@@ -1,9 +1,12 @@
 local Self = {}
 
 -- Plugin to better folding
-function Self.setup()
-	local status_ok, notify = pcall(require, "notify")
-	if not status_ok then
+function Self.config()
+	local plugin = "notify"
+	local success, notify = pcall(require, plugin)
+
+	if not success then
+		vim.notify("Failed to load " .. plugin, vim.log.levels.ERROR)
 		return
 	end
 

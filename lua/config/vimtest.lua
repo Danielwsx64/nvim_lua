@@ -1,6 +1,6 @@
 local Self = {}
 
-function Self.setup()
+function Self.config()
 	vim.g["test#strategy"] = "vtr"
 end
 

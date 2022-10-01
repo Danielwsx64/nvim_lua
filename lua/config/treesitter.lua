@@ -1,8 +1,11 @@
 local Self = {}
 
-function Self.setup()
-	local status_ok, treesitter = pcall(require, "nvim-treesitter.configs")
-	if not status_ok then
+function Self.config()
+	local plugin = "nvim-treesitter.configs"
+	local success, treesitter = pcall(require, plugin)
+
+	if not success then
+		vim.notify("Failed to load " .. plugin, vim.log.levels.ERROR)
 		return
 	end
 

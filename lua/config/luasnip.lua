@@ -1,7 +1,13 @@
 local Self = { packer = { wants = "friendly-snippets" } }
 
-function Self.setup()
-	local luasnip = require("luasnip")
+function Self.config()
+	local plugin = "luasnip"
+	local success, luasnip = pcall(require, plugin)
+
+	if not success then
+		vim.notify("Failed to load " .. plugin, vim.log.levels.ERROR)
+		return
+	end
 
 	luasnip.config.set_config({
 		history = false,

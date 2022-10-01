@@ -13,10 +13,12 @@ local function lsp_status_component()
 	return ""
 end
 
-function Self.setup()
-	local status_ok, lualine = pcall(require, "lualine")
+function Self.config()
+	local plugin = "lualine"
+	local success, lualine = pcall(require, plugin)
 
-	if not status_ok then
+	if not success then
+		vim.notify("Failed to load " .. plugin, vim.log.levels.ERROR)
 		return
 	end
 

@@ -1,9 +1,11 @@
 local Self = {}
 
-function Self.setup()
-	local status_ok, toggleterm = pcall(require, "toggleterm")
+function Self.config()
+	local plugin = "toggleterm"
+	local success, toggleterm = pcall(require, plugin)
 
-	if not status_ok then
+	if not success then
+		vim.notify("Failed to load " .. plugin, vim.log.levels.ERROR)
 		return
 	end
 
@@ -63,22 +65,22 @@ function Self.setup()
 		winbar = { enabled = false },
 	})
 
-	function _G.set_terminal_keymaps()
-		local opts = { buffer = 0 }
-		vim.keymap.set("t", "<space><esc>", [[<C-\><C-n>]], opts)
-		-- vim.keymap.set("t", "jk", [[<C-\><C-n>]], opts)
-		vim.keymap.set("t", "<C-h>", [[<Cmd>wincmd h<CR>]], opts)
-		vim.keymap.set("t", "<C-j>", [[<Cmd>wincmd j<CR>]], opts)
-		vim.keymap.set("t", "<C-k>", [[<Cmd>wincmd k<CR>]], opts)
-		vim.keymap.set("t", "<C-l>", [[<Cmd>wincmd l<CR>]], opts)
-		vim.keymap.set("t", "<space>wh", [[<Cmd>wincmd h<CR>]], opts)
-		vim.keymap.set("t", "<space>wj", [[<Cmd>wincmd j<CR>]], opts)
-		vim.keymap.set("t", "<space>wk", [[<Cmd>wincmd k<CR>]], opts)
-		vim.keymap.set("t", "<space>wl", [[<Cmd>wincmd l<CR>]], opts)
-	end
-
-	-- if you only want these mappings for toggle term use term://*toggleterm#* instead
-	vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
+	-- function _G.set_terminal_keymaps()
+	-- 	local opts = { buffer = 0 }
+	-- 	vim.keymap.set("t", "<space><esc>", [[<C-\><C-n>]], opts)
+	-- 	-- vim.keymap.set("t", "jk", [[<C-\><C-n>]], opts)
+	-- 	vim.keymap.set("t", "<C-h>", [[<Cmd>wincmd h<CR>]], opts)
+	-- 	vim.keymap.set("t", "<C-j>", [[<Cmd>wincmd j<CR>]], opts)
+	-- 	vim.keymap.set("t", "<C-k>", [[<Cmd>wincmd k<CR>]], opts)
+	-- 	vim.keymap.set("t", "<C-l>", [[<Cmd>wincmd l<CR>]], opts)
+	-- 	vim.keymap.set("t", "<space>wh", [[<Cmd>wincmd h<CR>]], opts)
+	-- 	vim.keymap.set("t", "<space>wj", [[<Cmd>wincmd j<CR>]], opts)
+	-- 	vim.keymap.set("t", "<space>wk", [[<Cmd>wincmd k<CR>]], opts)
+	-- 	vim.keymap.set("t", "<space>wl", [[<Cmd>wincmd l<CR>]], opts)
+	-- end
+	--
+	-- -- if you only want these mappings for toggle term use term://*toggleterm#* instead
+	-- vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
 end
 
 return Self

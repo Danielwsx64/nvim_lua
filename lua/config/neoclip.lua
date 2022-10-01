@@ -1,9 +1,11 @@
 local Self = {}
 
-function Self.setup()
-	local status_ok, neoclip = pcall(require, "neoclip")
+function Self.config()
+	local plugin = "neoclip"
+	local success, neoclip = pcall(require, plugin)
 
-	if not status_ok then
+	if not success then
+		vim.notify("Failed to load " .. plugin, vim.log.levels.ERROR)
 		return
 	end
 

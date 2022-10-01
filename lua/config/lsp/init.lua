@@ -52,13 +52,16 @@ capabilities.textDocument.foldingRange = { dynamicRegistration = false, lineFold
 local cmp_capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 local default_opts = { on_attach = on_attach, capabilities = cmp_capabilities, flags = { debounce_text_changes = 150 } }
 
-function Self.setup()
-	require("lsp_signature").setup({
-		bind = true,
-		handler_opts = {
-			border = "rounded",
-		},
-	})
+function Self.config()
+	local plugin = "lsp_signature"
+	local success, lsp_signature = pcall(require, plugin)
+
+	if not success then
+		vim.notify("Failed to load " .. plugin, vim.log.levels.ERROR)
+		return
+	end
+
+	lsp_signature.setup({ bind = true, handler_opts = { border = "rounded" } })
 
 	require("config.lsp.installer").install(servers, default_opts)
 end

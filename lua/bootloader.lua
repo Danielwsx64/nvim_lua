@@ -83,7 +83,7 @@ function Self.get_plugin_packer_info(config_file)
 end
 
 function Self.config_for(module)
-	local setup_template = [[
+	local template = [[
   do
     local module = "%s"
 
@@ -99,12 +99,12 @@ function Self.config_for(module)
     if not success then
       vim.notify("Couldn't load config module " .. module .. ".lua, check if the file exists", vim.log.levels.ERROR)
     else
-      loaded_module.setup()
+      loaded_module.config()
     end
   end
   ]]
 
-	return string.format(setup_template, module)
+	return string.format(template, module)
 end
 
 function Self.force_require(module_name)

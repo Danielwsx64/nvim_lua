@@ -1,9 +1,11 @@
 local Self = {}
 
-function Self.setup()
-	local status_ok, autopairs = pcall(require, "nvim-autopairs")
+function Self.config()
+	local plugin = "nvim-autopairs"
+	local success, autopairs = pcall(require, plugin)
 
-	if not status_ok then
+	if not success then
+		vim.notify("Failed to load " .. plugin, vim.log.levels.ERROR)
 		return
 	end
 

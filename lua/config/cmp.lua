@@ -1,14 +1,6 @@
 local Self = {
 	packer = {
-		wants = {
-			"cmp-buffer",
-			"cmp-path",
-			"cmp-nvim-lua",
-			"cmp-cmdline",
-			"cmp-nvim-lsp",
-			"cmp_luasnip",
-			"LuaSnip",
-		},
+		wants = { "cmp-buffer", "cmp-path", "cmp-nvim-lua", "cmp-cmdline", "cmp-nvim-lsp", "cmp_luasnip", "LuaSnip" },
 	},
 }
 
@@ -40,14 +32,21 @@ local kind_icons = {
 	TypeParameter = "",
 }
 
-function Self.setup()
-	local has_words_before = function()
-		local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-		return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+local has_words_before = function()
+	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+end
+
+function Self.config()
+	local plugin = "cmp"
+	local success, cmp = pcall(require, plugin)
+
+	if not success then
+		vim.notify("Failed to load " .. plugin, vim.log.levels.ERROR)
+		return
 	end
 
 	local luasnip = require("luasnip")
-	local cmp = require("cmp")
 
 	cmp.setup({
 		completion = { completeopt = "menu,menuone,noinsert", keyword_length = 1 },

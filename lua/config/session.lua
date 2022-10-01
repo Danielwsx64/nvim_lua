@@ -1,6 +1,6 @@
 local Self = {}
 
-function Self.setup()
+function Self.config()
 	local lens_status_ok, session_lens = pcall(require, "session-lens")
 	local auto_status_ok, auto_session = pcall(require, "auto-session")
 

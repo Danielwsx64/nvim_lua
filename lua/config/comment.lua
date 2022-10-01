@@ -1,9 +1,11 @@
 local Self = {}
 
-function Self.setup()
-	local status_ok, comment = pcall(require, "Comment")
+function Self.config()
+	local plugin = "Comment"
+	local success, comment = pcall(require, plugin)
 
-	if not status_ok then
+	if not success then
+		vim.notify("Failed to load " .. plugin, vim.log.levels.ERROR)
 		return
 	end
 

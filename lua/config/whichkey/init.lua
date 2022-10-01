@@ -1,22 +1,18 @@
 local Self = {}
 
-function Self.setup()
-	local status_ok, whichkey = pcall(require, "which-key")
+function Self.config()
+	local plugin = "which-key"
+	local success, whichkey = pcall(require, plugin)
 
-	if not status_ok then
+	if not success then
+		vim.notify("Failed to load " .. plugin, vim.log.levels.ERROR)
 		return
 	end
 
 	local keymapping = require("config.whichkey.keymapping")
 
-	local conf = {
-		window = {
-			border = "single", -- none, single, double, shadow
-			position = "bottom", -- bottom, top
-		},
-	}
+	whichkey.setup({ window = { border = "single", position = "bottom" } })
 
-	whichkey.setup(conf)
 	keymapping.register()
 end
 

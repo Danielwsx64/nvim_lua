@@ -1,21 +1,16 @@
-local api = vim.api
-local find = vim.fs.find
-local expand = vim.fn.expand
-local levels = vim.log.levels
-
 local Self = {}
 
 local function elixir_formater()
 	local config
 	local formatter = { exe = "mix", args = { "format", "-" }, stdin = true }
 
-	local buffer_name = expand("%:p")
+	local buffer_name = vim.fn.expand("%:p")
 
 	if not buffer_name then
 		return formatter
 	end
 
-	local formatter_files = find(".formatter.exs", { type = "file", stop = "apps", limit = math.huge })
+	local formatter_files = vim.fs.find(".formatter.exs", { type = "file", stop = "apps", limit = math.huge })
 
 	if not formatter_files[1] then
 		return formatter
@@ -39,16 +34,18 @@ local function elixir_formater()
 	return formatter
 end
 
-function Self.setup()
-	local status_ok, formatter = pcall(require, "formatter")
+function Self.config()
+	local plugin = "formatter"
+	local success, formatter = pcall(require, plugin)
 
-	if not status_ok then
+	if not success then
+		vim.notify("Failed to load " .. plugin, vim.log.levels.ERROR)
 		return
 	end
 
 	formatter.setup({
 		logging = false,
-		log_level = levels.DEBUG,
+		log_level = vim.log.levels.DEBUG,
 		filetype = {
 			elixir = { elixir_formater },
 
@@ -64,9 +61,9 @@ function Self.setup()
 		},
 	})
 
-	local group = api.nvim_create_augroup("AutoFormat", { clear = true })
+	local group = vim.api.nvim_create_augroup("AutoFormat", { clear = true })
 
-	api.nvim_create_autocmd("BufWritePost", { group = group, command = "FormatWrite" })
+	vim.api.nvim_create_autocmd("BufWritePost", { group = group, command = "FormatWrite" })
 end
 
 return Self

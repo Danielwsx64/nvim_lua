@@ -1,9 +1,11 @@
 local Self = { packer = { wants = { "plenary.nvim", "telescope.nvim", "nvim-web-devicons" } } }
 
-function Self.setup()
-	local status_ok, octo = pcall(require, "octo")
+function Self.config()
+	local plugin = "octo"
+	local success, octo = pcall(require, plugin)
 
-	if not status_ok then
+	if not success then
+		vim.notify("Failed to load " .. plugin, vim.log.levels.ERROR)
 		return
 	end
 

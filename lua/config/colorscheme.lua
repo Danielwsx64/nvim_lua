@@ -2,7 +2,7 @@ local Self = {}
 
 -- Theme color Setup
 
-function Self.setup()
+function Self.config()
 	vim.g.sonokai_better_performance = 1
 	vim.g.sonokai_style = "default"
 	-- vim.g.starry_italic_comments = true

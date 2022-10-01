@@ -1,12 +1,11 @@
 local Self = { packer = { wants = { "plenary.nvim", "diffview.nvim" } } }
 
--- A work-in-progress Magit clone for Neovim that is geared toward the Vim philosophy.
--- see: https://github.com/TimUntersberger/neogit
+function Self.config()
+	local plugin = "neogit"
+	local success, neogit = pcall(require, plugin)
 
-function Self.setup()
-	local status_ok, neogit = pcall(require, "neogit")
-
-	if not status_ok then
+	if not success then
+		vim.notify("Failed to load " .. plugin, vim.log.levels.ERROR)
 		return
 	end
 

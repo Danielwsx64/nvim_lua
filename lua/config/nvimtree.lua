@@ -6,10 +6,12 @@ local list = {
 	{ key = "t", action = "tabnew" },
 }
 
-function Self.setup()
-	local status_ok, nvimtree = pcall(require, "nvim-tree")
+function Self.config()
+	local plugin = "nvim-tree"
+	local success, nvimtree = pcall(require, plugin)
 
-	if not status_ok then
+	if not success then
+		vim.notify("Failed to load " .. plugin, vim.log.levels.ERROR)
 		return
 	end
 

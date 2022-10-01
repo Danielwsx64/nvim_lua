@@ -1,7 +1,7 @@
 local cmd = vim.cmd
 local Self = {}
 
-function Self.setup()
+function Self.config()
 	cmd([[ 
     let g:VM_leader                     = {'default': '<leader>m', 'visual': '<leader>m', 'buffer': '<leader>m'}
     let g:VM_theme                      = 'olive'

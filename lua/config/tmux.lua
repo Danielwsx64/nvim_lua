@@ -1,12 +1,11 @@
 local Self = {}
 
--- Tmux integration
--- see: https://github.com/aserowy/tmux.nvim
+function Self.config()
+	local plugin = "tmux"
+	local success, tmux = pcall(require, plugin)
 
-function Self.setup()
-	local status_ok, tmux = pcall(require, "tmux")
-
-	if not status_ok then
+	if not success then
+		vim.notify("Failed to load " .. plugin, vim.log.levels.ERROR)
 		return
 	end
 
