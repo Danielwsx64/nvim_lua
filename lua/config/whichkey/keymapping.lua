@@ -226,20 +226,18 @@ local normal_lead_binds = {
 	-- Git commands
 	g = {
 		name = "Git",
-		n = { "<CMD>VGit hunk_down<CR>", "Next hunk" },
-		m = { "<CMD>VGit hunk_up<CR>", "Previous hunk" },
-
-		d = { "<CMD>VGit buffer_diff_preview<CR>", "Buffer diff" },
-		h = { "<CMD>VGit buffer_history_preview<CR>", "Buffer history" },
-		g = { "<CMD>VGit toggle_live_gutter<CR>", "Live gutter" },
-
-		b = { "<CMD>VGit buffer_blame_preview<CR>", "Cursor blame" },
-		B = { "<CMD>VGit buffer_gutter_blame_preview<CR>", "Buffer blame" },
+		n = { "<CMD>lua require('gitsigns').next_hunk()<CR>", "Next hunk" },
+		p = { "<CMD>lua require('gitsigns').prev_hunk()<CR>", "Previous hunk" },
+		d = { "<CMD>lua require('gitsigns').preview_hunk()<CR>", "Diff hunk" },
+		D = { "<CMD>lua require('gitsigns').diffthis()<CR>", "Diff buffer" },
+		b = { "<CMD>lua require('gitsigns').blame_line{full=true}<CR>", "Blame line" },
+		B = { "<CMD>lua require('gitsigns').toggle_current_line_blame()<CR>", "Buffer blame" },
+		h = { "<CMD>DiffviewFileHistory %<CR>", "Buffer history" },
+		L = { "<CMD>DiffviewFileHistory<CR>", "DiffView log" },
 
 		o = { "<CMD>Neogit<CR>", "Open NeoGit" },
 		s = { "<CMD>Telescope git_status<CR>", "Status" },
 		l = { "<CMD>Telescope git_commits<CR>", "Log" },
-		L = { "<CMD>VGit project_logs_preview<CR>", "VGit log" },
 		c = { "<CMD>Telescope danielws co_authors<CR>", "Apply co-authors" },
 	},
 	["<ESC>"] = { "<CMD>nohlsearch<CR>", "Cancel search" },

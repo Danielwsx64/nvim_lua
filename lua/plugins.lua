@@ -80,7 +80,7 @@ Self.plugins_list = {
 	-- Git
 	{ "sindrets/diffview.nvim", "diffview" },
 	{ "TimUntersberger/neogit", "neogit" },
-	{ "tanvirtin/vgit.nvim", "vgit" },
+	{ "lewis6991/gitsigns.nvim", "gitsigns" },
 
 	-- Integration with github cli
 	{ "pwntester/octo.nvim", "octo" },

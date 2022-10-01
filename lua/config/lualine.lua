@@ -25,7 +25,7 @@ function Self.config()
 	lualine.setup({
 		options = { theme = "sonokai", globalstatus = true },
 		sections = { lualine_c = { lsp_status_component, { "filename", path = 1 } } },
-		tabline = { lualine_a = { { "tabs", mode = 2 } }, lualine_b = { "filetype" } },
+		tabline = { lualine_a = { { "tabs", mode = 2 } }, lualine_y = { "filetype" } },
 		-- winbar = { lualine_x = { "filename" } },
 		-- inactive_winbar = { lualine_z = { "filename" } },
 	})
