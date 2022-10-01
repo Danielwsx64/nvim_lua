@@ -58,8 +58,7 @@ Self.plugins_list = {
 	-- autoformat
 	{ "mhartington/formatter.nvim", "formatter" },
 
-	-- grep and replace
-	-- TODO: search for a better way to replace all project
+	-- Better grep and replace
 	{ "Danielwsx64/greplace", "greplace" },
 
 	-- Better surround

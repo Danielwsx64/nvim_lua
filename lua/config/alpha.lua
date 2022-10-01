@@ -54,13 +54,13 @@ function Self.config()
 	dashboard.section.header.opts.hl = "Type"
 
 	dashboard.section.buttons.val = {
-		button("e", " New file", "<cmd>ene <CR>"),
+		button("e", " New file", "<CMD>ene <CR>"),
 		button("SPC S r", "﫻Restore session", "<CMD>RestoreSession<CR>"),
-		button("SPC S l", " List sessions", "<cmd>Telescope session-lens search_session<cr>"),
-		button("SPC SPC f", "◎ Find file", "<cmd>Telescope find_files<cr>"),
+		button("SPC S l", " List sessions", "<CMD>Telescope session-lens search_session<CR>"),
+		button("SPC SPC f", "◎ Find file", "<CMD>Telescope find_files<CR>"),
 		button("SPC c e", " Configuration", ":e $MYVIMRC <CR>"),
-		button("SPC SPC p", " Projects", "<cmd>lua require'telescope'.extensions.project.project{}<cr>"),
-		button("SPC z s", " Packer sync", "<CMD>lua require('bootloader').sync_plugins()<CR>"),
+		button("SPC SPC p", " Projects", "<CMD>lua require'telescope'.extensions.project.project{}<CR>"),
+		button("SPC z s", " Packer sync", "<CMD>PackerSync<CR>"),
 	}
 
 	dashboard.section.buttons.opts.hl = "Function"
