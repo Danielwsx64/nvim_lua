@@ -1,5 +1,4 @@
-local g = vim.g
-local Self = {}
+local Self = { packer = { wants = { "plenary.nvim", "telescope.nvim", "nvim-web-devicons" } } }
 
 function Self.setup()
 	local status_ok, octo = pcall(require, "octo")

@@ -1,4 +1,4 @@
-local Self = {}
+local Self = { packer = { wants = "plenary.vim" } }
 
 function Self.setup()
 	local status_ok, vgit = pcall(require, "vgit")

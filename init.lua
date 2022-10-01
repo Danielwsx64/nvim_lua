@@ -1,4 +1,4 @@
-require("plugins.bootstrap").setup()
+require("bootloader").startup()
 
 -- To see specific configuration to to:
 --

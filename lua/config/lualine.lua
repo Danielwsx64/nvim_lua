@@ -1,4 +1,4 @@
-local Self = {}
+local Self = { packer = { wants = { "auto-session", "nvim-web-devicons" }, after = "sonokai" } }
 
 local function lsp_status_component()
 	local clients = vim.lsp.buf_get_clients()

@@ -57,7 +57,7 @@ function Self.setup()
 		button("SPC SPC f", "◎ Find file", "<cmd>Telescope find_files<cr>"),
 		button("SPC c e", " Configuration", ":e $MYVIMRC <CR>"),
 		button("SPC SPC p", " Projects", "<cmd>lua require'telescope'.extensions.project.project{}<cr>"),
-		button("SPC z s", " Packer sync", "<cmd>PackerSync<CR>"),
+		button("SPC z s", " Packer sync", "<CMD>lua require('bootloader').sync_plugins()<CR>"),
 	}
 
 	dashboard.section.buttons.opts.hl = "Function"

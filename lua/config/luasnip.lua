@@ -1,4 +1,4 @@
-local Self = {}
+local Self = { packer = { wants = "friendly-snippets" } }
 
 function Self.setup()
 	local luasnip = require("luasnip")

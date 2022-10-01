@@ -215,12 +215,11 @@ local normal_lead_binds = {
 
 	z = {
 		name = "Packer",
-		c = { "<CMD>PackerCompile<CR>", "Compile" },
-		i = { "<CMD>PackerInstall<CR>", "Install" },
-		s = { "<CMD>PackerSync<CR>", "Sync" },
+		-- c = { "<CMD>PackerCompile<CR>", "Compile" },
+		-- i = { "<CMD>PackerInstall<CR>", "Install" },
+		s = { "<CMD>lua require('bootloader').sync_plugins()<CR>", "Sync" },
 		S = { "<CMD>PackerStatus<CR>", "Status" },
-		u = { "<CMD>PackerUpdate<CR>", "Update" },
-		r = { "<CMD>lua require('plugins.bootstrap').reload()<CR>", "Reload" },
+		-- u = { "<CMD>PackerUpdate<CR>", "Update" },
 	},
 
 	-- Git commands

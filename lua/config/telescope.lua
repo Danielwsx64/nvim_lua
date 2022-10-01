@@ -1,4 +1,17 @@
-local Self = {}
+local Self = {
+	packer = {
+		wants = {
+			"plenary.nvim",
+			"popup.nvim",
+			"telescope-fzf-native.nvim",
+			"telescope-project.nvim",
+			"telescope-file-browser.nvim",
+			"project.nvim",
+			"nvim-neoclip.lua",
+			"session-lens",
+		},
+	},
+}
 
 function Self.setup()
 	local status_ok, telescope = pcall(require, "telescope")

@@ -1,4 +1,16 @@
-local Self = {}
+local Self = {
+	packer = {
+		wants = {
+			"cmp-buffer",
+			"cmp-path",
+			"cmp-nvim-lua",
+			"cmp-cmdline",
+			"cmp-nvim-lsp",
+			"cmp_luasnip",
+			"LuaSnip",
+		},
+	},
+}
 
 local kind_icons = {
 	Text = "",

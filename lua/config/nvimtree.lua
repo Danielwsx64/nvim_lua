@@ -1,5 +1,4 @@
-local g = vim.g
-local Self = {}
+local Self = { packer = { wants = { "nvim-web-devicons" } } }
 
 local list = {
 	{ key = "v", action = "vsplit" },

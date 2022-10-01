@@ -1,5 +1,4 @@
-local api = vim.api
-local Self = {}
+local Self = { packer = { wants = { "nvim-lsp-installer", "lsp_signature.nvim" } } }
 
 local servers = {
 	elixirls = {},
@@ -36,11 +35,11 @@ local servers = {
 local function on_attach(client, bufnr)
 	-- Enable completion triggered by <C-X><C-O>
 	-- See `:help omnifunc` and `:help ins-completion` for more information.
-	api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
 	-- Use LSP as the handler for formatexpr.
 	-- See `:help formatexpr` for more information.
-	api.nvim_buf_set_option(0, "formatexpr", "v:lua.vim.lsp.formatexpr()")
+	vim.api.nvim_buf_set_option(0, "formatexpr", "v:lua.vim.lsp.formatexpr()")
 
 	-- Configure key mappings
 	require("config.whichkey.lsp").add_maps(client, bufnr)

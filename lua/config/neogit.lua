@@ -1,4 +1,4 @@
-local Self = {}
+local Self = { packer = { wants = { "plenary.nvim", "diffview.nvim" } } }
 
 -- A work-in-progress Magit clone for Neovim that is geared toward the Vim philosophy.
 -- see: https://github.com/TimUntersberger/neogit
