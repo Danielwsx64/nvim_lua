@@ -10,9 +10,9 @@ Self.plugins_list = {
 	"kyazdani42/nvim-web-devicons",
 
 	-- LSP - Collection of configurations for the built-in LSP client
-	-- TODO: change nvim-lsp-installer for williamboman/mason.nvim
 	"ray-x/lsp_signature.nvim",
-	"williamboman/nvim-lsp-installer",
+	"williamboman/mason.nvim",
+	"williamboman/mason-lspconfig.nvim",
 	{ "neovim/nvim-lspconfig", "lsp" },
 
 	-- popup (required for other plugins -- See if is yet needed)
