@@ -13,6 +13,13 @@ local visual_lead_binds = {
 
 		p = { "<CMD>Danielws elixir pipelize<CR>", "Elixir turns into pipe" },
 	},
+
+	g = {
+		name = "Git",
+
+		O = { '<CMD>lua require("config.gitlinker").open_in_browser("v")<CR>', "Open in browser" },
+		y = { '<CMD>lua require("config.gitlinker").copy_link("v")<CR>', "Copy repository link" },
+	},
 }
 
 local normal_lead_binds = {
@@ -239,7 +246,10 @@ local normal_lead_binds = {
 		s = { "<CMD>Telescope git_status<CR>", "Status" },
 		l = { "<CMD>Telescope git_commits<CR>", "Log" },
 		c = { "<CMD>Telescope danielws co_authors<CR>", "Apply co-authors" },
+		O = { '<CMD>lua require("config.gitlinker").open_in_browser("n")<CR>', "Open in browser" },
+		y = { '<CMD>lua require("config.gitlinker").copy_link("n")<CR>', "Copy repository link" },
 	},
+
 	["<ESC>"] = { "<CMD>nohlsearch<CR>", "Cancel search" },
 }
 

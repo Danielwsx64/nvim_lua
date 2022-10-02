@@ -81,6 +81,7 @@ Self.plugins_list = {
 	{ "sindrets/diffview.nvim", "diffview" },
 	{ "TimUntersberger/neogit", "neogit" },
 	{ "lewis6991/gitsigns.nvim", "gitsigns" },
+	{ "ruifm/gitlinker.nvim", "gitlinker" },
 
 	-- Integration with github cli
 	{ "pwntester/octo.nvim", "octo" },
