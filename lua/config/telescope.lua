@@ -52,6 +52,7 @@ function Self.config()
 	telescope.load_extension("danielws")
 	telescope.load_extension("notify")
 	telescope.load_extension("termfinder")
+	telescope.load_extension("themes")
 end
 
 return Self

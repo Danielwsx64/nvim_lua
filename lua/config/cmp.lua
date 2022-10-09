@@ -123,6 +123,7 @@ function Self.config()
 			{ name = "luasnip" },
 			{ name = "nvim_lua" },
 			{ name = "path" },
+			{ name = "orgmode" },
 			-- { name = "treesitter" },
 			-- { name = "spell" },
 			-- { name = "emoji" },

@@ -1,4 +1,19 @@
-local Self = { packer = { wants = { "auto-session", "nvim-web-devicons" }, after = "sonokai" } }
+local Self = { packer = { wants = { "auto-session", "nvim-web-devicons" } } }
+
+local filename_opts = {
+	"filename",
+
+	file_status = true,
+	newfile_status = true,
+	path = 1,
+	shorting_target = 40,
+	symbols = {
+		modified = "+", -- Text to show when the file is modified.
+		readonly = "-", -- Text to show when the file is non-modifiable or readonly.
+		unnamed = "", -- Text to show for unnamed buffers.
+		newfile = "[New]", -- Text to show for new created file before first writting
+	},
+}
 
 local function lsp_status_component()
 	local clients = vim.lsp.buf_get_clients()
@@ -23,11 +38,20 @@ function Self.config()
 	end
 
 	lualine.setup({
-		options = { theme = "sonokai", globalstatus = true },
+		options = { globalstatus = true },
 		sections = { lualine_c = { lsp_status_component, { "filename", path = 1 } } },
-		tabline = { lualine_a = { { "tabs", mode = 2 } }, lualine_y = { "filetype" } },
-		-- winbar = { lualine_x = { "filename" } },
-		-- inactive_winbar = { lualine_z = { "filename" } },
+		tabline = {
+			lualine_a = {
+				{
+					"tabs",
+					mode = 2,
+					tabs_color = { active = "lualine_a_normal", inactive = "lualine_b_normal" },
+				},
+			},
+			lualine_c = { "filetype" },
+		},
+		winbar = { lualine_x = { filename_opts } },
+		inactive_winbar = { lualine_x = { filename_opts } },
 	})
 end
 

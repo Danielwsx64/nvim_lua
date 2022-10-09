@@ -32,6 +32,7 @@ local normal_lead_binds = {
 		m = { "<CMD>help vm-mappings.txt<CR>", "Multi Cursor Keys" },
 		o = { "<CMD>vsp ~/.config/nvim/lua/config/octo.lua<CR>", "Octo Config" },
 		s = { "<CMD>Telescope luasnip<CR>", "Show buffer Snippets" },
+		t = { "<CMD>TSHighlightCapturesUnderCursor<CR>", "Show TreeSitter highlight capture" },
 	},
 
 	-- Quit commands
@@ -65,6 +66,7 @@ local normal_lead_binds = {
 		h = { "<CMD>Telescope command_history<CR>", "Commands history" },
 		f = { "<CMD>Telescope find_files<CR>", "Files" },
 		b = { "<CMD>Telescope buffers<CR>", "Buffers" },
+		B = { "<CMD>Telescope danielws changed_buffers<CR>", "Buffers with changes" },
 		o = { "<CMD>Telescope oldfiles<CR>", "Old Files" },
 		g = { "<CMD>Telescope live_grep<CR>", "Live Grep" },
 		c = { "<CMD>Telescope commands<CR>", "Commands" },

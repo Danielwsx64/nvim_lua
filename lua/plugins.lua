@@ -25,6 +25,12 @@ Self.plugins_list = {
 	"andymass/vim-matchup",
 	{ "nvim-treesitter/nvim-treesitter", "treesitter", run = ":TSUpdate" },
 
+	-- OrgMode
+	{ "nvim-orgmode/orgmode", "orgmode" },
+
+	-- Better Color
+	{ "uga-rosa/ccc.nvim", "ccc" },
+
 	-- Better notification
 	{ "rcarriga/nvim-notify", "notify" },
 
@@ -67,15 +73,8 @@ Self.plugins_list = {
 	-- Startup screen
 	{ "goolord/alpha-nvim", "alpha" },
 
-	-- Colorscheme
-	"sainnhe/sonokai",
-	"tanvirtin/monokai.nvim",
-	"rafamadriz/neon",
-	"mhartington/oceanic-next",
-	"ray-x/starry.nvim",
-	"ful1e5/onedark.nvim",
-	"LunarVim/darkplus.nvim",
-	{ "marko-cerovac/material.nvim", "colorscheme" },
+	-- Colorscheme and Themes
+	{ "~/workspace/themer.lua/", "themer" },
 
 	-- Git
 	{ "sindrets/diffview.nvim", "diffview" },
