@@ -26,7 +26,11 @@ Self.plugins_list = {
 	{ "nvim-treesitter/nvim-treesitter", "treesitter", run = ":TSUpdate" },
 
 	-- OrgMode
-	{ "nvim-orgmode/orgmode", "orgmode" },
+	-- { "nvim-orgmode/orgmode", "orgmode" },
+	-- { "nvim-neorg/neorg", "neorg", run = ":Neorg sync-parsers" },
+
+	-- Zen Mode (fullscreen)
+	{ "folke/zen-mode.nvim", "zenmode" },
 
 	-- Better Color
 	{ "uga-rosa/ccc.nvim", "ccc" },

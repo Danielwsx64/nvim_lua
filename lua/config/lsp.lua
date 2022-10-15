@@ -138,12 +138,6 @@ function Self.diagnostics_config()
 end
 
 function Self.build_capabilities()
-	Self.capabilities = vim.lsp.protocol.make_client_capabilities()
-	Self.capabilities.textDocument.completion.completionItem.snippetSupport = true
-
-	-- To fold by LSP with UFO lib
-	Self.capabilities.textDocument.foldingRange = { dynamicRegistration = false, lineFoldingOnly = true }
-
 	local plugin = "cmp_nvim_lsp"
 	local success, cmp_nvim_lsp = pcall(require, plugin)
 
@@ -152,7 +146,7 @@ function Self.build_capabilities()
 		return
 	end
 
-	Self.capabilities = cmp_nvim_lsp.update_capabilities(Self.capabilities)
+	Self.capabilities = cmp_nvim_lsp.default_capabilities()
 end
 
 function Self.on_attach(client, bufnr)

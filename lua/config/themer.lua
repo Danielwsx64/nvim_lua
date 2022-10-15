@@ -10,7 +10,7 @@ function Self.config()
 	end
 
 	themer.setup({
-		colorscheme = "guna", -- default colorscheme
+		colorscheme = "sonokai_deep", -- default colorscheme
 		enable_installer = true,
 		langs = {
 			html = true,

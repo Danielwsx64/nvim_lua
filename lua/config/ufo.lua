@@ -16,7 +16,11 @@ function Self.config()
 	vim.o.foldlevelstart = 99
 	vim.o.foldenable = true
 
-	ufo.setup({})
+	ufo.setup({
+		provider_selector = function(_, _, _)
+			return { "treesitter", "indent" }
+		end,
+	})
 end
 
 return Self
