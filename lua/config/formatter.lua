@@ -34,6 +34,18 @@ local function elixir_formater()
 	return formatter
 end
 
+local function dart_formatter()
+	local util = require("formatter.util")
+
+	return {
+		exe = "flutter",
+		args = {
+			"format",
+			util.escape_path(util.get_current_buffer_file_name()),
+		},
+	}
+end
+
 function Self.config()
 	local plugin = "formatter"
 	local success, formatter = pcall(require, plugin)
@@ -48,6 +60,7 @@ function Self.config()
 		log_level = vim.log.levels.DEBUG,
 		filetype = {
 			elixir = { elixir_formater },
+			dart = { dart_formatter },
 
 			lua = { require("formatter.filetypes.lua").stylua },
 			javascript = { require("formatter.filetypes.javascript").prettier },
