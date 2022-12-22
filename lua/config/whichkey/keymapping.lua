@@ -125,6 +125,7 @@ local normal_lead_binds = {
 		name = "Windows",
 
 		f = { "<CMD>res<CR><CMD>vert res<CR>", "Windows Full mode" },
+		F = { "<CMD>ZenMode<CR>", "Open ZenMode" },
 		e = { "<CMD>wincmd =<CR>", "All windows same size" },
 		E = { "<CMD>wincmd = | Danielws tmux resize_vim_pane 50<CR>", "Equal tmux vim pane" },
 		z = { "<CMD>Danielws tmux resize_vim_pane z<CR>", "Full screen vim Tmux pane" },
@@ -263,6 +264,12 @@ local custom_visual_binds = {
 	-- s = { "*<c-v>:<c-u>%s//", "Substitute selected text in file" },
 }
 
+local custom_http_binds = {
+	r = {
+		h = { "<Plug>RestNvim", "Run http under cursor" },
+	},
+}
+
 local function noremap(mod, lhs, rhs, desc)
 	vim.keymap.set(mod, lhs, rhs, { desc = desc, silent = true })
 end
@@ -374,6 +381,20 @@ function Self.register()
 		noremap = true, -- use `noremap` when creating keymaps
 		nowait = false, -- use `nowait` when creating keymaps
 	})
+
+	vim.cmd([[ autocmd FileType http lua whichkeyRegisterHTTP() ]])
+
+	_G.whichkeyRegisterHTTP = function()
+		local buf = vim.api.nvim_get_current_buf()
+		whichkey.register(custom_http_binds, {
+			mode = "n", -- Normal mode
+			prefix = "<leader>",
+			buffer = buf, -- set only for current buffer
+			silent = true, -- use `silent` when creating keymaps
+			noremap = true, -- use `noremap` when creating keymaps
+			nowait = false, -- use `nowait` when creating keymaps
+		})
+	end
 end
 
 return Self

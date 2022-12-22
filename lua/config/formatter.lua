@@ -64,7 +64,9 @@ function Self.config()
 
 			lua = { require("formatter.filetypes.lua").stylua },
 			javascript = { require("formatter.filetypes.javascript").prettier },
+			javascriptreact = { require("formatter.filetypes.javascript").prettier },
 			typescript = { require("formatter.filetypes.typescript").prettier },
+			typescriptreact = { require("formatter.filetypes.typescript").prettier },
 			rust = { require("formatter.filetypes.rust").rustfmt },
 
 			json = { require("formatter.filetypes.json").prettier },

@@ -9,7 +9,7 @@ function Self.config()
 		return
 	end
 
-	surround.setup({})
+	surround.setup({ move_cursor = "begin" })
 end
 
 return Self

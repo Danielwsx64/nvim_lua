@@ -9,13 +9,23 @@ function Self.config()
 		return
 	end
 
+	-- Remove this when learn how to define by themer
+	-- local colors = require("themer.modules.core.api").get_cp("sonokai_deep")
+	-- vim.cmd("highlight symbol guifg=" .. colors.remaps.plugins.treesitter.TSSymbol.fg)
+	-- vim.cmd("highlight symbol guifg=#85d3f2")
+	-- It didnt work
+
 	themer.setup({
 		colorscheme = "sonokai_deep", -- default colorscheme
 		enable_installer = true,
-		langs = {
-			html = true,
-			md = true,
-		},
+
+		langs = { html = true, md = true },
+
+		-- How to add color to symbol by themer?
+		-- remaps = {
+		-- 	plugins = { treesitter = { symbol = symbol } },
+		-- 	highlights = { symbol = symbol, },
+		-- },
 
 		plugins = {
 			treesitter = true,

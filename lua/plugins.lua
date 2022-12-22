@@ -29,6 +29,9 @@ Self.plugins_list = {
 	-- { "nvim-orgmode/orgmode", "orgmode" },
 	-- { "nvim-neorg/neorg", "neorg", run = ":Neorg sync-parsers" },
 
+	-- HTTP request
+	{ "rest-nvim/rest.nvim", "rest" },
+
 	-- Zen Mode (fullscreen)
 	{ "folke/zen-mode.nvim", "zenmode" },
 
@@ -78,7 +81,8 @@ Self.plugins_list = {
 	{ "goolord/alpha-nvim", "alpha" },
 
 	-- Colorscheme and Themes
-	{ "~/workspace/themer.lua/", "themer" },
+	-- { "ThemerCorp/themer.lua", "themer" },
+	{ "/home/daniel/workspace/themer.lua", "themer" },
 
 	-- Git
 	{ "sindrets/diffview.nvim", "diffview" },
