@@ -82,7 +82,7 @@ Self.plugins_list = {
 
 	-- Colorscheme and Themes
 	-- { "ThemerCorp/themer.lua", "themer" },
-	{ "/home/daniel/workspace/themer.lua", "themer" },
+	{ "/home/daniel/workspace/daniel.themer.lua", "themer" },
 
 	-- Git
 	{ "sindrets/diffview.nvim", "diffview" },

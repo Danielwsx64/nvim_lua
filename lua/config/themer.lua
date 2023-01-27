@@ -21,10 +21,18 @@ function Self.config()
 
 		langs = { html = true, md = true },
 
-		-- How to add color to symbol by themer?
 		-- remaps = {
-		-- 	plugins = { treesitter = { symbol = symbol } },
-		-- 	highlights = { symbol = symbol, },
+		-- 	palette = {
+		-- 		globals = {
+		-- 			remaps = {
+		-- 				plugins = {
+		-- 					treesitter = {
+		-- 						["@symbol"] = { fg = "#76cce0" },
+		-- 					},
+		-- 				},
+		-- 			},
+		-- 		},
+		-- 	},
 		-- },
 
 		plugins = {
