@@ -142,6 +142,9 @@ Self.plugins_list = {
 	{ "sudormrfbin/cheatsheet.nvim" },
 	-- Ag for Telescope
 	{ "kelly-lin/telescope-ag" },
+
+	-- TODO
+	{ "~/workspace/todo.vim/", "todo" },
 }
 
 return Self
