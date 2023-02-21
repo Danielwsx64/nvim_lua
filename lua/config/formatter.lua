@@ -68,6 +68,7 @@ function Self.config()
 			typescript = { require("formatter.filetypes.typescript").prettier },
 			typescriptreact = { require("formatter.filetypes.typescript").prettier },
 			rust = { require("formatter.filetypes.rust").rustfmt },
+			ruby = { require("formatter.filetypes.ruby").rubocop },
 
 			json = { require("formatter.filetypes.json").prettier },
 			yaml = { require("formatter.filetypes.yaml").prettier },

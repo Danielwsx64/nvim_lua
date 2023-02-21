@@ -215,9 +215,11 @@ local normal_lead_binds = {
 
 		c = { "<CMD>lua require('config.vimtest').change()<CR>", "Change test strategy" },
 
-		A = { "<CMD>ToggleTermToggleAll<CR>", "Open all terminal" },
-		o = { "<CMD>ToggleTerm<CR>", "Open terminal" },
-		L = { "<CMD>Telescope termfinder find<CR>", "List terminals" },
+		b = { "<CMD>VtrSendCommand !!<CR>", "Run back last terminal command" },
+
+		-- A = { "<CMD>ToggleTermToggleAll<CR>", "Open all terminal" },
+		-- o = { "<CMD>ToggleTerm<CR>", "Open terminal" },
+		-- L = { "<CMD>Telescope termfinder find<CR>", "List terminals" },
 
 		h = { "<CMD>Telescope danielws shell_history<CR>", "Run hitory on tmux" },
 		v = { "<CMD>:VtrAttachToPane<CR>", "Reattach tmux pane" },

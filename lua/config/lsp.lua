@@ -6,6 +6,7 @@ local servers = {
 	cssls = {},
 	terraformls = {},
 	elixirls = {},
+	ruby_ls = {},
 	html = {},
 	jsonls = {},
 	rust_analyzer = {},
