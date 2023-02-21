@@ -25,10 +25,6 @@ Self.plugins_list = {
 	"andymass/vim-matchup",
 	{ "nvim-treesitter/nvim-treesitter", "treesitter", run = ":TSUpdate" },
 
-	-- OrgMode
-	-- { "nvim-orgmode/orgmode", "orgmode" },
-	-- { "nvim-neorg/neorg", "neorg", run = ":Neorg sync-parsers" },
-
 	-- HTTP request
 	{ "rest-nvim/rest.nvim", "rest" },
 
@@ -90,16 +86,6 @@ Self.plugins_list = {
 	{ "lewis6991/gitsigns.nvim", "gitsigns" },
 	{ "ruifm/gitlinker.nvim", "gitlinker" },
 
-	-- Integration with github cli
-	{ "pwntester/octo.nvim", "octo" },
-
-	-- Integration with github cli
-	{ "nvim-telescope/telescope-github.nvim" },
-
-	-- Terminal
-	"tknightz/telescope-termfinder.nvim",
-	{ "akinsho/toggleterm.nvim", "toggleterm" },
-
 	-- Show keymapping hits
 	{ "folke/which-key.nvim", "whichkey" },
 
@@ -138,13 +124,28 @@ Self.plugins_list = {
 	-- Depends on telescope
 	-- Show symbols (emojis)
 	{ "nvim-telescope/telescope-symbols.nvim" },
+
 	-- Show cheatsheet for vim
 	{ "sudormrfbin/cheatsheet.nvim" },
+
 	-- Ag for Telescope
 	{ "kelly-lin/telescope-ag" },
 
 	-- TODO
 	{ "~/workspace/todo.vim/", "todo" },
 }
+
+-- DEPRECATED START
+-- Integration with github cli
+-- { "pwntester/octo.nvim", "octo" },
+-- Integration with github cli
+-- { "nvim-telescope/telescope-github.nvim" },
+-- Terminal
+-- "tknightz/telescope-termfinder.nvim",
+-- { "akinsho/toggleterm.nvim", "toggleterm" },
+-- OrgMode
+-- { "nvim-orgmode/orgmode", "orgmode" },
+-- { "nvim-neorg/neorg", "neorg", run = ":Neorg sync-parsers" },
+-- DEPRECATED END
 
 return Self
