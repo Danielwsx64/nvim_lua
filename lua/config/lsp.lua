@@ -12,7 +12,7 @@ local servers = {
 	rust_analyzer = {},
 	tsserver = {},
 	vimls = {},
-	sumneko_lua = {
+	lua_ls = {
 		settings = {
 			Lua = {
 				-- Tells Lua that a global variable named vim exists to not have warnings when configuring neovim
@@ -73,6 +73,7 @@ function Self.config()
 		-- and will be called for each installed server that doesn't have
 		-- a dedicated handler.
 		function(server_name) -- Default handler (optional)
+			print(server_name)
 			lspconfig[server_name].setup({
 				on_attach = Self.on_attach,
 				capabilities = Self.capabilities,
