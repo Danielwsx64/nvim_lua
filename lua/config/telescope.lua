@@ -41,18 +41,26 @@ function Self.config()
 		},
 	})
 
-	telescope.load_extension("project")
-	telescope.load_extension("projects")
-	telescope.load_extension("fzf")
-	telescope.load_extension("file_browser")
-	telescope.load_extension("neoclip")
-	telescope.load_extension("gh")
-	telescope.load_extension("ag")
-	telescope.load_extension("luasnip")
-	telescope.load_extension("danielws")
-	telescope.load_extension("notify")
-	telescope.load_extension("termfinder")
-	telescope.load_extension("themes")
+	local extensions = {
+		"project",
+		"projects",
+		"fzf",
+		"file_browser",
+		"neoclip",
+		"ag",
+		"luasnip",
+		"danielws",
+		"notify",
+		"themes",
+	}
+
+	for _, extension in ipairs(extensions) do
+		local extension_load, _ = pcall(telescope.load_extension, extension)
+
+		if not extension_load then
+			vim.notify("Failed to load Telescope extension: " .. extension, vim.log.levels.ERROR)
+		end
+	end
 end
 
 return Self
