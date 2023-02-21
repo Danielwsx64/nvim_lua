@@ -73,7 +73,6 @@ function Self.config()
 		-- and will be called for each installed server that doesn't have
 		-- a dedicated handler.
 		function(server_name) -- Default handler (optional)
-			print(server_name)
 			lspconfig[server_name].setup({
 				on_attach = Self.on_attach,
 				capabilities = Self.capabilities,
