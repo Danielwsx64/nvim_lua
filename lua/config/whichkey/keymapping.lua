@@ -80,10 +80,13 @@ local normal_lead_binds = {
 		n = { "<CMD>Telescope notify<CR>", "Notifications" },
 	},
 
-	-- Find or Formatters
+	-- Find or Formatters, or QuickFix
 	f = {
 		name = "Find or Formatters",
 		t = { "<CMD>Danielws elixir go_to_test<CR>", "Test file or back" },
+
+		c = { "<CMD>call setqflist([])<CR>", "Clear quickfix list" },
+		o = { "<CMD>copen<CR>", "Open quickfix list" },
 	},
 
 	-- LSP commands
@@ -105,12 +108,6 @@ local normal_lead_binds = {
 	-- Buffer commands
 	b = {
 		name = "Buffer",
-		w = { "<CMD>w<CR>", "Save current" },
-		a = { "<CMD>wa<CR>", "Save all" },
-
-		q = { "<CMD>q<CR>", "Quit current" },
-		Q = { "<CMD>qa<CR>", "Quit all" },
-
 		r = { "<CMD>e!<CR>", "Reload" },
 		f = { "<CMD>Format<CR>", "Format" },
 
