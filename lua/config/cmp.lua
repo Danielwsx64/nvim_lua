@@ -86,8 +86,8 @@ function Self.config()
 				vim_item.kind = kind_icons[vim_item.kind]
 				vim_item.menu = ({
 					nvim_lsp = "[LSP]",
-					buffer = "[Buffer]",
 					luasnip = "[Snip]",
+					buffer = "[Buffer]",
 					nvim_lua = "[Lua]",
 					path = "[Path]",
 					-- treesitter = "[Treesitter]",

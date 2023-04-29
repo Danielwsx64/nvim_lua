@@ -12,6 +12,7 @@ function Self.config()
 	treesitter.setup({
 		-- A list of parser names, or "all"
 		ensure_installed = {
+			"query", -- for quering
 			"css",
 			"dockerfile",
 			"vim",
@@ -24,6 +25,7 @@ function Self.config()
 			"html",
 			"toml",
 			"markdown",
+			"markdown_inline",
 		},
 
 		-- Install parsers synchronously (only applied to `ensure_installed`)

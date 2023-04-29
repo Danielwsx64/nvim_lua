@@ -1,14 +1,14 @@
 local Self = {
 	packer = {
 		wants = {
+			-- "project.nvim",
+			-- "telescope-project.nvim",
+			-- "session-lens",
 			"plenary.nvim",
 			"popup.nvim",
 			"telescope-fzf-native.nvim",
-			"telescope-project.nvim",
 			"telescope-file-browser.nvim",
-			"project.nvim",
 			"nvim-neoclip.lua",
-			"session-lens",
 		},
 	},
 }
@@ -29,8 +29,9 @@ function Self.config()
 		defaults = {
 			path_display = { "truncate" },
 			wrap_results = true,
-			layout_strategy = "flex",
-			cycle_layout_list = { "vertical", "horizontal", "bottom_pane" },
+			-- layout_strategy = "flex", -- não funcionou o flex
+			layout_strategy = "vertical",
+			cycle_layout_list = { "horizontal", "bottom_pane", "vertical" },
 
 			mappings = {
 				i = {
@@ -49,6 +50,7 @@ function Self.config()
 					["<A-p>"] = layout_actions.toggle_preview,
 					["<A-c>"] = layout_actions.toggle_prompt_position,
 					["<A-m>"] = layout_actions.toggle_mirror,
+					["<C-x>"] = actions.delete_buffer,
 				},
 
 				n = {
@@ -60,12 +62,11 @@ function Self.config()
 	})
 
 	local extensions = {
-		"project",
-		"projects",
+		-- "project",
+		-- "projects",
 		"fzf",
 		"file_browser",
 		"neoclip",
-		"ag",
 		"luasnip",
 		"danielws",
 		"notify",

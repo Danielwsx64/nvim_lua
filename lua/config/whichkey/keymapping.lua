@@ -40,10 +40,9 @@ local normal_lead_binds = {
 		name = "Quit",
 		q = { "<CMD>q<CR>", "Quit current window" },
 
-		-- a = { "<CMD>lua require('util.exit').quit_all()<CR>", "Quit all" },
 		a = { "<CMD>Danielws quit_all<CR>", "Quit all" },
-		f = { "<CMD>q!<CR>", "Force" },
-		F = { "<CMD>qa!<CR>", "All force" },
+		f = { "<CMD>qa!<CR>", "All force" },
+		F = { "<CMD>q!<CR>", "Force" },
 		x = { "<CMD>x<CR>", "Quit saving" },
 		X = { "<CMD>xa<CR>", "Quit saving" },
 		s = { "<CMD>lua require('danielws.exit').close_session()<CR>", "Session" },
@@ -60,33 +59,32 @@ local normal_lead_binds = {
 	-- Telescope commands
 	["<space>"] = {
 		name = "Telescope finders",
-		a = { ":Ag ", "Search with ag" },
-		S = { "<CMD>Telescope search_history<CR>", "Search history" },
-		s = { "<CMD>Telescope current_buffer_fuzzy_find<CR>", "Current Buffer" },
 		h = { "<CMD>Telescope command_history<CR>", "Commands history" },
 		f = { "<CMD>Telescope find_files<CR>", "Files" },
 		b = { "<CMD>Telescope buffers<CR>", "Buffers" },
 		B = { "<CMD>Telescope danielws changed_buffers<CR>", "Buffers with changes" },
-		o = { "<CMD>Telescope oldfiles<CR>", "Old Files" },
-		g = { "<CMD>Telescope live_grep<CR>", "Live Grep" },
 		c = { "<CMD>Telescope commands<CR>", "Commands" },
-		e = { "<CMD>Telescope symbols<CR>", "Emoji/EmotIcons" },
-		E = { "<CMD>Telescope file_browser<CR>", "Browser" },
+		e = { "<CMD>Telescope file_browser<CR>", "Browser" },
+		E = { "<CMD>Telescope symbols<CR>", "Emoji/EmotIcons" },
 		y = { "<CMD>Telescope neoclip<CR>", "Yanks" },
 		z = { "<CMD>Telescope builtin<CR>", "Sholl all pickers" },
-		p = { "<CMD>lua require'telescope'.extensions.project.project{}<CR>", "Project" },
-		m = { "<CMD>Telescope keymaps<CR>", "Show keymaps" },
-		M = { "<CMD>Telescope marks<CR>", "Marks" },
+		M = { "<CMD>Telescope keymaps<CR>", "Show keymaps" },
+		j = { "<CMD>Telescope jumplist<CR>", "Jump list" },
+		m = { "<CMD>Telescope marks<CR>", "Marks" },
 		n = { "<CMD>Telescope notify<CR>", "Notifications" },
+		s = { "<CMD>Telescope spell_suggest<CR>", "Spell sugestion" },
+		["<space>"] = { "<CMD>Telescope resume<CR>", "Reopen last" },
 	},
 
 	-- Find or Formatters, or QuickFix
 	f = {
-		name = "Find or Formatters",
+		name = "Find or Formatters, or QuickFix",
 		t = { "<CMD>Danielws elixir go_to_test<CR>", "Test file or back" },
 
-		c = { "<CMD>call setqflist([])<CR>", "Clear quickfix list" },
-		o = { "<CMD>copen<CR>", "Open quickfix list" },
+		c = { "<CMD>call setqflist([])<CR>", "clear quickfix list" },
+		o = { "<CMD>Telescope quickfix<CR>", "open QuickFix" },
+		h = { "<CMD>Telescope quickfixhistory<CR>", "open QuickFix history" },
+		O = { "<CMD>copen<CR>", "Open quickfix window" },
 	},
 
 	-- LSP commands
@@ -94,6 +92,7 @@ local normal_lead_binds = {
 		name = "LSP commands",
 		g = { "<CMD>Telescope lsp_references<CR>", "References" },
 		s = { "<CMD>Telescope lsp_document_symbols<CR>", "List symbols" },
+		f = { "<CMD>Telescope diagnostics<CR>", "List diagnostics" },
 	},
 
 	-- Config commands
@@ -151,20 +150,15 @@ local normal_lead_binds = {
 		q = { "<CMD>q<CR>", "Quit current" },
 	},
 
-	-- Session commands
-	S = {
-		name = "Sessions",
-		l = { "<CMD>Telescope session-lens search_session<CR>", "List" },
-		r = { "<CMD>RestoreSession<CR>", "Restore" },
-		d = { "<CMD>DeleteSession<CR>", "Delete" },
-		s = { "<CMD>SaveSession<CR>", "Save" },
-	},
-
 	-- Search, Substitute
 	s = {
 		name = "Search and Substitute",
+
+		g = { "<CMD>Telescope live_grep<CR>", "Live Grep" },
+		a = { ":Danielws ag ", "Search with ag" },
+		s = { "<CMD>Telescope current_buffer_fuzzy_find<CR>", "Current Buffer" },
 		n = { "<CMD>Danielws better_search<CR>", "Search word under cursor" },
-		s = { "<CMD>Danielws better_replace<CR>", "Find and replace word near the cursor" },
+		r = { "<CMD>Danielws better_replace<CR>", "Find and replace word near the cursor" },
 		f = { "<CMD>Telescope grep_string<CR>", "Search word under cursor in workspace" },
 		h = { "<CMD>Telescope search_history<CR>", "Show the search history" },
 	},

@@ -106,17 +106,18 @@ Self.plugins_list = {
 	{ "~/workspace/danielws.vim/", "danielws" },
 
 	-- Configure sessions
-	{ "rmagatti/auto-session", "session" },
-	{ "rmagatti/session-lens" },
-
-	-- Project
-	{ "ahmedkhalf/project.nvim", "project" },
+	-- Esta com uma erro no start, acabo não usando essa feature
+	-- { "rmagatti/auto-session", "session" },
+	-- { "rmagatti/session-lens" },
 
 	-- Yank/Clipboard manager (needs telescope or fzf)
 	{ "AckslD/nvim-neoclip.lua", "neoclip" },
 
+	-- Project
+	-- { "ahmedkhalf/project.nvim", "project" },
+
 	-- Telescope
-	"nvim-telescope/telescope-project.nvim",
+	-- "nvim-telescope/telescope-project.nvim",
 	"nvim-telescope/telescope-file-browser.nvim",
 	{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
 	{ "nvim-telescope/telescope.nvim", "telescope" },
@@ -127,12 +128,6 @@ Self.plugins_list = {
 
 	-- Show cheatsheet for vim
 	{ "sudormrfbin/cheatsheet.nvim" },
-
-	-- Ag for Telescope
-	{ "kelly-lin/telescope-ag" },
-
-	-- TODO
-	{ "~/workspace/todo.vim/", "todo" },
 }
 
 -- DEPRECATED START

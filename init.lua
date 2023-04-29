@@ -6,7 +6,8 @@ require("bootloader").startup()
 -- after/plugin/default.lua
 
 -- Plugins list
--- lua/plugins/init.lua
+-- lua/plugins.lua
 
 -- Key mapping
+-- lua/config/whichkey/keymapping.lua
 -- lua/config/whichkey/init.lua

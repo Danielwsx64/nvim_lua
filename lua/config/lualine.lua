@@ -46,6 +46,7 @@ function Self.config()
 					"tabs",
 					mode = 2,
 					tabs_color = { active = "lualine_a_normal", inactive = "lualine_b_normal" },
+					max_length = vim.o.columns,
 				},
 			},
 			lualine_c = { "filetype" },
