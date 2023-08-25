@@ -70,7 +70,6 @@ function Self.config()
 		"luasnip",
 		"danielws",
 		"notify",
-		"themes",
 	}
 
 	for _, extension in ipairs(extensions) do

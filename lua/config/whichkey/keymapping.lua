@@ -40,12 +40,12 @@ local normal_lead_binds = {
 		name = "Quit",
 		q = { "<CMD>q<CR>", "Quit current window" },
 
+		-- TODO: adjust this command, its no working properly
 		a = { "<CMD>Danielws quit_all<CR>", "Quit all" },
 		f = { "<CMD>qa!<CR>", "All force" },
 		F = { "<CMD>q!<CR>", "Force" },
 		x = { "<CMD>x<CR>", "Quit saving" },
 		X = { "<CMD>xa<CR>", "Quit saving" },
-		s = { "<CMD>lua require('danielws.exit').close_session()<CR>", "Session" },
 	},
 
 	-- Explorer commands
@@ -59,6 +59,7 @@ local normal_lead_binds = {
 	-- Telescope commands
 	["<space>"] = {
 		name = "Telescope finders",
+
 		h = { "<CMD>Telescope command_history<CR>", "Commands history" },
 		f = { "<CMD>Telescope find_files<CR>", "Files" },
 		b = { "<CMD>Telescope buffers<CR>", "Buffers" },
@@ -76,10 +77,9 @@ local normal_lead_binds = {
 		["<space>"] = { "<CMD>Telescope resume<CR>", "Reopen last" },
 	},
 
-	-- Find or Formatters, or QuickFix
-	f = {
-		name = "Find or Formatters, or QuickFix",
-		t = { "<CMD>Danielws elixir go_to_test<CR>", "Test file or back" },
+	-- QuickFix
+	F = {
+		name = "QuickFix",
 
 		c = { "<CMD>call setqflist([])<CR>", "clear quickfix list" },
 		o = { "<CMD>Telescope quickfix<CR>", "open QuickFix" },
@@ -87,9 +87,27 @@ local normal_lead_binds = {
 		O = { "<CMD>copen<CR>", "Open quickfix window" },
 	},
 
+	-- Find with Hop
+	f = {
+		name = "Find with Hop",
+
+		g = { "<CMD>Telescope live_grep<CR>", "Live Grep" },
+		a = { ":Danielws ag ", "Search with ag" },
+		s = { "<CMD>Telescope current_buffer_fuzzy_find<CR>", "Current Buffer" },
+		S = { "<CMD>Telescope grep_string<CR>", "Search word under cursor in workspace" },
+		h = { "<CMD>Telescope search_history<CR>", "Show the search history" },
+		t = { "<CMD>Danielws elixir go_to_test<CR>", "Test file or back" },
+
+		f = { "<CMD>HopPattern<CR>", "-- HOP: Find for pattern" },
+		c = { "<CMD>HopCamelCase<CR>", "-- HOP: Find for cammel case" },
+		l = { "<CMD>HopLineStart<CR>", "-- HOP: Find for line" },
+		w = { "<CMD>HopWord<CR>", "-- HOP: Find for word" },
+	},
+
 	-- LSP commands
 	l = {
 		name = "LSP commands",
+
 		g = { "<CMD>Telescope lsp_references<CR>", "References" },
 		s = { "<CMD>Telescope lsp_document_symbols<CR>", "List symbols" },
 		f = { "<CMD>Telescope diagnostics<CR>", "List diagnostics" },
@@ -147,6 +165,7 @@ local normal_lead_binds = {
 
 		w = { "<CMD>update<CR>", "Save current buffer" },
 		a = { "<CMD>wa<CR>", "Save all buffers" },
+		x = { "<CMD>x<CR>", "Save & Quit" },
 		q = { "<CMD>q<CR>", "Quit current" },
 	},
 
@@ -154,13 +173,8 @@ local normal_lead_binds = {
 	s = {
 		name = "Search and Substitute",
 
-		g = { "<CMD>Telescope live_grep<CR>", "Live Grep" },
-		a = { ":Danielws ag ", "Search with ag" },
-		s = { "<CMD>Telescope current_buffer_fuzzy_find<CR>", "Current Buffer" },
 		n = { "<CMD>Danielws better_search<CR>", "Search word under cursor" },
 		r = { "<CMD>Danielws better_replace<CR>", "Find and replace word near the cursor" },
-		f = { "<CMD>Telescope grep_string<CR>", "Search word under cursor in workspace" },
-		h = { "<CMD>Telescope search_history<CR>", "Show the search history" },
 	},
 
 	-- Tabs and Tmux moves commands
@@ -241,7 +255,6 @@ local normal_lead_binds = {
 		o = { "<CMD>Neogit<CR>", "Open NeoGit" },
 		s = { "<CMD>Telescope git_status<CR>", "Status" },
 		l = { "<CMD>Telescope git_commits<CR>", "Log" },
-		c = { "<CMD>Telescope danielws co_authors<CR>", "Apply co-authors" },
 		O = { '<CMD>lua require("config.gitlinker").open_in_browser("n")<CR>', "Open in browser" },
 		y = { '<CMD>lua require("config.gitlinker").copy_link("n")<CR>', "Copy repository link" },
 	},
@@ -286,7 +299,7 @@ function Self.register()
 	vim.g.maplocalleader = " "
 
 	-- Better escape using jk in insert and terminal mode
-	noremap("i", "jk", "<ESC>", "Scape, same as <ESC>")
+	noremap("i", "jk", "<ESC>", "Scape with jk same as <ESC>")
 	-- noremap("t", "jk", "<C-\\><C-n>", "")
 
 	-- Center search results
@@ -312,6 +325,25 @@ function Self.register()
 	-- Avoid starting macro recording by chance
 	noremap("n", "Q", "q", "Record macro")
 	noremap("n", "q", "<Nop>", "Nothing")
+
+	local hop = require("hop")
+	local directions = require("hop.hint").HintDirection
+
+	vim.keymap.set("", "f", function()
+		hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true })
+	end, { remap = true })
+
+	vim.keymap.set("", "F", function()
+		hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true })
+	end, { remap = true })
+
+	vim.keymap.set("", "t", function()
+		hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })
+	end, { remap = true })
+
+	vim.keymap.set("", "T", function()
+		hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })
+	end, { remap = true })
 
 	-- Resizing panes
 	-- noremap("n", "<Right>", ":vertical resize +1<CR>", "Resize window left")

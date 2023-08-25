@@ -78,7 +78,8 @@ Self.plugins_list = {
 
 	-- Colorscheme and Themes
 	-- { "ThemerCorp/themer.lua", "themer" },
-	{ "Danielwsx64/themer.lua", "themer" },
+	-- { "Danielwsx64/themer.lua", "themer" },
+	{ "catppuccin/nvim", "catppuccin" },
 
 	-- Git
 	{ "sindrets/diffview.nvim", "diffview" },
@@ -128,6 +129,10 @@ Self.plugins_list = {
 
 	-- Show cheatsheet for vim
 	{ "sudormrfbin/cheatsheet.nvim" },
+
+	-- Better motion
+	-- This repo is a fork, the original is not maintened animore: https://github.com/phaazon/hop.nvim
+	{ "smoka7/hop.nvim", "hop" },
 }
 
 -- DEPRECATED START

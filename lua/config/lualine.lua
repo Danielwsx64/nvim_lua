@@ -38,7 +38,10 @@ function Self.config()
 	end
 
 	lualine.setup({
-		options = { globalstatus = true },
+		options = {
+      globalstatus = true,
+      theme = "catppuccin",
+    },
 		sections = { lualine_c = { lsp_status_component, { "filename", path = 1 } } },
 		tabline = {
 			lualine_a = {

@@ -74,7 +74,7 @@ function Self.config()
 	local compare = require("cmp.config.compare")
 
 	cmp.setup({
-		completion = { completeopt = "menu,menuone,noinsert", keyword_length = 1 },
+		completion = { completeopt = "menu,menuone,noinsert", keyword_length = 2 },
 		experimental = { native_menu = false, ghost_text = false },
 		snippet = {
 			expand = function(args)

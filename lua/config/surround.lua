@@ -9,7 +9,19 @@ function Self.config()
 		return
 	end
 
-	surround.setup({ move_cursor = "begin" })
+	surround.setup({
+		move_cursor = "begin",
+		aliases = {
+			["a"] = ">",
+			["b"] = ")",
+			["B"] = "}",
+			["r"] = "]",
+			["u"] = "'",
+			["w"] = '"',
+			["q"] = { '"', "'", "`" },
+			["s"] = { "}", "]", ")", ">", '"', "'", "`" },
+		},
+	})
 end
 
 return Self
