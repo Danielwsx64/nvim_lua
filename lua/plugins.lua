@@ -25,9 +25,6 @@ Self.plugins_list = {
 	"andymass/vim-matchup",
 	{ "nvim-treesitter/nvim-treesitter", "treesitter", run = ":TSUpdate" },
 
-	-- HTTP request
-	{ "rest-nvim/rest.nvim", "rest" },
-
 	-- Zen Mode (fullscreen)
 	{ "folke/zen-mode.nvim", "zenmode" },
 
@@ -57,10 +54,6 @@ Self.plugins_list = {
 	-- Better comments
 	{ "numToStr/Comment.nvim", "comment" },
 
-	-- Better fold
-	"kevinhwang91/promise-async",
-	{ "kevinhwang91/nvim-ufo", "ufo" },
-
 	-- multiple cursor
 	{ "mg979/vim-visual-multi", "visualmulti" },
 
@@ -77,8 +70,6 @@ Self.plugins_list = {
 	{ "goolord/alpha-nvim", "alpha" },
 
 	-- Colorscheme and Themes
-	-- { "ThemerCorp/themer.lua", "themer" },
-	-- { "Danielwsx64/themer.lua", "themer" },
 	{ "catppuccin/nvim", "catppuccin" },
 
 	-- Git
@@ -106,19 +97,10 @@ Self.plugins_list = {
 	-- My own plugin
 	{ "~/workspace/danielws.vim/", "danielws" },
 
-	-- Configure sessions
-	-- Esta com uma erro no start, acabo não usando essa feature
-	-- { "rmagatti/auto-session", "session" },
-	-- { "rmagatti/session-lens" },
-
 	-- Yank/Clipboard manager (needs telescope or fzf)
 	{ "AckslD/nvim-neoclip.lua", "neoclip" },
 
-	-- Project
-	-- { "ahmedkhalf/project.nvim", "project" },
-
 	-- Telescope
-	-- "nvim-telescope/telescope-project.nvim",
 	"nvim-telescope/telescope-file-browser.nvim",
 	{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
 	{ "nvim-telescope/telescope.nvim", "telescope" },
@@ -146,6 +128,22 @@ Self.plugins_list = {
 -- OrgMode
 -- { "nvim-orgmode/orgmode", "orgmode" },
 -- { "nvim-neorg/neorg", "neorg", run = ":Neorg sync-parsers" },
+-- HTTP request
+-- { "rest-nvim/rest.nvim", "rest" },
+-- Better fold
+-- "kevinhwang91/promise-async",
+-- { "kevinhwang91/nvim-ufo", "ufo" },
+-- { "ThemerCorp/themer.lua", "themer" },
+-- { "Danielwsx64/themer.lua", "themer" },
+-- Configure sessions
+-- Esta com uma erro no start, acabo não usando essa feature
+-- Project
+-- { "ahmedkhalf/project.nvim", "project" },
+
+-- Telescope
+-- "nvim-telescope/telescope-project.nvim",
+-- { "rmagatti/auto-session", "session" },
+-- { "rmagatti/session-lens" },
 -- DEPRECATED END
 
 return Self
