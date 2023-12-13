@@ -8,11 +8,6 @@ local visual_lead_binds = {
 		name = "Search and Substitute",
 		s = { "<CMD>Danielws better_replace<CR>", "Find and replace word near the cursor" },
 	},
-	f = {
-		name = "Format",
-
-		p = { "<CMD>Danielws elixir pipelize<CR>", "Elixir turns into pipe" },
-	},
 
 	g = {
 		name = "Git",
@@ -89,7 +84,7 @@ local normal_lead_binds = {
 
 	-- Find with Hop
 	f = {
-		name = "Find with Hop",
+		name = "Find or Format",
 
 		g = { "<CMD>Telescope live_grep<CR>", "Live Grep" },
 		a = { ":Danielws ag ", "Search with ag" },
@@ -102,6 +97,8 @@ local normal_lead_binds = {
 		c = { "<CMD>HopCamelCase<CR>", "-- HOP: Find for cammel case" },
 		l = { "<CMD>HopLineStart<CR>", "-- HOP: Find for line" },
 		w = { "<CMD>HopWord<CR>", "-- HOP: Find for word" },
+
+		p = { "<CMD>ElixirDev pipelize<CR>", "Elixir turns into pipe" },
 	},
 
 	-- LSP commands

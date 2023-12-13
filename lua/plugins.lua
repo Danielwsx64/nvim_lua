@@ -19,7 +19,6 @@ Self.plugins_list = {
 	{ "nvim-lua/popup.nvim" },
 
 	-- Treesitter
-	"nvim-treesitter/playground",
 	"p00f/nvim-ts-rainbow",
 	"nvim-treesitter/nvim-treesitter-refactor",
 	"andymass/vim-matchup",
@@ -52,7 +51,7 @@ Self.plugins_list = {
 	{ "windwp/nvim-autopairs", "autopairs" },
 
 	-- Better comments
-	{ "numToStr/Comment.nvim", "comment" },
+	{ "terrortylor/nvim-comment", "comment" },
 
 	-- multiple cursor
 	{ "mg979/vim-visual-multi", "visualmulti" },
@@ -97,6 +96,9 @@ Self.plugins_list = {
 	-- My own plugin
 	{ "~/workspace/danielws.vim/", "danielws" },
 
+	-- Elixir Devlopment
+	{ "~/workspace/elixir-dev.nvim/" },
+
 	-- Yank/Clipboard manager (needs telescope or fzf)
 	{ "AckslD/nvim-neoclip.lua", "neoclip" },
 
@@ -120,21 +122,26 @@ Self.plugins_list = {
 -- DEPRECATED START
 -- Integration with github cli
 -- { "pwntester/octo.nvim", "octo" },
+
 -- Integration with github cli
 -- { "nvim-telescope/telescope-github.nvim" },
+
 -- Terminal
 -- "tknightz/telescope-termfinder.nvim",
 -- { "akinsho/toggleterm.nvim", "toggleterm" },
+
 -- OrgMode
 -- { "nvim-orgmode/orgmode", "orgmode" },
 -- { "nvim-neorg/neorg", "neorg", run = ":Neorg sync-parsers" },
 -- HTTP request
 -- { "rest-nvim/rest.nvim", "rest" },
+
 -- Better fold
 -- "kevinhwang91/promise-async",
 -- { "kevinhwang91/nvim-ufo", "ufo" },
 -- { "ThemerCorp/themer.lua", "themer" },
 -- { "Danielwsx64/themer.lua", "themer" },
+
 -- Configure sessions
 -- Esta com uma erro no start, acabo não usando essa feature
 -- Project
@@ -143,7 +150,11 @@ Self.plugins_list = {
 -- Telescope
 -- "nvim-telescope/telescope-project.nvim",
 -- { "rmagatti/auto-session", "session" },
+--
 -- { "rmagatti/session-lens" },
+
+-- Found a Better Lib
+-- { "numToStr/Comment.nvim", "comment" },
 -- DEPRECATED END
 
 return Self
