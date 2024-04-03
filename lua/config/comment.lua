@@ -19,11 +19,11 @@ function Self.config()
 		-- Should key mappings be created
 		create_mappings = true,
 		-- Normal mode mapping left hand side
-		line_mapping = "gcc",
+		line_mapping = "gss",
 		-- Visual/Operator mapping left hand side
-		operator_mapping = "gc",
+		operator_mapping = "gs",
 		-- text object mapping, comment chunk,,
-		comment_chunk_text_object = "ic",
+		comment_chunk_text_object = "is",
 		-- Hook function to call before commenting takes place
 		hook = nil,
 	})

@@ -59,7 +59,7 @@ function Self.config()
 		logging = false,
 		log_level = vim.log.levels.DEBUG,
 		filetype = {
-	    elixir = { elixir_formater },
+			elixir = { elixir_formater },
 			dart = { dart_formatter },
 
 			lua = { require("formatter.filetypes.lua").stylua },

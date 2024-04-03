@@ -140,7 +140,7 @@ local normal_lead_binds = {
 		e = { "<CMD>wincmd =<CR>", "All windows same size" },
 		E = { "<CMD>wincmd = | Danielws tmux resize_vim_pane 50<CR>", "Equal tmux vim pane" },
 		z = { "<CMD>Danielws tmux resize_vim_pane z<CR>", "Full screen vim Tmux pane" },
-		c = { "<CMD>Danielws tmux resize_vim_pane 75<CR>", "Resize tmux vim pane" },
+		c = { "<CMD>Danielws tmux resize_vim_pane 65<CR>", "Resize tmux vim pane" },
 
 		h = { "<CMD>lua require('tmux.navigation.navigate').to('h')<CR>", "Go left" },
 		l = { "<CMD>lua require('tmux.navigation.navigate').to('l')<CR>", "Go right" },

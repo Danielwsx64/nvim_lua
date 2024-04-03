@@ -100,9 +100,11 @@ function Self.config()
 				show_help = "?",
 			},
 		},
+		-- for some reason the rainbow is broken with js
 		rainbow = {
-			enable = true,
-			-- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
+			enable = false,
+			query = "rainbow-parens",
+			disable = { "jsx", "js", "ts", "tsx", "cpp" }, --list of languages you want to disable the plugin for
 			extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
 			max_file_lines = nil, -- Do not enable for files with more than n lines, int
 			colors = {

@@ -16,7 +16,7 @@ local servers = {
 		settings = {
 			Lua = {
 				-- Tells Lua that a global variable named vim exists to not have warnings when configuring neovim
-				diagnostics = { globals = { "vim" } },
+				diagnostics = { globals = { "vim", "it", "describe" } },
 
 				workspace = {
 					library = {
