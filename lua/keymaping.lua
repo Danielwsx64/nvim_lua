@@ -12,6 +12,15 @@ local function map(mod, lhs, rhs, desc)
 	vim.keymap.set(mod, lhs, rhs, { desc = desc, silent = true, remap = true })
 end
 
+function M.treesitter_incremental_selec_keys()
+	return {
+		init_selection = "<leader>vv",
+		node_incremental = "<leader>va",
+		scope_incremental = "<leader>ve",
+		node_decremental = "<leader>vd",
+	}
+end
+
 --================
 --== LSP Keys
 --================
@@ -134,7 +143,10 @@ function M.register()
 			j = { telescope.jumplist, "Jump list" },
 			m = { telescope.marks, "Marks" },
 			n = { "<CMD>Telescope notify<CR>", "Notifications" },
+			y = { "<CMD>Telescope yank_history<CR>", "Yank History" },
 			s = { telescope.spell_suggest, "Spell sugestion" },
+			u = { "<CMD>UndotreeToggle<CR>", "Toggle Undo History" },
+
 			["<space>"] = { telescope.resume, "Reopen last" },
 		},
 

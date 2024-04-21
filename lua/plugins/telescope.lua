@@ -75,12 +75,12 @@ return {
 
 		-- Enable Telescope extensions if they are installed
 		local extensions = {
-			-- "neoclip",
+			-- "danielws",
 			"notify",
-			"danielws",
 			"luasnip",
 			"fzf",
 			"ui-select",
+			"yank_history",
 		}
 
 		for _, extension in ipairs(extensions) do

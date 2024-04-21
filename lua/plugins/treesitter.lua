@@ -1,6 +1,7 @@
 return { -- Highlight, edit, and navigate code
 	"nvim-treesitter/nvim-treesitter",
 	build = ":TSUpdate",
+	dependencies = { "andymass/vim-matchup" },
 	opts = {
 		ensure_installed = {
 			"css",
@@ -40,31 +41,10 @@ return { -- Highlight, edit, and navigate code
 			additional_vim_regex_highlighting = { "ruby" },
 		},
 		indent = { enable = true, disable = { "ruby", "python" } },
-		autopairs = { enable = true },
 		matchup = { enable = true },
-		refactor = {
-			highlight_definitions = {
-				enable = false,
-				-- Set to false if you have an `updatetime` of ~100.
-				clear_on_cursor_move = true,
-			},
-			highlight_current_scope = { enable = false },
-			smart_rename = {
-				enable = true,
-				keymaps = {
-					smart_rename = "grr",
-				},
-			},
-			navigation = {
-				enable = true,
-				keymaps = {
-					-- goto_definition = "gnd",
-					-- list_definitions = "gnD",
-					-- list_definitions_toc = "gO",
-					goto_next_usage = "gn",
-					goto_previous_usage = "gp",
-				},
-			},
+		incremental_selection = {
+			enable = true,
+			keymaps = require("keymaping").treesitter_incremental_selec_keys(),
 		},
 	},
 	config = function(_, opts)

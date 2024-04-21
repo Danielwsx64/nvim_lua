@@ -45,24 +45,30 @@ return {
 
 		require("diagnostic").configure()
 
+		-- vim.api.nvim_set_hl(0, "LspReferenceText", { bg = "#196480" })
+		-- vim.api.nvim_set_hl(0, "LspReferenceRead", { bg = "#196480" })
+		-- vim.api.nvim_set_hl(0, "LspReferenceWrite", { bg = "#196480" })
+		-- LspReferenceRead xxx guibg=#494d64
+
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
 			callback = function(event)
 				local client = vim.lsp.get_client_by_id(event.data.client_id)
 
 				require("keymaping").register_lsp_keys(client, event.buf)
+				-- LspReferenceText xxx guibg=#494d64
 
-				if client and client.server_capabilities.documentHighlightProvider then
-					vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-						buffer = event.buf,
-						callback = vim.lsp.buf.document_highlight,
-					})
-
-					vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
-						buffer = event.buf,
-						callback = vim.lsp.buf.clear_references,
-					})
-				end
+				-- if client and client.server_capabilities.documentHighlightProvider then
+				-- 	vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+				-- 		buffer = event.buf,
+				-- 		callback = vim.lsp.buf.document_highlight,
+				-- 	})
+				--
+				-- 	vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
+				-- 		buffer = event.buf,
+				-- 		callback = vim.lsp.buf.clear_references,
+				-- 	})
+				-- end
 			end,
 		})
 
