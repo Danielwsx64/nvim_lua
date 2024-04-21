@@ -3,7 +3,9 @@ return {
 	event = "VimEnter",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
+		"gbprod/yanky.nvim",
 		{
+
 			"nvim-telescope/telescope-fzf-native.nvim",
 
 			-- `build` is used to run some command when the plugin is installed/updated.
