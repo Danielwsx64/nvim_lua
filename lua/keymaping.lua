@@ -12,6 +12,72 @@ local function map(mod, lhs, rhs, desc)
 	vim.keymap.set(mod, lhs, rhs, { desc = desc, silent = true, remap = true })
 end
 
+function M.cmp_keys(cmp, luasnip)
+	local has_words_before = function()
+		local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+		return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+	end
+
+	return cmp.mapping.preset.insert({
+		["<C-k>"] = cmp.mapping.select_prev_item(),
+		["<C-j>"] = cmp.mapping.select_next_item(),
+
+		-- Scroll the documentation window [b]ack / [f]orward
+		["<C-b>"] = cmp.mapping.scroll_docs(-4),
+		["<C-f>"] = cmp.mapping.scroll_docs(4),
+
+		-- Accept ([y]es) the completion.
+		--  This will auto-import if your LSP supports it.
+		--  This will expand snippets if the LSP sent a snippet.
+		["<C-y>"] = cmp.mapping.confirm({ select = true }),
+
+		-- If you prefer more traditional completion keymaps,
+		-- you can uncomment the following lines
+		["<CR>"] = cmp.mapping({
+			i = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false }),
+			c = function(fallback)
+				if cmp.visible() then
+					cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
+				else
+					fallback()
+				end
+			end,
+		}),
+		["<Tab>"] = cmp.mapping(function(fallback)
+			if cmp.visible() then
+				cmp.select_next_item()
+			elseif luasnip.expand_or_jumpable() then
+				luasnip.expand_or_jump()
+			elseif has_words_before() then
+				cmp.complete()
+			else
+				fallback()
+			end
+		end, { "i", "s", "c" }),
+
+		["<S-Tab>"] = cmp.mapping(function(fallback)
+			if cmp.visible() then
+				cmp.select_prev_item()
+			elseif luasnip.jumpable(-1) then
+				luasnip.jump(-1)
+			else
+				fallback()
+			end
+		end, { "i", "s", "c" }),
+
+		["<Esc>"] = cmp.mapping(function()
+			if cmp.visible() then
+				cmp.close()
+			else
+				vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-c>", true, true, true), "n", true)
+			end
+		end, { "c" }),
+	})
+end
+
+--==================
+--== Treesitter Keys
+--==================
 function M.treesitter_incremental_selec_keys()
 	return {
 		init_selection = "<leader>vv",

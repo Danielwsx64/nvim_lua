@@ -1,6 +1,7 @@
 return {
 	"gbprod/yanky.nvim",
 
+	dependencies = { "nvim-telescope/telescope.nvim" },
 	config = function()
 		local utils = require("yanky.utils")
 		local mapping = require("yanky.telescope.mapping")
