@@ -88,22 +88,6 @@ local function choice_anonimous_fn(_, _, _, mode)
 end
 
 return {
-
-	snippet(
-		{ trig = "pm", dscr = "A new Enum.Map pipe" },
-		fmt("|> Enum.map({}{})", {
-			dynamic(1, choice_anonimous_fn, {}, { user_args = { "arity_one" } }),
-			insert(0),
-		})
-	),
-	snippet(
-		{ trig = "pr", dscr = "A new Enum.Reduce pipe" },
-		fmt("|> Enum.reduce({}, {}{})", {
-			insert(1, "%{}"),
-			dynamic(2, choice_anonimous_fn, {}, { user_args = { "arity_two" } }),
-			insert(0),
-		})
-	),
 	snippet({ trig = "defmo", dscr = "Define a new module" }, {
 		text("defmodule "),
 		dynamic(1, module_name, {}),

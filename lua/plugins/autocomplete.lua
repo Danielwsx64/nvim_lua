@@ -76,6 +76,7 @@ return {
 		})
 
 		require("luasnip.loaders.from_lua").lazy_load({ paths = { "~/.config/nvim/snippets" } })
+		require("luasnip.loaders.from_vscode").lazy_load({ paths = { "~/.config/nvim/snippets" } })
 
 		cmp.setup({
 			completion = { completeopt = "menu,menuone,noinsert", keyword_length = 2 },
