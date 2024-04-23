@@ -89,4 +89,7 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup("plugins", { dev = { path = "/home/daniel/workspace" } })
+require("lazy").setup(
+	"plugins",
+	{ dev = { path = "/home/daniel/workspace" }, root = vim.fn.stdpath("data") .. "/danielws_lazy" }
+)
