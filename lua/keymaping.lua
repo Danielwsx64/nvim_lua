@@ -19,8 +19,12 @@ function M.cmp_keys(cmp, luasnip)
 	end
 
 	return cmp.mapping.preset.insert({
-		["<C-k>"] = cmp.mapping.select_prev_item(),
-		["<C-j>"] = cmp.mapping.select_next_item(),
+		["<C-k>"] = cmp.mapping(function()
+			cmp.select_prev_item()
+		end, { "i", "c" }),
+		["<C-j>"] = cmp.mapping(function()
+			cmp.select_next_item()
+		end, { "i", "c" }),
 
 		-- Scroll the documentation window [b]ack / [f]orward
 		["<C-b>"] = cmp.mapping.scroll_docs(-4),
