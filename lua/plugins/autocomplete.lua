@@ -75,6 +75,8 @@ return {
 			updateevents = "TextChanged,TextChangedI",
 		})
 
+		require("keymaping").luasnip_remaps(luasnip)
+
 		require("luasnip.loaders.from_lua").lazy_load({ paths = { "~/.config/nvim/snippets" } })
 		require("luasnip.loaders.from_vscode").lazy_load({ paths = { "~/.config/nvim/snippets" } })
 

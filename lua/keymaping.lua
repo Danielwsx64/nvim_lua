@@ -12,6 +12,35 @@ local function map(mod, lhs, rhs, desc)
 	vim.keymap.set(mod, lhs, rhs, { desc = desc, silent = true, remap = true })
 end
 
+function M.treesitter_refactor_keys()
+	return {
+		smart_rename = {
+			smart_rename = "<leader>lr",
+		},
+		navigation = {
+			goto_definition = false,
+			list_definitions = false,
+			list_definitions_toc = false,
+			goto_next_usage = "gn",
+			goto_previous_usage = "gp",
+		},
+	}
+end
+
+function M.luasnip_remaps(luasnip)
+	noremap({ "s", "i" }, "<c-n>", function()
+		if luasnip.choice_active() then
+			luasnip.change_choice(1)
+		end
+	end, "LuaSnip next choice")
+
+	noremap({ "s", "i" }, "<c-p>", function()
+		if luasnip.choice_active() then
+			luasnip.change_choice(-1)
+		end
+	end, "LuaSnip previous choice")
+end
+
 function M.cmp_keys(cmp, luasnip)
 	local has_words_before = function()
 		local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -94,8 +123,22 @@ end
 --================
 --== LSP Keys
 --================
-function M.register_lsp_keys(_, bufnr)
+function M.register_lsp_keys(client, bufnr)
 	local telescope = require("telescope.builtin")
+
+	local leader_l_keys = {
+		name = "Code LSP / Diagnostics",
+		a = { vim.lsp.buf.code_action, "[L]SP Code [A]ction" },
+		d = { vim.diagnostic.open_float, "[L]ine [D]iagnostics" },
+		k = { vim.lsp.buf.hover, "LSP symbol info" },
+		n = { vim.diagnostic.goto_next, "[G]oto [N]ext diagnostic line" },
+		p = { vim.diagnostic.goto_prev, "[G]oto [P]rev diagnostic line" },
+		s = { telescope.lsp_document_symbols, "[L]SP Document [S]ymbols" },
+	}
+
+	if client.server_capabilities.renameProvider then
+		leader_l_keys["r"] = { vim.lsp.buf.rename, "[L]SP [R]ename" }
+	end
 
 	require("which-key").register({
 		name = "Goto",
@@ -109,16 +152,7 @@ function M.register_lsp_keys(_, bufnr)
 	}, { mode = "n", noremap = true, silent = true, buffer = bufnr, prefix = "g" })
 
 	require("which-key").register({
-		l = {
-			name = "Code LSP / Diagnostics",
-			a = { vim.lsp.buf.code_action, "[L]SP Code [A]ction" },
-			d = { vim.diagnostic.open_float, "[L]ine [D]iagnostics" },
-			k = { vim.lsp.buf.hover, "LSP symbol info" },
-			n = { vim.diagnostic.goto_next, "[G]oto [N]ext diagnostic line" },
-			p = { vim.diagnostic.goto_prev, "[G]oto [P]rev diagnostic line" },
-			r = { vim.lsp.buf.rename, "[L]SP [R]ename" },
-			s = { telescope.lsp_document_symbols, "[L]SP Document [S]ymbols" },
-		},
+		l = leader_l_keys,
 	}, { mode = "n", noremap = true, silent = true, buffer = bufnr, prefix = "<leader>" })
 end
 

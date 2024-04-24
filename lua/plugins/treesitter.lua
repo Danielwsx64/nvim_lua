@@ -46,6 +46,23 @@ return { -- Highlight, edit, and navigate code
 			enable = true,
 			keymaps = require("keymaping").treesitter_incremental_selec_keys(),
 		},
+		refactor = {
+			highlight_definitions = {
+				enable = true,
+				-- Set to false if you have an `updatetime` of ~100.
+				clear_on_cursor_move = true,
+			},
+			highlight_current_scope = { enable = false },
+
+			smart_rename = {
+				enable = true,
+				keymaps = require("keymaping").treesitter_refactor_keys().smart_rename,
+			},
+			navigation = {
+				enable = true,
+				keymaps = require("keymaping").treesitter_refactor_keys().navigation,
+			},
+		},
 	},
 	config = function(_, opts)
 		-- [[ Configure Treesitter ]] See `:help nvim-treesitter`
