@@ -4,8 +4,8 @@ return {
 		vim.notify = require("notify")
 
 		require("notify").setup({
-			background_colour = "Normal",
-			fps = 30,
+			background_colour = "#1e2030",
+			fps = 60,
 			icons = {
 				DEBUG = "",
 				ERROR = "",
@@ -16,11 +16,9 @@ return {
 			level = 2,
 			minimum_width = 50,
 			render = "default",
-			stages = "slide",
-			-- we got an warning about guicolors
-			-- stages = "fade_in_slide_out",
-			timeout = 2000,
-			top_down = true,
+			stages = "fade_in_slide_out",
+			timeout = 3000,
+			top_down = false,
 		})
 	end,
 }

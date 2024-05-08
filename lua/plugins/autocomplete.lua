@@ -81,7 +81,7 @@ return {
 		require("luasnip.loaders.from_vscode").lazy_load({ paths = { "~/.config/nvim/snippets" } })
 
 		cmp.setup({
-			completion = { completeopt = "menu,menuone,noinsert", keyword_length = 2 },
+			completion = { completeopt = "menu,menuone,noinsert", keyword_length = 3 },
 			snippet = {
 				expand = function(args)
 					luasnip.lsp_expand(args.body)
@@ -120,8 +120,8 @@ return {
 			},
 			mapping = require("keymaping").cmp_keys(cmp, luasnip),
 			sources = {
-				{ name = "nvim_lsp" },
 				{ name = "luasnip" },
+				{ name = "nvim_lsp" },
 				{ name = "nvim_lua" },
 				{ name = "path" },
 				{
