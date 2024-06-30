@@ -188,6 +188,8 @@ function M.register_multi_cursor_keys()
     let g:VM_maps['Select All']         = '<C-a>'    " select all
     let g:VM_maps['Visual All']         = '<C-a>'
     let g:VM_maps['Start Regex Search'] = '<C-_>'
+    let g:VM_maps['Surround']           = 'sa'
+    let g:VM_maps['Select Operator']    = 'S'
   ]])
 end
 
@@ -399,6 +401,13 @@ function M.register()
 			l = { telescope.git_commits, "Log" },
 			O = { '<CMD>lua require("custom_commands").open_in_browser("n")<CR>', "Open in browser" },
 			y = { '<CMD>lua require("custom_commands").copy_link("n")<CR>', "Copy repository link" },
+		},
+
+		-- Yank commands
+
+		y = {
+			name = "Yank",
+			t = { "<CMD>%yank<CR>", "Yank all buffer" },
 		},
 
 		["<ESC>"] = { "<CMD>nohlsearch<CR>", "Cancel search" },
